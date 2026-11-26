@@ -1,0 +1,452 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>sd88me Directions</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Michroma&family=Unbounded:wght@400;600;800&family=Big+Shoulders+Display:wght@700;900&family=Mona+Sans:wght@400;500;600;700&family=Instrument+Sans:wght@400;500;600&family=Martian+Mono:wdth,wght@87.5,400;87.5,500&family=Space+Mono:wght@400;700&family=Fraunces:ital,opsz,wght@1,9..144,400&display=swap">
+<style>
+/* Layout: a review board. A sticky switcher on top; below it, one full mini-homepage per direction, each in its own committed palette. */
+:root{
+  --frame-bg:#F3F1EE; --frame-ink:#1C1A22; --frame-mute:#6D6878; --frame-line:rgba(28,26,34,.12); --frame-acc:#6B3FD4;
+  --f-ui:"Instrument Sans","Helvetica Neue",Arial,sans-serif; --f-mono:"Martian Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--frame-bg:#17151C;--frame-ink:#EFEBF2;--frame-mute:#9A94A6;--frame-line:rgba(239,235,242,.12);--frame-acc:#B69CFF;color-scheme:dark}}
+:root[data-theme="dark"]{--frame-bg:#17151C;--frame-ink:#EFEBF2;--frame-mute:#9A94A6;--frame-line:rgba(239,235,242,.12);--frame-acc:#B69CFF;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--frame-bg);color:var(--frame-ink);font:400 16px/1.55 var(--f-ui);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:90;background:var(--frame-bg)}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--frame-acc);outline-offset:3px}
+[hidden]{display:none!important}
+.gut{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+@media(min-width:760px){.gut{padding-left:max(32px,env(safe-area-inset-left,0px));padding-right:max(32px,env(safe-area-inset-right,0px))}}
+.inner{max-width:1200px;margin-inline:auto}
+
+/* switcher */
+.switch{position:sticky;top:env(safe-area-inset-top,0px);z-index:80;background:color-mix(in srgb,var(--frame-bg) 88%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--frame-line)}
+.switch .inner{display:flex;align-items:center;gap:1rem;height:58px}
+.switch b{font-weight:600;font-size:.95rem;white-space:nowrap}
+.switch b span{color:var(--frame-mute);font-weight:400}
+.tabs{display:flex;gap:.25rem;margin-left:auto;overflow-x:auto;scrollbar-width:none}
+.tabs a{white-space:nowrap;text-decoration:none;font-size:.9rem;padding:.45em .9em;border-radius:999px;color:var(--frame-mute)}
+.tabs a:hover{color:var(--frame-ink)}
+.tabs a[aria-current="page"]{background:var(--frame-ink);color:var(--frame-bg)}
+.tabs a.ext{border:1px solid var(--frame-line)}
+@media(max-width:620px){.switch b span{display:none}}
+.note{font:400 .72rem/1.5 var(--f-mono);color:var(--frame-mute);letter-spacing:.02em}
+.brief{padding-block:1.4rem;border-bottom:1px solid var(--frame-line)}
+.brief .inner{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:1rem 3rem;align-items:start}
+.brief h1{font:600 1.5rem/1.2 var(--f-ui);margin:0;letter-spacing:-.01em}
+.brief p{margin:0;color:var(--frame-mute);max-width:62ch}
+.brief dl{margin:.6rem 0 0;display:grid;grid-template-columns:auto 1fr;gap:.2rem 1rem;font-size:.88rem}
+.brief dt{font:500 .68rem/1.9 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--frame-mute)}
+.brief dd{margin:0}
+@media(max-width:760px){.brief .inner{grid-template-columns:1fr}}
+
+/* ===== LOGOS ===== */
+.logos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.2rem;padding-block:2rem 4rem}
+@media(max-width:820px){.logos{grid-template-columns:1fr}}
+.lg{border:1px solid var(--frame-line);border-radius:16px;overflow:hidden;display:grid;grid-template-rows:auto auto}
+.lg .stage{display:grid;place-items:center;padding:2.4rem 1.6rem;min-height:250px}
+.lg .stage img{max-height:150px;width:auto;max-width:100%}
+.lg .stage.tall img{max-height:200px}
+.lg .meta{padding:1.1rem 1.3rem 1.3rem;display:grid;gap:.6rem;border-top:1px solid var(--frame-line)}
+.lg h2{margin:0;font:600 1.15rem/1.2 var(--f-ui);display:flex;justify-content:space-between;gap:1rem;align-items:baseline}
+.lg h2 small{font:500 .66rem/1 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--frame-mute)}
+.lg p{margin:0;color:var(--frame-mute);font-size:.93rem}
+.small{display:flex;gap:.8rem;align-items:center;flex-wrap:wrap}
+.small span{display:grid;place-items:center;height:44px;padding:0 12px;border-radius:8px}
+.small img{height:20px;width:auto}
+.small .fav{width:44px;padding:0}
+.small .fav img{height:26px}
+.lg-note{grid-column:1/-1;border:1px dashed var(--frame-line);border-radius:16px;padding:1.2rem 1.4rem;color:var(--frame-mute);font-size:.93rem}
+.lg-note strong{color:var(--frame-ink)}
+
+/* ===== FACEPLATE ===== */
+.v-face{--al:#DADAD6;--al-2:#C9C9C4;--ink:#1A1A1E;--mute:#5E5E63;--org:#E8552B;--led:#FF3B2F;--lcd-bg:#1C1712;--lcd:#FFB23F;--line:rgba(26,26,30,.18);
+  background:var(--al);color:var(--ink);font-family:var(--f-ui);
+  background-image:repeating-linear-gradient(0deg,rgba(255,255,255,.18) 0 1px,transparent 1px 3px),linear-gradient(180deg,#E3E3DF,#D2D2CD)}
+.v-face .disp{font-family:"Michroma",sans-serif;letter-spacing:.06em;text-transform:uppercase;font-weight:400}
+.v-face .lab{font:400 .66rem/1.2 "Space Mono",monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+.fnav{display:flex;align-items:center;gap:1.5rem;height:70px;border-bottom:1px solid var(--line)}
+.fnav img{height:30px;width:auto}
+.fnav ul{display:flex;gap:1.4rem;list-style:none;margin:0 0 0 auto;padding:0}
+.fnav ul a{text-decoration:none;font:400 .7rem/1 "Space Mono",monospace;letter-spacing:.14em;text-transform:uppercase}
+.fnav ul a:hover{color:var(--org)}
+@media(max-width:700px){.fnav ul li:not(:last-child){display:none}}
+.rack{margin-block:2.4rem 0;border-radius:10px;position:relative;padding:22px 64px;background:linear-gradient(180deg,#2A2A2E,#18181B);color:#E9E7E2;box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 30px 60px -30px rgba(0,0,0,.6),0 0 0 1px rgba(0,0,0,.5)}
+.rack .screw{position:absolute;width:14px;height:14px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#8A8A8E,#3A3A3E);box-shadow:inset 0 0 0 1px rgba(0,0,0,.5)}
+.rack .screw::after{content:"";position:absolute;left:3px;right:3px;top:6px;height:2px;background:#222;transform:rotate(35deg)}
+.rack .s1{left:22px;top:22px}.rack .s2{right:22px;top:22px}.rack .s3{left:22px;bottom:22px}.rack .s4{right:22px;bottom:22px}
+.rack-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr) auto;gap:2rem;align-items:center}
+@media(max-width:980px){.rack{padding:22px 40px}.rack-grid{grid-template-columns:1fr}}
+@media(max-width:560px){.rack{padding:20px 18px}.rack .screw{display:none}}
+.rack .badge img{height:44px;width:auto}
+.rack .badge p{font:400 .62rem/1.5 "Space Mono",monospace;letter-spacing:.14em;text-transform:uppercase;color:#A8A6A0;margin:.9rem 0 0}
+.rack .pwr{display:flex;align-items:center;gap:.6rem;margin-top:1.2rem;font:400 .62rem/1 "Space Mono",monospace;letter-spacing:.14em;color:#A8A6A0}
+.rack .pwr i{width:9px;height:9px;border-radius:50%;background:var(--led);box-shadow:0 0 10px var(--led),0 0 2px #fff inset}
+.lcd{background:var(--lcd-bg);border-radius:6px;padding:10px;box-shadow:inset 0 2px 10px rgba(0,0,0,.8),0 0 0 2px #0A0A0B,0 0 0 3px #3A3A3E}
+.lcd canvas{width:100%;height:auto;aspect-ratio:2.4/1;display:block}
+.knobs{display:grid;grid-template-columns:repeat(4,72px);gap:14px 18px;justify-content:center}
+@media(max-width:400px){.knobs{grid-template-columns:repeat(2,72px)}}
+.knob{display:grid;justify-items:center;gap:8px;user-select:none;touch-action:none}
+.knob button{all:unset;width:58px;height:58px;border-radius:50%;cursor:ns-resize;position:relative;background:radial-gradient(circle at 40% 30%,#5A5A60,#1E1E22 70%);box-shadow:0 6px 12px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.2),0 0 0 4px #121214,0 0 0 5px #3A3A3E}
+.knob button:focus-visible{outline:2px solid var(--org);outline-offset:6px}
+.knob button i{position:absolute;left:50%;top:6px;width:3px;height:16px;margin-left:-1.5px;border-radius:2px;background:var(--org);transform-origin:50% 23px}
+.knob span{font:400 .58rem/1 "Space Mono",monospace;letter-spacing:.16em;color:#C9C7C0}
+.f-hero{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr);gap:2rem 4rem;align-items:end;padding-block:3rem 4.5rem}
+.f-hero h2{font-size:clamp(1.45rem,4.6vw,3.7rem);line-height:1.08;margin:0}
+.f-hero h2 em{font-style:normal;color:var(--org)}
+.f-hero p{color:var(--mute);font-size:1.08rem;max-width:44ch;margin:0 0 1.4rem}
+.fbtn{display:inline-flex;align-items:center;gap:.6em;padding:.9em 1.3em;border-radius:6px;font:400 .72rem/1 "Space Mono",monospace;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;border:1.5px solid var(--ink);margin:0 .4rem .4rem 0}
+.fbtn.p{background:var(--ink);color:var(--al)}
+.fbtn:hover{background:var(--org);border-color:var(--org);color:#fff}
+@media(max-width:860px){.f-hero{grid-template-columns:1fr}}
+.f-sec{padding-block:3.5rem;border-top:1px solid var(--line)}
+.f-sec h3{font-size:1.3rem;margin:0 0 1.6rem}
+.units{display:grid;gap:12px}
+.unit{display:grid;grid-template-columns:24px 260px minmax(0,1fr) auto 24px;gap:1.4rem;align-items:center;background:linear-gradient(180deg,#ECECE8,#DCDCD7);border-radius:6px;padding:12px 0;box-shadow:inset 0 1px 0 rgba(255,255,255,.7),0 0 0 1px var(--line),0 8px 18px -12px rgba(0,0,0,.35);text-decoration:none}
+.unit::before,.unit::after{content:"";width:10px;height:22px;border-radius:5px;background:#BDBDB8;box-shadow:inset 0 1px 2px rgba(0,0,0,.35);justify-self:center}
+.unit img{border-radius:4px;box-shadow:0 0 0 1px rgba(0,0,0,.3);aspect-ratio:960/471;object-fit:cover;width:100%}
+.unit h4{margin:0 0 .3rem;font-family:"Michroma",sans-serif;font-weight:400;font-size:1.05rem;letter-spacing:.04em}
+.unit p{margin:0;color:var(--mute);font-size:.92rem}
+.unit .tag{font:400 .62rem/1 "Space Mono",monospace;letter-spacing:.14em;padding:.5em .7em;border:1px solid currentColor;border-radius:3px;white-space:nowrap}
+.unit:hover h4{color:var(--org)}
+@media(max-width:760px){.unit{grid-template-columns:1fr;padding:14px}.unit::before,.unit::after{display:none}}
+.spec{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.spec div{padding:1.4rem;display:grid;gap:.5rem;align-content:start}
+.spec div+div{border-left:1px solid var(--line)}
+.spec b{font-family:"Michroma",sans-serif;font-weight:400;font-size:2rem;letter-spacing:.04em}
+.spec p{margin:0;color:var(--mute);font-size:.93rem}
+@media(max-width:760px){.spec{grid-template-columns:1fr}.spec div+div{border-left:0;border-top:1px solid var(--line)}}
+.ffoot{padding-block:2rem 3rem;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+
+/* ===== MANDALA ===== */
+.v-mand{--ink:#2A1840;--mute:#6C5A82;--vio:#6B3FD4;--tan:#FF7A3D;--mint:#1FB28E;--rose:#E2508F;--card:#FFF9F4;--page:#F8EFF6;
+  background:var(--page);color:var(--ink);font-family:var(--f-ui)}
+.v-mand .disp{font-family:"Unbounded",sans-serif;letter-spacing:-.03em}
+.m-hero{position:relative;overflow:hidden;isolation:isolate;background:linear-gradient(170deg,#FFC59E 0%,#FF9DAE 32%,#D97BD0 58%,#8D63E0 86%,#6B4ACB 100%);color:#FFFBF6}
+.m-hero canvas{position:absolute;inset:0;width:100%;height:100%;z-index:-1}
+.mnav{display:flex;align-items:center;gap:1.5rem;height:74px}
+.mnav img{height:30px;width:auto}
+.mnav ul{display:flex;gap:.3rem;list-style:none;margin:0 0 0 auto;padding:0}
+.mnav ul a{text-decoration:none;font-weight:500;font-size:.92rem;padding:.5em 1em;border-radius:999px;color:#2A1840}
+.mnav ul a:hover{background:rgba(255,255,255,.4)}
+@media(max-width:700px){.mnav ul li:not(:last-child){display:none}}
+.m-copy{text-align:center;padding-block:4.5rem 7rem;display:grid;justify-items:center;gap:1.4rem}
+.m-copy .pill{font:500 .78rem/1 var(--f-ui);padding:.6em 1em;border-radius:999px;background:rgba(255,255,255,.28);backdrop-filter:blur(6px);color:#2A1840}
+.m-copy h2{font-size:clamp(2.6rem,7.4vw,6.2rem);line-height:.98;margin:0;font-weight:800;color:#FFFBF6;text-wrap:balance;text-shadow:0 6px 40px rgba(80,30,120,.25)}
+.m-copy h2 i{font-family:"Fraunces",serif;font-weight:400;font-style:italic;letter-spacing:-.02em}
+.m-copy p{max-width:46ch;font-size:1.12rem;color:#FFF6EE;margin:0;text-shadow:0 1px 18px rgba(90,30,120,.55),0 0 2px rgba(90,30,120,.35)}
+.mbtn{display:inline-flex;gap:.5em;align-items:center;padding:1em 1.5em;border-radius:999px;font-weight:600;text-decoration:none;background:#FFFBF6;color:#2A1840;box-shadow:0 10px 30px -10px rgba(60,20,100,.5)}
+.mbtn.g{background:transparent;color:#FFFBF6;box-shadow:inset 0 0 0 1.5px rgba(255,251,246,.7)}
+.mbtn:hover{transform:translateY(-2px)}
+.m-sec{padding-block:4.5rem}
+.m-sec h3{font-size:clamp(1.8rem,3.6vw,2.8rem);margin:0 0 .6rem;font-weight:600}
+.m-sec .lead{color:var(--mute);max-width:56ch;margin:0 0 2.2rem;font-size:1.05rem}
+.mcards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.2rem}
+@media(max-width:960px){.mcards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.mcards{grid-template-columns:1fr}}
+.mcard{background:var(--card);border-radius:26px;padding:12px;display:grid;gap:.9rem;text-decoration:none;box-shadow:0 1px 0 rgba(42,24,64,.06),0 20px 40px -28px rgba(42,24,64,.35);transition:transform .3s}
+.mcard:hover{transform:translateY(-4px) rotate(-.4deg)}
+.mcard img{border-radius:18px;aspect-ratio:960/471;object-fit:cover;width:100%}
+.mcard .row{display:flex;justify-content:space-between;align-items:center;padding:0 .5rem}
+.mcard h4{margin:0;font-family:"Unbounded",sans-serif;font-weight:600;font-size:1.1rem;letter-spacing:-.02em}
+.mcard p{margin:0;padding:0 .5rem .6rem;color:var(--mute);font-size:.92rem}
+.mcard .sg{width:34px;height:34px}
+.mtag{font-size:.72rem;font-weight:600;padding:.4em .8em;border-radius:999px;color:#fff}
+.t-circuit{background:var(--mint)}.t-firmware{background:var(--tan)}.t-original{background:var(--rose)}.t-port{background:var(--vio)}
+.readings{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.2rem}
+@media(max-width:820px){.readings{grid-template-columns:1fr}}
+.reading{border-radius:26px;padding:1.8rem;display:grid;gap:.8rem;align-content:start;color:#FFFBF6}
+.reading b{font-family:"Unbounded",sans-serif;font-size:1.9rem;font-weight:800;letter-spacing:-.03em;line-height:1}
+.reading p{margin:0;opacity:.92}
+.r1{background:linear-gradient(150deg,#FF8A5B,#E2508F)}.r2{background:linear-gradient(150deg,#B162D6,#6B3FD4)}.r3{background:linear-gradient(150deg,#1FB28E,#2E7DD1)}
+.mfoot{padding-block:2.4rem 3rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;color:var(--mute);border-top:1px solid rgba(42,24,64,.12)}
+
+/* ===== SIGNAL ===== */
+.v-sig{--ink:#0E0E10;--mute:#6A6A72;--blue:#2639FF;--line:#E4E4E8;--page:#FFFFFF;background:var(--page);color:var(--ink);font-family:"Mona Sans","Helvetica Neue",Arial,sans-serif}
+.v-sig .disp{font-family:"Big Shoulders Display",sans-serif;font-weight:900;text-transform:uppercase;letter-spacing:-.01em}
+.v-sig .lab{font:500 .66rem/1.3 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
+.snav{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:1.5rem;height:76px;border-bottom:1.5px solid var(--ink)}
+.snav img{height:52px;width:auto}
+.snav ul{display:flex;gap:2rem;list-style:none;margin:0;padding:0;justify-content:center}
+.snav ul a{text-decoration:none;font-weight:600;font-size:.92rem}
+.snav ul a:hover{color:var(--blue)}
+.snav .cta{font-weight:600;font-size:.92rem;text-decoration:none;background:var(--blue);color:#fff;padding:.7em 1.1em}
+@media(max-width:760px){.snav ul{display:none}.snav .cta{justify-self:end}}
+.s-hero{position:relative}
+.s-hero h2{font-size:clamp(3.4rem,13.5vw,12rem);line-height:.84;margin:0;padding-top:2.4rem}
+.s-hero h2 span{color:var(--blue)}
+.s-wave{display:block;width:100%;height:160px;margin-block:.6rem}
+.s-row{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:1.5rem;padding-bottom:3rem;border-bottom:1.5px solid var(--ink)}
+.s-row p{grid-column:1/span 5;font-size:1.15rem;margin:0;font-weight:500}
+.s-row .meta{grid-column:7/span 3;display:grid;gap:.4rem;align-content:start}
+.s-row .meta b{font-family:"Big Shoulders Display",sans-serif;font-size:2.4rem;font-weight:900;line-height:1}
+.s-row .act{grid-column:10/span 3;display:grid;gap:.5rem;align-content:start}
+.sbtn{display:flex;justify-content:space-between;align-items:center;padding:.9em 1em;font-weight:600;text-decoration:none;border:1.5px solid var(--ink)}
+.sbtn.p{background:var(--ink);color:#fff}
+.sbtn:hover{background:var(--blue);border-color:var(--blue);color:#fff}
+@media(max-width:860px){.s-row p,.s-row .meta,.s-row .act{grid-column:1/-1}}
+.s-index{padding-block:3.5rem 2rem}
+.s-head{display:flex;justify-content:space-between;align-items:end;gap:1rem;margin-bottom:1.2rem;flex-wrap:wrap}
+.s-head h3{font-size:clamp(2.4rem,6vw,4.6rem);line-height:.9;margin:0}
+.srow{display:grid;grid-template-columns:110px minmax(0,1.2fr) minmax(0,2fr) 120px 90px;gap:1.2rem;align-items:center;padding:1.05rem 0;border-top:1px solid var(--line);text-decoration:none;position:relative}
+.srow:last-child{border-bottom:1px solid var(--line)}
+.srow .cat{font:500 .72rem/1 var(--f-mono);color:var(--mute);letter-spacing:.06em}
+.srow h4{margin:0;font-family:"Big Shoulders Display",sans-serif;font-weight:900;font-size:1.9rem;line-height:1;text-transform:uppercase}
+.srow p{margin:0;color:var(--mute);font-size:.94rem}
+.srow .k{font:500 .66rem/1 var(--f-mono);letter-spacing:.1em;text-transform:uppercase}
+.srow .go{justify-self:end;font-weight:600}
+.srow:hover{background:linear-gradient(90deg,rgba(38,57,255,.06),transparent 70%)}
+.srow:hover h4,.srow:hover .go{color:var(--blue)}
+.srow .th{display:none}
+@media(max-width:860px){.srow{grid-template-columns:90px 1fr;gap:.4rem 1rem}.srow p,.srow .k,.srow .go{grid-column:2}.srow .go{justify-self:start}.srow .th{display:block;grid-column:1/-1;border:1px solid var(--line)}}
+.peek{position:fixed;left:0;top:0;width:340px;pointer-events:none;z-index:70;opacity:0;transform:translate(-50%,-115%) scale(.96);transition:opacity .2s,transform .2s;box-shadow:0 20px 50px -20px rgba(0,0,0,.45)}
+.peek.on{opacity:1;transform:translate(-50%,-115%) scale(1)}
+.s-block{background:var(--blue);color:#fff;padding-block:4rem;margin-top:2rem}
+.s-block .inner{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:2rem 4rem;align-items:end}
+.s-block h3{font-size:clamp(2.6rem,7vw,6rem);line-height:.86;margin:0}
+.s-block p{margin:0 0 1.2rem;font-size:1.08rem;opacity:.92}
+.s-block .sbtn{border-color:#fff;color:#fff}
+.s-block .sbtn:hover{background:#fff;color:var(--blue)}
+@media(max-width:860px){.s-block .inner{grid-template-columns:1fr}}
+.sfoot{padding-block:2rem 3rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;color:var(--mute);font-size:.9rem}
+
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+<header class="switch gut">
+  <div class="inner">
+    <b>sd88me <span>· directions for review</span></b>
+    <nav class="tabs" aria-label="Directions">
+      <a href="#logos" data-tab="logos">Logos</a>
+      <a href="#faceplate" data-tab="faceplate">Faceplate</a>
+      <a href="#mandala" data-tab="mandala">Mandala</a>
+      <a href="#signal" data-tab="signal">Signal</a>
+      <a class="ext" href="https://claude.ai/artifact/5WYy2hiXbWJHgu7guihRgF" target="_blank" rel="noopener">Observatory ↗</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ================= LOGOS ================= -->
+<section data-view="logos">
+  <div class="brief gut"><div class="inner">
+    <div><h1>Eight logo directions</h1><p class="note" style="margin-top:.5rem">Built from real typefaces, kerned and converted to outlines</p></div>
+    <p>Each tile shows the logo large, at nav-bar size and as a favicon. Pick one or two to refine. A final logo usually takes a few rounds: custom letter tweaks, spacing and a small-size version. The first round decides the direction.</p>
+  </div></div>
+  <div class="gut"><div class="inner logos" id="logoGrid"></div></div>
+</section>
+
+<!-- ================= FACEPLATE ================= -->
+<section data-view="faceplate" hidden>
+  <div class="brief gut"><div class="inner">
+    <div><h1>Faceplate</h1><p class="note" style="margin-top:.5rem">Logo: Model number · Michroma, Space Mono, Instrument Sans</p></div>
+    <div><p>The site is the hardware. Brushed aluminium, silkscreen orange, an LED and an amber LCD. The hero is a rack unit with four knobs that really turn: drag them to reshape the figure on the screen. The most technical direction, with the playfulness in the controls.</p>
+    <dl><dt>Feels like</dt><dd>A well-made synth from 1983 and a lab instrument</dd><dt>Risk</dt><dd>Less of the spiritual side; the LCD carries it</dd></dl></div>
+  </div></div>
+  <div class="v-face">
+    <div class="gut"><div class="inner">
+      <nav class="fnav"><img src="logos/model-face.svg" alt="sd88me"><ul><li><a href="#faceplate">Instruments</a></li><li><a href="#faceplate">Editions</a></li><li><a href="#faceplate">Manual</a></li><li><a href="#faceplate">Support</a></li></ul></nav>
+      <div class="rack">
+        <i class="screw s1"></i><i class="screw s2"></i><i class="screw s3"></i><i class="screw s4"></i>
+        <div class="rack-grid">
+          <div class="badge"><img src="logos/model-rack.svg" alt=""><p>Circuit-true instruments<br>for MPC OS · Force · DAW</p><div class="pwr"><i></i>POWER</div></div>
+          <div class="lcd"><canvas id="lcd" width="720" height="300" aria-label="LCD display showing a Lissajous figure"></canvas></div>
+          <div class="knobs" id="knobs"></div>
+        </div>
+      </div>
+      <div class="f-hero">
+        <h2 class="disp">Circuit-true instruments for <em>deep states</em></h2>
+        <div><p>Classic machines rebuilt from their schematics and original firmware, running inside your MPC. Free and open source.</p><a class="fbtn p" href="#faceplate">Browse instruments →</a><a class="fbtn" href="#faceplate">Discord</a></div>
+      </div>
+      <div class="f-sec">
+        <p class="lab" style="margin-bottom:.6rem">Rack · 6 of 22 units</p>
+        <h3 class="disp">Instruments</h3>
+        <div class="units" id="units"></div>
+      </div>
+      <div class="f-sec">
+        <p class="lab" style="margin-bottom:.6rem">Model designation</p>
+        <h3 class="disp">SD · 88 · ME</h3>
+        <div class="spec">
+          <div><span class="lab">Prefix</span><b>SD</b><p>The maker’s initials. Every panel, folder and installer carries them.</p></div>
+          <div><span class="lab">Series</span><b>88</b><p>A birth year, and an octave: two tones at 2:1 draw an 8 on a scope.</p></div>
+          <div><span class="lab">Suffix</span><b>ME</b><p>One person, one workshop. Say it fast and it sounds like “sedate me”.</p></div>
+        </div>
+      </div>
+      <footer class="ffoot"><span class="lab">sd88me · made for long nights</span><span class="lab">No ROMs included. Trademarks belong to their owners.</span></footer>
+    </div></div>
+  </div>
+</section>
+
+<!-- ================= MANDALA ================= -->
+<section data-view="mandala" hidden>
+  <div class="brief gut"><div class="inner">
+    <div><h1>Mandala</h1><p class="note" style="margin-top:.5rem">Logo: Soft · Unbounded, Fraunces Italic, Instrument Sans</p></div>
+    <div><p>Bright, warm and psychedelic, like a sunrise set. Every plugin’s sigil spins in slow rings to form a mandala behind the headline. Cards are soft and rounded, with one colour for each way a plugin is made. The most positive and playful direction.</p>
+    <dl><dt>Feels like</dt><dd>A psy festival poster designed by an engineer</dd><dt>Risk</dt><dd>Can tip into “festival” if the rest isn’t kept calm</dd></dl></div>
+  </div></div>
+  <div class="v-mand">
+    <div class="m-hero">
+      <canvas id="mandala" aria-hidden="true"></canvas>
+      <div class="gut"><div class="inner">
+        <nav class="mnav"><img src="logos/soft-ink.svg" alt="sd88me"><ul><li><a href="#mandala">Plugins</a></li><li><a href="#mandala">Editions</a></li><li><a href="#mandala">The name</a></li><li><a href="#mandala">Tip jar</a></li></ul></nav>
+        <div class="m-copy">
+          <span class="pill">22 free plugins for MPC &amp; Force</span>
+          <h2 class="disp">Exact circuits. <i>Open minds.</i></h2>
+          <p>Classic machines rebuilt from schematics and original firmware, then set loose inside your MPC for long, bright nights.</p>
+          <div style="display:flex;gap:.6rem;flex-wrap:wrap;justify-content:center"><a class="mbtn" href="#mandala">Browse the plugins →</a><a class="mbtn g" href="#mandala">Join the Discord</a></div>
+        </div>
+      </div></div>
+    </div>
+    <div class="gut"><div class="inner">
+      <div class="m-sec">
+        <h3 class="disp">Each one has a sigil.</h3>
+        <p class="lead">Two tones in a chosen ratio draw a figure on a scope. Every plugin gets its own, and every colour tells you how it was made.</p>
+        <div class="mcards" id="mcards"></div>
+      </div>
+      <div class="m-sec" style="padding-top:0">
+        <h3 class="disp">Three ways to say it.</h3>
+        <p class="lead">It started as a username. It means more now.</p>
+        <div class="readings">
+          <div class="reading r1"><span class="note" style="color:inherit;opacity:.8">The signature</span><b>s·d·88·me</b><p>Initials, a birth year, and me.</p></div>
+          <div class="reading r2"><span class="note" style="color:inherit;opacity:.8">The state</span><b>sedate me</b><p>The hour where the room stops thinking.</p></div>
+          <div class="reading r3"><span class="note" style="color:inherit;opacity:.8">The signal</span><b>8 + 8</b><p>An octave on a scope draws an 8. Two of them: circuit and cosmos.</p></div>
+        </div>
+      </div>
+      <footer class="mfoot"><span>sd88me · made for long nights</span><span>No ROMs included. Trademarks belong to their owners.</span></footer>
+    </div></div>
+  </div>
+</section>
+
+<!-- ================= SIGNAL ================= -->
+<section data-view="signal" hidden>
+  <div class="brief gut"><div class="inner">
+    <div><h1>Signal</h1><p class="note" style="margin-top:.5rem">Logo: Stamp · Big Shoulders, Mona Sans, Martian Mono</p></div>
+    <div><p>White, one electric blue, and very big condensed type, like a Berlin techno label. A live signal runs across the hero and reacts to your cursor. Plugins get catalogue numbers like records (SD88-001) and preview on hover. The most confident and minimal direction.</p>
+    <dl><dt>Feels like</dt><dd>A record label site, with an oscilloscope</dd><dt>Risk</dt><dd>Least psychedelic; the mystery comes from restraint</dd></dl></div>
+  </div></div>
+  <div class="v-sig">
+    <div class="gut"><div class="inner">
+      <nav class="snav"><img src="logos/stamp-signal.svg" alt="sd88me"><ul><li><a href="#signal">Catalogue</a></li><li><a href="#signal">Editions</a></li><li><a href="#signal">The name</a></li><li><a href="#signal">Lab</a></li></ul><a class="cta" href="#signal">Install</a></nav>
+      <div class="s-hero">
+        <h2 class="disp">Circuit-true<br>instruments for<br><span>deep states</span></h2>
+        <canvas class="s-wave" id="wave" aria-hidden="true"></canvas>
+      </div>
+      <div class="s-row">
+        <p>Classic machines rebuilt from their schematics and original firmware, then put inside the MPC. Free, open source, and made for long nights.</p>
+        <div class="meta"><span class="lab">Measured</span><b>3.0 dB</b><span style="color:var(--mute);font-size:.9rem">Acid-303 vs a real TB-303, over 400 notes</span></div>
+        <div class="act"><a class="sbtn p" href="#signal">Browse the catalogue <span>→</span></a><a class="sbtn" href="#signal">Join the Discord <span>→</span></a></div>
+      </div>
+      <div class="s-index">
+        <div class="s-head"><h3 class="disp">Catalogue</h3><span class="lab">22 releases · all free</span></div>
+        <div id="srows"></div>
+      </div>
+    </div></div>
+    <div class="s-block gut"><div class="inner">
+      <h3 class="disp">Free stays free. Editions pay for it.</h3>
+      <div><p>One instrument, months of work, for the MPC and your DAW. Buying one funds everything else in the catalogue.</p><a class="sbtn" href="#signal">Get the first transmission <span>→</span></a></div>
+    </div></div>
+    <div class="gut"><div class="inner"><footer class="sfoot"><span>sd88me · made for long nights</span><span>No ROMs included. Trademarks belong to their owners.</span></footer></div></div>
+    <img class="peek" id="peek" alt="" src="img/acid303.webp">
+  </div>
+</section>
+
+<script>
+(()=>{
+const TAU=Math.PI*2, reduce=matchMedia('(prefers-reduced-motion: reduce)').matches, dpr=Math.min(devicePixelRatio||1,2);
+const liss=(a,b,cx,cy,rx,ry,ph,n=220)=>{let d='';for(let i=0;i<=n;i++){const t=TAU*i/n;d+=(i?'L':'M')+(cx+rx*Math.sin(a*t+ph)).toFixed(2)+','+(cy-ry*Math.sin(b*t)).toFixed(2)}return d+'Z'};
+const P=[
+ {n:'Acid-303',m:'circuit',k:'Instrument',r:[3,1],img:'acid303',l:'A TB-303 solved transistor by transistor, with every Devil Fish mod.'},
+ {n:'Reverbicon 224',m:'firmware',k:'Effect',r:[5,4],img:'reverbicon224',l:'The Lexicon 224’s own v4.4 firmware on an emulated 8080.'},
+ {n:'Machinemodule',m:'firmware',k:'Drums',r:[4,3],img:'machinemodule',l:'The Machinedrum SPS-1 UW engine. 16 tracks, one instance.'},
+ {n:'TR-MPC',m:'circuit',k:'Drums',r:[5,3],img:'8w8',l:'Four circuit-modelled drum machines and a 49-voice kit.'},
+ {n:'Mono-101',m:'circuit',k:'Instrument',r:[5,2],img:'mono101',l:'An SH-101 from the schematic, plus a Circuit Bent page.'},
+ {n:'Boris Granular',m:'original',k:'Effect',r:[7,3],img:'boris',l:'24 grains over a 10-second buffer, synced to the MPC.'},
+];
+const M={circuit:'Circuit',firmware:'Firmware',port:'Port',original:'Original'};
+const sig=(r,cls='sg',col='currentColor',w=1.6)=>`<svg class="${cls}" viewBox="0 0 40 40" aria-hidden="true"><path d="${liss(r[0],r[1],20,20,16,16,Math.PI/(2*r[1]+1))}" fill="none" stroke="${col}" stroke-width="${w}" stroke-linejoin="round"/></svg>`;
+
+/* ---- logos ---- */
+const L=[
+ ['quad','Quad','Four rings in a square: two 8s seen from above. Syne Bold. Reads as hardware (a pad grid, a speaker) and as sacred geometry.','#1F1A2C','Observatory, Mandala','quad-mark'],
+ ['model','Model number','Set like the silkscreen on a synth panel: wide Michroma caps, a coloured rule, a spec line underneath. The most engineered option.','#E9E7E2','Faceplate',null],
+ ['matrix','Matrix','Drawn on a 5×7 dot grid like the LCDs and LED readouts on your plugins. The 8s light up. Technical and a little playful.','#17141F','Faceplate, Signal',null],
+ ['duality','Duality','A precise high-contrast roman for the engineering, a soft italic 88 for the spirit. Editorial and quiet, like an art-world record label.','#F2EEF0','Observatory',null],
+ ['cipher','Cipher','Major Mono Display, a geometric face that reads like a code, over a tuning ruler. The most mysterious option.','#101A1C','Observatory, Signal',null],
+ ['stamp','Stamp','Stacked heavy condensed caps in a frame, like a techno label’s run-out stamp. Loud and confident. Great on vinyl, merch and avatars.','#F04E23','Signal',null],
+ ['seal','Seal','A round badge: the Quad mark inside a ring of text. A companion, not a main logo: stickers, merch, installers, the back of the manual.','#2A2140','Any',null],
+ ['soft','Soft','Unbounded: rounded, wide and friendly, with a sunset gradient through the 88. The most playful and positive option.','#1E1530','Mandala',null],
+];
+document.getElementById('logoGrid').innerHTML=L.map(([k,n,d,bg,pair,mark])=>`<article class="lg">
+  <div class="stage${k==='stamp'||k==='seal'?' tall':''}" style="background:${bg}"><img src="logos/${k}.svg" alt="${n} logo"></div>
+  <div class="meta"><h2>${n}<small>Pairs with ${pair}</small></h2><p>${d}</p>
+  <div class="small"><span style="background:${bg}"><img src="logos/${k}.svg" alt=""></span>${mark?`<span class="fav" style="background:${bg}"><img src="logos/${mark}.svg" alt=""></span>`:''}<span class="note">Nav-bar size${mark?' · favicon':''}</span></div></div></article>`).join('')+
+ `<div class="lg-note"><strong>My picks:</strong> <strong>Quad</strong> as the main mark (it scales down to a favicon and has a story), with <strong>Seal</strong> as its badge. If you want the wordmark to carry the brand on its own, <strong>Duality</strong> is the most distinctive. <strong>Matrix</strong> is the most fun and would make a great secondary mark for plugin panels and splash screens.</div>`;
+
+/* ---- faceplate ---- */
+const units=document.getElementById('units');
+units.innerHTML=P.map(p=>`<a class="unit" href="#faceplate"><img src="img/${p.img}.webp" alt="${p.n} panel" loading="lazy"><div><h4>${p.n}</h4><p>${p.l}</p></div><span class="tag" style="color:${p.m==='original'?'#C2381A':'#1A1A1E'}">${M[p.m]} · ${p.k}</span></a>`).join('');
+const knobDefs=[['RATIO',.15],['DRIFT',.35],['GLOW',.6],['DEPTH',.75]];const kv={};
+document.getElementById('knobs').innerHTML=knobDefs.map(([n,v])=>`<div class="knob"><button type="button" role="slider" aria-label="${n}" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${Math.round(v*100)}" data-k="${n}"><i></i></button><span>${n}</span></div>`).join('');
+document.querySelectorAll('.knob button').forEach(b=>{const k=b.dataset.k;kv[k]=knobDefs.find(d=>d[0]===k)[1];
+  const set=v=>{kv[k]=Math.max(0,Math.min(1,v));b.querySelector('i').style.transform=`rotate(${-135+kv[k]*270}deg)`;b.setAttribute('aria-valuenow',Math.round(kv[k]*100))};set(kv[k]);
+  let y0=null,v0=0;b.addEventListener('pointerdown',e=>{y0=e.clientY;v0=kv[k];b.setPointerCapture(e.pointerId)});
+  b.addEventListener('pointermove',e=>{if(y0!==null)set(v0+(y0-e.clientY)/160)});b.addEventListener('pointerup',()=>y0=null);
+  b.addEventListener('keydown',e=>{if(['ArrowUp','ArrowRight'].includes(e.key)){set(kv[k]+.05);e.preventDefault()}if(['ArrowDown','ArrowLeft'].includes(e.key)){set(kv[k]-.05);e.preventDefault()}});
+  b.addEventListener('wheel',e=>{e.preventDefault();set(kv[k]-e.deltaY/1200)},{passive:false});
+});
+const lcd=document.getElementById('lcd'),lx=lcd.getContext('2d');const ratios=[[2,1],[3,2],[4,3],[5,4],[3,1],[5,3],[7,4]];let lph=0;
+const names={'2,1':'OCTAVE','3,2':'FIFTH','4,3':'FOURTH','5,4':'MAJ 3RD','3,1':'TWELFTH','5,3':'MAJ 6TH','7,4':'HARM 7TH'};
+function drawLCD(){const w=lcd.width,h=lcd.height;lx.fillStyle='#1C1712';lx.fillRect(0,0,w,h);
+  // pixel grid
+  lx.fillStyle='rgba(255,178,63,.05)';for(let x=0;x<w;x+=6)for(let y=0;y<h;y+=6)lx.fillRect(x,y,4,4);
+  const r=ratios[Math.min(ratios.length-1,Math.floor(kv.RATIO*ratios.length))];const amp=.25+kv.DEPTH*.2;
+  lx.shadowColor='#FFB23F';lx.shadowBlur=4+kv.GLOW*22;lx.fillStyle='#FFB23F';
+  for(let i=0;i<900;i++){const t=TAU*i/900;const x=w*.32+h*amp*1.25*Math.sin(r[0]*t+lph),y=h/2-h*amp*1.25*Math.sin(r[1]*t);lx.fillRect(Math.round(x/6)*6,Math.round(y/6)*6,4,4)}
+  lx.shadowBlur=0;lx.font='28px "Space Mono", monospace';lx.fillStyle='#FFB23F';
+  lx.fillText(`${r[0]}:${r[1]} ${names[r.join(',')]}`,w*.62,h*.34);lx.globalAlpha=.6;lx.font='20px "Space Mono", monospace';
+  lx.fillText(`DRIFT ${(kv.DRIFT*0.2).toFixed(3)} HZ`,w*.62,h*.52);lx.fillText(`GLOW  ${Math.round(kv.GLOW*100)}%`,w*.62,h*.64);lx.fillText(`DEPTH ${Math.round(kv.DEPTH*100)}%`,w*.62,h*.76);lx.globalAlpha=1;
+}
+
+/* ---- mandala ---- */
+document.getElementById('mcards').innerHTML=P.map(p=>`<a class="mcard" href="#mandala"><img src="img/${p.img}.webp" alt="${p.n} panel" loading="lazy"><div class="row"><h4>${p.n}</h4>${sig(p.r,'sg','#2A1840',1.8)}</div><p>${p.l}</p><div class="row" style="padding-bottom:.4rem"><span class="mtag t-${p.m}">${M[p.m]}</span><span class="note">${p.k}</span></div></a>`).join('');
+const mc=document.getElementById('mandala'),mx=mc.getContext('2d');
+const rings=[[6,[[2,1],[3,2]]],[10,[[3,1],[4,3],[5,4]]],[14,[[5,3],[7,4],[5,2]]],[20,[[7,3],[7,5],[9,8],[6,5]]]];
+function drawMandala(t){const r=mc.getBoundingClientRect();if(mc.width!==Math.round(r.width*dpr)){mc.width=r.width*dpr;mc.height=r.height*dpr}
+  const w=mc.width,h=mc.height,cx=w/2,cy=h*.56,base=Math.min(w,h*1.3);mx.clearRect(0,0,w,h);mx.lineJoin='round';
+  rings.forEach(([n,rs],ri)=>{const R=base*(.13+ri*.115),s=base*(.026+ri*.006),rot=(t/1000)*(ri%2?-1:1)*(.03+ri*.006);
+    mx.strokeStyle=`rgba(255,251,246,${.42-ri*.07})`;mx.lineWidth=dpr*(1.6-ri*.15);
+    for(let i=0;i<n;i++){const a=rot+TAU*i/n,px=cx+R*Math.cos(a),py=cy+R*Math.sin(a),[p,q]=rs[i%rs.length];mx.beginPath();
+      for(let j=0;j<=120;j++){const tt=TAU*j/120;const lx_=s*Math.sin(p*tt+t/3000),ly=s*Math.sin(q*tt);const x=px+lx_*Math.cos(a)-ly*Math.sin(a),y=py+lx_*Math.sin(a)+ly*Math.cos(a);j?mx.lineTo(x,y):mx.moveTo(x,y)}mx.stroke()}
+    mx.beginPath();mx.arc(cx,cy,R,0,TAU);mx.strokeStyle=`rgba(255,251,246,${.12})`;mx.lineWidth=dpr;mx.stroke()});
+  mx.beginPath();for(let j=0;j<=300;j++){const tt=TAU*j/300;const x=cx+base*.07*Math.sin(2*tt+t/2500),y=cy-base*.07*Math.sin(tt);j?mx.lineTo(x,y):mx.moveTo(x,y)}mx.strokeStyle='rgba(255,251,246,.9)';mx.lineWidth=dpr*2.2;mx.stroke();
+}
+
+/* ---- signal ---- */
+const sr=document.getElementById('srows');
+const SX=[...P,{n:'Crate Digger',m:'original',k:'Tool',r:[9,8],img:'cratedigger',l:'Digs Discogs by genre and decade, then streams the record into a track.'},{n:'Mini-JV',m:'firmware',k:'Instrument',r:[6,5],img:'jv880',l:'The JV-880 ROM engine behind a backlit rack-style screen.'},{n:'Monomodule',m:'firmware',k:'Instrument',r:[7,4],img:'monomodule',l:'The Monomachine’s synth engine, chip-accurate.'}];
+sr.innerHTML=SX.map((p,i)=>`<a class="srow" href="#signal" data-img="${p.img}"><span class="cat">SD88-${String(i+1).padStart(3,'0')}</span><h4>${p.n}</h4><p>${p.l}</p><span class="k">${M[p.m]} · ${p.k}</span><span class="go">Free →</span><img class="th" src="img/${p.img}.webp" alt="" loading="lazy"></a>`).join('');
+const peek=document.getElementById('peek');
+sr.addEventListener('pointermove',e=>{const row=e.target.closest('.srow');if(!row||matchMedia('(max-width:860px)').matches){peek.classList.remove('on');return}
+  const src=`img/${row.dataset.img}.webp`;if(!peek.src.endsWith(src))peek.src=src;peek.style.left=e.clientX+'px';peek.style.top=e.clientY+'px';peek.classList.add('on')});
+sr.addEventListener('pointerleave',()=>peek.classList.remove('on'));
+const wv=document.getElementById('wave'),wx=wv.getContext('2d');let mxp=-1;
+wv.parentElement.addEventListener('pointermove',e=>{const r=wv.getBoundingClientRect();mxp=(e.clientX-r.left)/r.width});wv.parentElement.addEventListener('pointerleave',()=>mxp=-1);
+function drawWave(t){const r=wv.getBoundingClientRect();if(wv.width!==Math.round(r.width*dpr)){wv.width=r.width*dpr;wv.height=r.height*dpr}
+  const w=wv.width,h=wv.height;wx.clearRect(0,0,w,h);wx.strokeStyle='#E4E4E8';wx.lineWidth=dpr;wx.beginPath();wx.moveTo(0,h/2);wx.lineTo(w,h/2);wx.stroke();
+  wx.beginPath();for(let i=0;i<=w;i+=2){const u=i/w,ts=t/1000;let y=Math.sin(u*TAU*3+ts*1.2)*.22+Math.sin(u*TAU*7-ts*.8)*.07;
+    if(mxp>=0){const g=Math.exp(-((u-mxp)**2)/.004);y+=g*Math.sin(u*TAU*40-ts*6)*.5}
+    const yy=h/2-y*h*.85;i?wx.lineTo(i,yy):wx.moveTo(i,yy)}wx.strokeStyle='#2639FF';wx.lineWidth=dpr*2.4;wx.stroke()}
+
+/* ---- loop & router ---- */
+let view='logos';
+function loop(t){if(!document.hidden){if(view==='faceplate'){lph+=reduce?0:(kv.DRIFT*0.2)*TAU/60;drawLCD()}if(view==='mandala')drawMandala(reduce?0:t);if(view==='signal')drawWave(reduce?0:t)}requestAnimationFrame(loop)}
+function route(){const h=location.hash.slice(1);view=['logos','faceplate','mandala','signal'].includes(h)?h:'logos';
+  document.querySelectorAll('[data-view]').forEach(s=>s.hidden=s.dataset.view!==view);
+  document.querySelectorAll('.tabs a[data-tab]').forEach(a=>a.dataset.tab===view?a.setAttribute('aria-current','page'):a.removeAttribute('aria-current'));
+  if(reduce){if(view==='faceplate')drawLCD();if(view==='mandala')drawMandala(0);if(view==='signal')drawWave(0)}
+}
+addEventListener('hashchange',()=>{route();scrollTo(0,0)});route();requestAnimationFrame(loop);
+})();
+</script>
