@@ -13,3 +13,7 @@ Work in progress for review. Folders starting with `_` are not published by GitH
 ## Round 3
 - `round3/index.html`: the two finalist symbols (Sand rings, Peaks) with a lowercase wordmark, Stamp, Seal and small sizes, plus three themes in greens, blues and oranges: Specimen, Resonance and Orbit.
 - `gen_round3.py`: rebuilds the round 3 lockups (uses `gen_symbols.py`).
+
+## Round 4
+- `round4/index.html`: the logo system (Peaks at four optical sizes, SD88ME capitals in four typefaces with weight-matched marks, icons, favicons, Stamp), Specimen with a live palette switcher (Buddha-poster colours, brighter), and Orbit with a live typeface switcher.
+- `gen_round4.py`: rebuilds the round 4 logo files. Line weights in the lockups are measured from each typeface's letter stems.
