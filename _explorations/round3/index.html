@@ -1,0 +1,418 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>sd88me Directions III</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..700&family=Instrument+Sans:wdth,wght@75..100,400..700&family=Instrument+Serif:ital@0;1&family=Martian+Mono:wdth,wght@87.5,400;87.5,500&display=swap">
+<style>
+/* Layout: round-three review board. Finalist symbols first, then three mini-homepages in greens, blues and oranges: Specimen (the review-board look), Resonance (soft Cymatic), Orbit (spinning sigils). */
+:root{--frame-bg:#F3F1EE;--frame-ink:#1C1A22;--frame-mute:#6D6878;--frame-line:rgba(28,26,34,.12);--frame-acc:#2F6B4F;
+  --f-ui:"Instrument Sans","Helvetica Neue",Arial,sans-serif;--f-mono:"Martian Mono",ui-monospace,Menlo,monospace;--f-brico:"Bricolage Grotesque","Avenir Next",system-ui,sans-serif;--f-serif:"Instrument Serif",Georgia,serif}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--frame-bg:#141816;--frame-ink:#ECEFEA;--frame-mute:#9AA39E;--frame-line:rgba(236,239,234,.12);--frame-acc:#8CCBA8;color-scheme:dark}}
+:root[data-theme="dark"]{--frame-bg:#141816;--frame-ink:#ECEFEA;--frame-mute:#9AA39E;--frame-line:rgba(236,239,234,.12);--frame-acc:#8CCBA8;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--frame-bg);color:var(--frame-ink);font:400 16px/1.55 var(--f-ui);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:90;background:var(--frame-bg)}
+img{max-width:100%;display:block}a{color:inherit}
+:focus-visible{outline:2px solid var(--frame-acc);outline-offset:3px}
+[hidden]{display:none!important}
+.gut{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+@media(min-width:760px){.gut{padding-left:max(32px,env(safe-area-inset-left,0px));padding-right:max(32px,env(safe-area-inset-right,0px))}}
+.inner{max-width:1200px;margin-inline:auto}
+.switch{position:sticky;top:env(safe-area-inset-top,0px);z-index:80;background:color-mix(in srgb,var(--frame-bg) 88%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--frame-line)}
+.switch .inner{display:flex;align-items:center;gap:1rem;height:58px}
+.switch b{font-weight:600;font-size:.95rem;white-space:nowrap}.switch b span{color:var(--frame-mute);font-weight:400}
+.tabs{display:flex;gap:.25rem;margin-left:auto;overflow-x:auto;scrollbar-width:none}
+.tabs a{white-space:nowrap;text-decoration:none;font-size:.9rem;padding:.45em .9em;border-radius:999px;color:var(--frame-mute)}
+.tabs a:hover{color:var(--frame-ink)}.tabs a[aria-current="page"]{background:var(--frame-ink);color:var(--frame-bg)}
+.tabs a.ext{border:1px solid var(--frame-line)}
+@media(max-width:620px){.switch b span{display:none}}
+.note{font:400 .72rem/1.5 var(--f-mono);color:var(--frame-mute);letter-spacing:.02em}
+.brief{padding-block:1.4rem;border-bottom:1px solid var(--frame-line)}
+.brief .inner{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:1rem 3rem;align-items:start}
+.brief h1{font:600 1.5rem/1.2 var(--f-ui);margin:0}
+.brief p{margin:0;color:var(--frame-mute);max-width:62ch}
+.brief dl{margin:.6rem 0 0;display:grid;grid-template-columns:auto 1fr;gap:.2rem 1rem;font-size:.88rem}
+.brief dt{font:500 .68rem/1.9 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--frame-mute)}.brief dd{margin:0}
+@media(max-width:760px){.brief .inner{grid-template-columns:1fr}}
+.lab{font:500 .66rem/1.35 var(--f-mono);letter-spacing:.12em;text-transform:uppercase}
+
+/* ===== FINALISTS ===== */
+.fin{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;padding-block:2rem 1.4rem}
+@media(max-width:900px){.fin{grid-template-columns:1fr}}
+.fcard{border:1px solid var(--frame-line);border-radius:16px;overflow:hidden;display:grid}
+.fcard .duo{display:grid;grid-template-columns:1fr 1fr}
+.fcard .duo div{display:grid;place-items:center;padding:1.6rem;aspect-ratio:1}
+.fcard .duo img{width:82%}
+.fcard .txt{padding:1.1rem 1.3rem;display:grid;gap:.4rem;border-top:1px solid var(--frame-line)}
+.fcard h2{margin:0;font:600 1.2rem/1.2 var(--f-ui)}
+.fcard p{margin:0;color:var(--frame-mute);font-size:.93rem}
+.fcard .row{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--frame-line)}
+.fcard .row div{display:grid;place-items:center;padding:1.2rem;min-height:120px}
+.fcard .row .wide{grid-column:1/-1;min-height:110px}
+.fcard .row .wide img{max-height:48px;width:auto}
+.fcard .row .st img{max-height:190px;width:auto}
+.fcard .row .se img{max-height:170px;width:auto}
+.sizes{display:flex;gap:.7rem;align-items:center;padding:.9rem 1.3rem;border-top:1px solid var(--frame-line)}
+.sizes span{display:grid;place-items:center;border-radius:8px}
+.next{border:1px dashed var(--frame-line);border-radius:16px;padding:1.2rem 1.4rem;color:var(--frame-mute);margin-bottom:4rem}
+.next strong{color:var(--frame-ink)}
+
+/* ===== shared mini-site ===== */
+.nav3{display:flex;align-items:center;gap:1.5rem;height:74px}
+.nav3 .lg{height:34px;width:auto}
+.nav3 ul{display:flex;gap:1.8rem;list-style:none;margin:0 0 0 auto;padding:0}
+.nav3 ul a{text-decoration:none;font-weight:500;font-size:.93rem}
+.nav3 .cta{font:600 .9rem/1 var(--f-ui);text-decoration:none;padding:.75em 1.1em}
+@media(max-width:760px){.nav3 ul{display:none}.nav3 .cta{margin-left:auto}}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.2rem}
+@media(max-width:960px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.cards{grid-template-columns:1fr}}
+.card{display:grid;text-decoration:none}
+.card figure{margin:0;overflow:hidden}
+.card figure img{width:100%;aspect-ratio:960/471;object-fit:cover;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.card:hover figure img{transform:scale(1.04)}
+.card .cb{display:grid;gap:.45rem}
+.card .ct{display:flex;justify-content:space-between;align-items:center;gap:.6rem}
+.card h4{margin:0}
+.card p{margin:0;font-size:.93rem}
+.card .sg{width:28px;height:28px;flex:none}
+.sec{padding-block:4rem}
+.sec-h{display:flex;justify-content:space-between;align-items:end;gap:1rem;margin-bottom:1.6rem;flex-wrap:wrap}
+.sec-h h3{margin:0}
+.foot{padding-block:2rem 3rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.85rem}
+
+/* ===== SPECIMEN ===== */
+.v-spec{--paper:#F6F4EF;--stone:#ECE9E2;--ink:#15201D;--mute:#5F6B66;--moss:#2F6B4F;--deep:#173A2E;--org:#E8642C;--line:rgba(21,32,29,.13);background:var(--stone);color:var(--ink);font-family:var(--f-ui)}
+.v-spec .nav3{border-bottom:1px solid var(--line)}
+.v-spec .nav3 ul a{color:var(--mute)}.v-spec .nav3 ul a:hover{color:var(--ink)}
+.v-spec .nav3 .cta{background:var(--ink);color:var(--paper);border-radius:999px}
+.sp-hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);border:1px solid var(--line);border-radius:18px;overflow:hidden;margin-block:2rem 0}
+.sp-hero .l{background:var(--paper);padding:clamp(24px,4vw,56px);display:grid;align-content:space-between;gap:2.4rem}
+.sp-hero h2{font:500 clamp(2.4rem,5vw,4.4rem)/1.02 var(--f-ui);letter-spacing:-.035em;margin:.8rem 0 1.2rem;text-wrap:balance}
+.sp-hero h2 em{font-family:var(--f-serif);font-style:italic;font-weight:400;letter-spacing:-.01em;color:var(--moss)}
+.sp-hero p{color:var(--mute);font-size:1.08rem;max-width:42ch;margin:0}
+.sp-hero .r{background:var(--deep);position:relative;min-height:480px;display:grid;cursor:pointer;border:0;padding:0;color:#F4EEDF;text-align:left}
+.sp-hero .r canvas{position:absolute;inset:0;width:100%;height:100%}
+.sp-hero .r .cap{position:absolute;left:1.2rem;right:1.2rem;bottom:1rem;display:flex;justify-content:space-between;gap:1rem;color:rgba(244,238,223,.7)}
+.sp-hero .r .cap b{color:#F4B78F;font-weight:500}
+.sp-meta{display:grid;grid-template-columns:repeat(3,auto);gap:1.6rem;justify-content:start;color:var(--mute)}
+.sp-meta b{display:block;font:600 1.5rem/1.1 var(--f-ui);color:var(--ink);letter-spacing:-.02em}
+@media(max-width:900px){.sp-hero{grid-template-columns:1fr}.sp-hero .r{min-height:360px}.sp-meta{grid-template-columns:1fr 1fr}}
+.sbtn{display:inline-flex;gap:.55em;align-items:center;font:600 .93rem/1 var(--f-ui);padding:.9em 1.2em;border-radius:999px;text-decoration:none;border:1px solid var(--ink);margin:0 .4rem .4rem 0}
+.sbtn.p{background:var(--ink);color:var(--paper)}.sbtn:hover{background:var(--moss);border-color:var(--moss);color:#fff}
+.v-spec .sec-h h3{font:500 clamp(1.8rem,3.4vw,2.6rem)/1.1 var(--f-ui);letter-spacing:-.03em}
+.v-spec .card{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--paper)}
+.v-spec .card .cb{padding:1rem 1.1rem 1.15rem;border-top:1px solid var(--line)}
+.v-spec .card h4{font:600 1.15rem/1.2 var(--f-ui);letter-spacing:-.01em}
+.v-spec .card p{color:var(--mute)}
+.v-spec .card .lab{color:var(--mute)}
+.v-spec .card .m-circuit{color:var(--moss)}.v-spec .card .m-original{color:var(--org)}.v-spec .card .m-firmware{color:#2F5E8C}
+.v-spec .card:hover{border-color:rgba(21,32,29,.35)}
+.sp-read{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.sp-read div{padding:1.5rem;display:grid;gap:.6rem;align-content:start;background:var(--paper)}
+.sp-read div+div{border-left:1px solid var(--line)}
+.sp-read div:nth-child(2){background:var(--deep);color:#F4EEDF}
+.sp-read b{font:500 2rem/1 var(--f-ui);letter-spacing:-.03em}
+.sp-read i{font:400 2.3rem/1 var(--f-serif);font-style:italic;color:#F4B78F}
+.sp-read p{margin:0;color:var(--mute);font-size:.95rem}.sp-read div:nth-child(2) p{color:rgba(244,238,223,.75)}
+@media(max-width:760px){.sp-read{grid-template-columns:1fr}.sp-read div+div{border-left:0;border-top:1px solid var(--line)}}
+.v-spec .foot{border-top:1px solid var(--line);color:var(--mute)}
+
+/* ===== RESONANCE ===== */
+.v-res{--sand:#ECE6DA;--paper:#F5F1E8;--ink:#1B2430;--mute:#5E6670;--blue:#1F5FBF;--org:#E86A2C;--line:rgba(27,36,48,.14);background:var(--sand);color:var(--ink);font-family:var(--f-ui);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .06 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.v-res .nav3{border-bottom:1px solid var(--line)}
+.v-res .nav3 ul a{color:var(--mute)}.v-res .nav3 ul a:hover{color:var(--blue)}
+.v-res .nav3 .cta{background:var(--blue);color:#fff;border-radius:999px}
+.rs-hero{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:2rem 3rem;align-items:center;padding-block:3rem 3.4rem}
+.rs-hero h2{font-family:var(--f-brico);font-variation-settings:"opsz" 96;font-weight:500;font-size:clamp(2.8rem,6.6vw,6rem);line-height:.98;letter-spacing:-.045em;margin:.8rem 0 1.3rem;text-wrap:balance}
+.rs-hero h2 em{font-family:var(--f-serif);font-style:italic;font-weight:400;letter-spacing:-.02em;color:var(--blue)}
+.rs-hero p{font-size:1.1rem;color:var(--mute);max-width:42ch;margin:0 0 1.5rem}
+.plate{position:relative;aspect-ratio:1;width:100%;max-width:500px;justify-self:end;border-radius:50%;cursor:pointer;border:0;padding:0;background:radial-gradient(circle at 45% 40%,#F8F5EE,#E3DED3 70%,#D6D0C3);box-shadow:inset 0 2px 0 rgba(255,255,255,.7),inset 0 -14px 40px rgba(0,0,0,.07),0 30px 60px -30px rgba(27,36,48,.35),0 0 0 1px var(--line)}
+.plate canvas{position:absolute;inset:0;width:100%;height:100%;border-radius:50%}
+.plate-cap{display:flex;justify-content:space-between;gap:1rem;max-width:500px;width:100%;justify-self:end;margin-top:.8rem;color:var(--mute)}
+.plate-cap b{color:var(--org);font-weight:500}
+@media(max-width:860px){.rs-hero{grid-template-columns:1fr}.plate,.plate-cap{justify-self:center}}
+.rbtn{display:inline-flex;gap:.55em;align-items:center;font:600 .93rem/1 var(--f-ui);padding:.95em 1.25em;border-radius:999px;text-decoration:none;border:1px solid var(--line);margin:0 .4rem .4rem 0;background:var(--paper)}
+.rbtn.p{background:var(--ink);color:var(--paper);border-color:var(--ink)}.rbtn:hover{background:var(--blue);border-color:var(--blue);color:#fff}
+.v-res .sec{border-top:1px solid var(--line)}
+.v-res .sec-h h3{font-family:var(--f-brico);font-weight:500;font-size:clamp(2rem,4vw,3.2rem);letter-spacing:-.04em;line-height:1}
+.v-res .card{background:var(--paper);border-radius:20px;padding:10px;border:1px solid var(--line)}
+.v-res .card figure{border-radius:12px}
+.v-res .card .cb{padding:.9rem .5rem .5rem}
+.v-res .card h4{font-family:var(--f-brico);font-weight:600;font-size:1.3rem;letter-spacing:-.03em}
+.v-res .card p{color:var(--mute)}
+.v-res .card .lab{color:var(--mute)}
+.v-res .card .sg{color:var(--blue)}
+.v-res .card:hover{border-color:rgba(31,95,191,.45)}
+.rs-wave{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:2rem;align-items:center}
+.rs-wave h3{font-family:var(--f-brico);font-weight:500;font-size:clamp(2rem,4vw,3.2rem);letter-spacing:-.04em;line-height:1;margin:0 0 1rem}
+.rs-wave p{color:var(--mute);margin:0;max-width:44ch}
+.rs-list{display:grid;border-top:1px solid var(--line)}
+.rs-list div{display:grid;grid-template-columns:9rem 1fr;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--line);align-items:baseline}
+.rs-list b{font-family:var(--f-brico);font-weight:600;font-size:1.25rem;letter-spacing:-.02em}
+.rs-list i{font-family:var(--f-serif);font-size:1.5rem;color:var(--blue)}
+.rs-list span{color:var(--mute)}
+@media(max-width:760px){.rs-wave{grid-template-columns:1fr}.rs-list div{grid-template-columns:1fr;gap:.2rem}}
+.v-res .foot{border-top:1px solid var(--line);color:var(--mute)}
+
+/* ===== ORBIT ===== */
+.v-orb{--page:#EEF1E9;--card:#FBFBF7;--ink:#102A2B;--mute:#5A6B68;--cream:#FFF8EC;--line:rgba(16,42,43,.12);background:var(--page);color:var(--ink);font-family:var(--f-ui)}
+.ob-hero{position:relative;overflow:hidden;isolation:isolate;color:var(--cream);background:linear-gradient(180deg,#0C3B44 0%,#11585C 38%,#2A8770 70%,#D99A45 100%)}
+.ob-hero canvas{position:absolute;inset:0;width:100%;height:100%;z-index:-1}
+.ob-hero::after{content:"";position:absolute;inset:0;z-index:-1;opacity:.22;mix-blend-mode:overlay;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.v-orb .nav3 ul a{color:rgba(255,248,236,.85)}.v-orb .nav3 ul a:hover{color:#fff}
+.v-orb .nav3 .cta{background:var(--cream);color:var(--ink);border-radius:999px}
+.ob-copy{text-align:center;padding-block:5rem 7.5rem;display:grid;justify-items:center;gap:1.3rem}
+.ob-copy .pill{font:500 .8rem/1 var(--f-ui);padding:.6em 1em;border-radius:999px;background:rgba(255,248,236,.14);border:1px solid rgba(255,248,236,.25);backdrop-filter:blur(6px)}
+.ob-copy h2{font-family:var(--f-brico);font-variation-settings:"opsz" 96;font-weight:600;font-size:clamp(2.8rem,7.6vw,6.6rem);line-height:.96;letter-spacing:-.045em;margin:0;text-wrap:balance;text-shadow:0 8px 40px rgba(5,30,35,.35)}
+.ob-copy h2 em{font-family:var(--f-serif);font-style:italic;font-weight:400;letter-spacing:-.02em;color:#FFD9A0}
+.ob-copy p{max-width:46ch;font-size:1.12rem;margin:0;color:rgba(255,248,236,.92);text-shadow:0 1px 14px rgba(5,30,35,.45)}
+.obtn{display:inline-flex;gap:.5em;align-items:center;padding:1em 1.45em;border-radius:999px;font-weight:600;text-decoration:none;background:var(--cream);color:var(--ink);box-shadow:0 10px 30px -10px rgba(5,30,35,.5)}
+.obtn.g{background:transparent;color:var(--cream);box-shadow:inset 0 0 0 1.5px rgba(255,248,236,.7)}
+.obtn:hover{transform:translateY(-2px)}
+.v-orb .sec-h h3{font-family:var(--f-brico);font-weight:600;font-size:clamp(2rem,4vw,3rem);letter-spacing:-.04em;line-height:1}
+.v-orb .card{background:var(--card);border-radius:24px;padding:10px;box-shadow:0 1px 0 rgba(16,42,43,.05),0 20px 40px -30px rgba(16,42,43,.35);transition:transform .3s}
+.v-orb .card:hover{transform:translateY(-4px)}
+.v-orb .card figure{border-radius:16px}
+.v-orb .card .cb{padding:.9rem .55rem .5rem}
+.v-orb .card h4{font-family:var(--f-brico);font-weight:600;font-size:1.25rem;letter-spacing:-.03em}
+.v-orb .card p{color:var(--mute)}
+.chip{font:600 .7rem/1 var(--f-ui);padding:.45em .8em;border-radius:999px;color:#fff}
+.t-circuit{background:#2F8F5B}.t-firmware{background:#E3762B}.t-original{background:#2563C9}.t-port{background:#138A8A}
+.ob-read{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.1rem}
+.ob-read div{border-radius:24px;padding:1.7rem;display:grid;gap:.7rem;align-content:start;color:var(--cream)}
+.ob-read b{font-family:var(--f-brico);font-weight:700;font-size:2rem;letter-spacing:-.04em;line-height:1}
+.ob-read i{font-family:var(--f-serif);font-size:2.3rem;line-height:1}
+.ob-read p{margin:0;opacity:.92}
+.o1{background:linear-gradient(150deg,#147A78,#1F4E8C)}.o2{background:linear-gradient(150deg,#2F8F5B,#127369)}.o3{background:linear-gradient(150deg,#E8822F,#D9A23B)}
+@media(max-width:820px){.ob-read{grid-template-columns:1fr}}
+.v-orb .foot{border-top:1px solid var(--line);color:var(--mute)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+<header class="switch gut"><div class="inner">
+  <b>sd88me <span>· round 3</span></b>
+  <nav class="tabs" aria-label="Directions">
+    <a href="#symbols" data-tab="symbols">Finalists</a>
+    <a href="#specimen" data-tab="specimen">Specimen</a>
+    <a href="#resonance" data-tab="resonance">Resonance</a>
+    <a href="#orbit" data-tab="orbit">Orbit</a>
+    <a class="ext" href="https://claude.ai/artifact/Di4ZuHFjontAHz5VvA3LVp" target="_blank" rel="noopener">Round 2 ↗</a>
+    <a class="ext" href="https://claude.ai/artifact/N9NHj1ehupPRP1KHQVXDB8" target="_blank" rel="noopener">Round 1 ↗</a>
+  </nav>
+</div></header>
+
+<!-- ============ FINALISTS ============ -->
+<section data-view="symbols">
+  <div class="brief gut"><div class="inner">
+    <div><h1>Two finalists</h1><p class="note" style="margin-top:.5rem">Sand rings and Peaks, in the new greens, blues and oranges</p></div>
+    <p>Both now come with a softer lowercase wordmark next to them, so the logo feels less blocky outside the Stamp. The Stamp and Seal stay for avatars, merch and stickers. The small versions use fewer, larger grains or fewer contour lines so they hold up at favicon size.</p>
+  </div></div>
+  <div class="gut"><div class="inner">
+    <div class="fin">
+      <article class="fcard">
+        <div class="duo"><div style="background:#ECE9E2"><img src="sym/rings-ink.svg" alt="Sand rings on stone"></div><div style="background:#173A2E"><img src="sym/rings-cream.svg" alt="Sand rings on deep green"></div></div>
+        <div class="txt"><h2>Sand rings</h2><p>Four rings of sand: the octave figure seen from above, made by sound. Grainy, soft and alive. Best at medium and large sizes, and on anything printed.</p></div>
+        <div class="row"><div class="wide" style="background:#F6F4EF"><img src="sym/lock-specimen.svg" alt="Sand rings with lowercase wordmark"></div><div class="st" style="background:#2F6B4F"><img src="sym/stamp-rings-green.svg" alt="Sand rings Stamp"></div><div class="se" style="background:#1F4E8C"><img src="sym/seal-rings-blue.svg" alt="Sand rings Seal"></div></div>
+        <div class="sizes"><span style="width:44px;height:44px;background:#ECE9E2"><img src="sym/mark-ink.svg" alt="" style="width:32px"></span><span style="width:32px;height:32px;background:#173A2E"><img src="sym/mark-cream.svg" alt="" style="width:24px"></span><span style="width:22px;height:22px;background:#ECE9E2"><img src="sym/mark-ink.svg" alt="" style="width:16px"></span><span class="note">44 · 32 · 22 px</span></div>
+      </article>
+      <article class="fcard">
+        <div class="duo"><div style="background:#ECE9E2"><img src="sym/peaks-ink.svg" alt="Peaks on stone"></div><div style="background:#15201D"><img src="sym/peaks-cream.svg" alt="Peaks on ink"></div></div>
+        <div class="txt"><h2>Peaks</h2><p>Four summits as contour lines: a map of the same figure seen as terrain. Cleaner and sharper at small sizes, and easy to engrave, embroider or print on a plugin panel.</p></div>
+        <div class="row"><div class="wide" style="background:#F6F4EF"><img src="sym/lockp-resonance.svg" alt="Peaks with lowercase wordmark"></div><div class="st" style="background:#E8642C"><img src="sym/stamp-peaks-orange.svg" alt="Peaks Stamp"></div><div class="se" style="background:#15201D"><img src="sym/seal-peaks-ink.svg" alt="Peaks Seal"></div></div>
+        <div class="sizes"><span style="width:44px;height:44px;background:#ECE9E2"><img src="sym/peaks-small-ink.svg" alt="" style="width:32px"></span><span style="width:32px;height:32px;background:#15201D"><img src="sym/peaks-small-cream.svg" alt="" style="width:24px"></span><span style="width:22px;height:22px;background:#ECE9E2"><img src="sym/peaks-small-ink.svg" alt="" style="width:16px"></span><span class="note">44 · 32 · 22 px</span></div>
+      </article>
+    </div>
+    <div class="next"><strong>They can work together.</strong> Sand rings as the main mark on the site, covers and merch, and Peaks as the small and engraved version (favicon, plugin panel corner, hardware). Both are the same four-lobed figure, so they read as one family: sound shown two ways, as sand and as terrain.</div>
+  </div></div>
+</section>
+
+<!-- ============ SPECIMEN ============ -->
+<section data-view="specimen" hidden>
+  <div class="brief gut"><div class="inner">
+    <div><h1>Specimen</h1><p class="note" style="margin-top:.5rem">Styled like the symbols review page · Instrument Sans, Instrument Serif, Martian Mono · Sand rings</p></div>
+    <div><p>Calm, precise and bordered, like a museum catalogue for instruments. Stone, paper, deep moss green and a touch of orange. The hero splits in two: the words on paper, and on a dark green plate the logo forms itself out of sand. Tap the plate and it scatters into a tone’s pattern, then comes back.</p>
+    <dl><dt>Organic edge</dt><dd>The mark is made live from sand</dd><dt>Feels like</dt><dd>A natural-history specimen card for sound</dd></dl></div>
+  </div></div>
+  <div class="v-spec">
+    <div class="gut"><div class="inner">
+      <nav class="nav3"><img class="lg" src="sym/lock-specimen.svg" alt="sd88me"><ul><li><a href="#specimen">Plugins</a></li><li><a href="#specimen">Editions</a></li><li><a href="#specimen">The name</a></li><li><a href="#specimen">Lab</a></li></ul><a class="cta" href="#specimen">Install</a></nav>
+      <div class="sp-hero">
+        <div class="l">
+          <div>
+            <p class="lab" style="color:var(--mute)">Plugins for MPC OS · Force · DAW</p>
+            <h2>Circuit-true instruments for <em>deep states.</em></h2>
+            <p>Classic machines rebuilt from their schematics and original firmware, then put inside the MPC. Free, open source, and made for long nights.</p>
+            <div style="margin-top:1.6rem"><a class="sbtn p" href="#specimen">Browse the plugins →</a><a class="sbtn" href="#specimen">Join the Discord</a></div>
+          </div>
+          <div class="sp-meta lab"><span><b>22</b>Plugins</span><span><b>3.0 dB</b>303 vs real unit</span><span><b>Gen1+2</b>MPC &amp; Force</span></div>
+        </div>
+        <button class="r" type="button" id="specBtn" aria-label="Sand plate. Tap to scatter the sand into a tone’s pattern."><canvas id="specSand"></canvas><span class="cap lab"><span id="specCap">Settling into the mark</span><span>Tap to scatter</span></span></button>
+      </div>
+      <div class="sec">
+        <div class="sec-h"><h3>The plugins</h3><span class="lab" style="color:var(--mute)">22 free · open source</span></div>
+        <div class="cards" id="specCards"></div>
+      </div>
+      <div class="sec" style="padding-top:0">
+        <div class="sec-h"><h3>Three readings</h3></div>
+        <div class="sp-read">
+          <div><span class="lab" style="color:var(--mute)">The signature</span><b>s·d·88·me</b><p>Initials, a birth year, and me.</p></div>
+          <div><span class="lab" style="color:rgba(244,238,223,.6)">The state</span><i>sedate me</i><p>The hour where the room stops thinking.</p></div>
+          <div><span class="lab" style="color:var(--mute)">The signal</span><b>8 + 8</b><p>An octave on a scope draws an 8. Two of them: circuit and cosmos.</p></div>
+        </div>
+      </div>
+      <footer class="foot"><span>sd88me · made for long nights</span><span>No ROMs included. Trademarks belong to their owners.</span></footer>
+    </div></div>
+  </div>
+</section>
+
+<!-- ============ RESONANCE ============ -->
+<section data-view="resonance" hidden>
+  <div class="brief gut"><div class="inner">
+    <div><h1>Resonance</h1><p class="note" style="margin-top:.5rem">Cymatic, softened · Bricolage Grotesque, Instrument Serif · Peaks</p></div>
+    <div><p>Cymatic without the blocks. The heavy condensed caps become a softer, organic grotesque with an italic accent. Thick rules become hairlines and the cards are rounded. Warm sand paper, ink, ocean blue and an orange highlight. The live sand plate stays as the centrepiece.</p>
+    <dl><dt>Organic edge</dt><dd>Sand plate, paper grain, soft type</dd><dt>Keeps</dt><dd>Cymatic’s idea, screenshot cards</dd></dl></div>
+  </div></div>
+  <div class="v-res">
+    <div class="gut"><div class="inner">
+      <nav class="nav3"><img class="lg" src="sym/lockp-resonance.svg" alt="sd88me"><ul><li><a href="#resonance">Catalogue</a></li><li><a href="#resonance">Editions</a></li><li><a href="#resonance">The name</a></li><li><a href="#resonance">Lab</a></li></ul><a class="cta" href="#resonance">Install</a></nav>
+      <div class="rs-hero">
+        <div>
+          <p class="lab" style="color:var(--mute)">Plugins for MPC OS · Force · DAW</p>
+          <h2>Circuit-true instruments for <em>deep states.</em></h2>
+          <p>Classic machines rebuilt from their schematics and original firmware, then put inside the MPC. Free, open source, and made for long nights.</p>
+          <a class="rbtn p" href="#resonance">Browse the catalogue →</a><a class="rbtn" href="#resonance">Join the Discord</a>
+        </div>
+        <div style="display:grid">
+          <button class="plate" id="resBtn" type="button" aria-label="Chladni plate. Tap to change the tone."><canvas id="resSand"></canvas></button>
+          <div class="plate-cap lab"><span>Mode <b id="resMode">(2, 5)</b></span><span>Tap the plate to change the tone</span></div>
+        </div>
+      </div>
+      <div class="sec">
+        <div class="sec-h"><h3>Catalogue</h3><span class="lab" style="color:var(--mute)">22 releases · all free</span></div>
+        <div class="cards" id="resCards"></div>
+      </div>
+      <div class="sec">
+        <div class="rs-wave">
+          <div><h3>Say it how you like.</h3><p>It started as a username. Each reading is true.</p></div>
+          <div class="rs-list">
+            <div><b>s·d·88·me</b><span>Initials, a birth year, and me.</span></div>
+            <div><i>sedate me</i><span>The hour where the room stops thinking.</span></div>
+            <div><b>8 + 8</b><span>An octave drawn on a scope is an 8. Circuit and cosmos.</span></div>
+          </div>
+        </div>
+      </div>
+      <footer class="foot"><span>sd88me · made for long nights</span><span>No ROMs included. Trademarks belong to their owners.</span></footer>
+    </div></div>
+  </div>
+</section>
+
+<!-- ============ ORBIT ============ -->
+<section data-view="orbit" hidden>
+  <div class="brief gut"><div class="inner">
+    <div><h1>Orbit</h1><p class="note" style="margin-top:.5rem">Mandala’s spinning sigils, recoloured · Bricolage Grotesque, Instrument Serif · Sand rings</p></div>
+    <div><p>The spinning sigil mandala from round 1, now over a sea-at-dawn gradient: deep teal into green, warming to orange at the horizon. Every ring is made of plugin sigils, turning at different speeds. Below, a light sage page with soft cards and a colour for each way a plugin is made.</p>
+    <dl><dt>Organic edge</dt><dd>Slow orbits, water-and-dawn colour, film grain</dd><dt>Keeps</dt><dd>Mandala’s joy and sigils, screenshot cards</dd></dl></div>
+  </div></div>
+  <div class="v-orb">
+    <div class="ob-hero">
+      <canvas id="orbit" aria-hidden="true"></canvas>
+      <div class="gut"><div class="inner">
+        <nav class="nav3"><img class="lg" src="sym/lock-orbit.svg" alt="sd88me"><ul><li><a href="#orbit">Plugins</a></li><li><a href="#orbit">Editions</a></li><li><a href="#orbit">The name</a></li><li><a href="#orbit">Tip jar</a></li></ul><a class="cta" href="#orbit">Install</a></nav>
+        <div class="ob-copy">
+          <span class="pill">22 free plugins for MPC &amp; Force</span>
+          <h2>Exact circuits. <em>Open minds.</em></h2>
+          <p>Classic machines rebuilt from schematics and original firmware, then set loose inside your MPC for long nights.</p>
+          <div style="display:flex;gap:.6rem;flex-wrap:wrap;justify-content:center"><a class="obtn" href="#orbit">Browse the plugins →</a><a class="obtn g" href="#orbit">Join the Discord</a></div>
+        </div>
+      </div></div>
+    </div>
+    <div class="gut"><div class="inner">
+      <div class="sec">
+        <div class="sec-h"><h3>Each one has a sigil.</h3><span class="lab" style="color:var(--mute)">22 free · open source</span></div>
+        <div class="cards" id="orbCards"></div>
+      </div>
+      <div class="sec" style="padding-top:0">
+        <div class="ob-read">
+          <div class="o1"><span class="lab" style="opacity:.8">The signature</span><b>s·d·88·me</b><p>Initials, a birth year, and me.</p></div>
+          <div class="o2"><span class="lab" style="opacity:.8">The state</span><i>sedate me</i><p>The hour where the room stops thinking.</p></div>
+          <div class="o3"><span class="lab" style="opacity:.8">The signal</span><b>8 + 8</b><p>An octave on a scope draws an 8. Circuit and cosmos.</p></div>
+        </div>
+      </div>
+      <footer class="foot"><span>sd88me · made for long nights</span><span>No ROMs included. Trademarks belong to their owners.</span></footer>
+    </div></div>
+  </div>
+</section>
+
+<script>
+(()=>{
+const TAU=Math.PI*2,reduce=matchMedia('(prefers-reduced-motion: reduce)').matches,dpr=Math.min(devicePixelRatio||1,2);
+const liss=(a,b,cx,cy,rx,ry,ph,n=200)=>{let d='';for(let i=0;i<=n;i++){const t=TAU*i/n;d+=(i?'L':'M')+(cx+rx*Math.sin(a*t+ph)).toFixed(2)+','+(cy-ry*Math.sin(b*t)).toFixed(2)}return d+'Z'};
+const sig=(r,col='currentColor')=>`<svg class="sg" viewBox="0 0 40 40" aria-hidden="true"><path d="${liss(r[0],r[1],20,20,16,16,Math.PI/(2*r[1]+1))}" fill="none" stroke="${col}" stroke-width="1.6" stroke-linejoin="round"/></svg>`;
+const P=[
+ {n:'Acid-303',m:'circuit',k:'Instrument',r:[3,1],img:'acid303',l:'A TB-303 solved transistor by transistor, with every Devil Fish mod.'},
+ {n:'Reverbicon 224',m:'firmware',k:'Effect',r:[5,4],img:'reverbicon224',l:'The Lexicon 224’s own v4.4 firmware on an emulated 8080.'},
+ {n:'Machinemodule',m:'firmware',k:'Drums',r:[4,3],img:'machinemodule',l:'The Machinedrum SPS-1 UW engine. 16 tracks, one instance.'},
+ {n:'TR-MPC',m:'circuit',k:'Drums',r:[5,3],img:'8w8',l:'Four circuit-modelled drum machines and a 49-voice kit.'},
+ {n:'Mono-101',m:'circuit',k:'Instrument',r:[5,2],img:'mono101',l:'An SH-101 from the schematic, plus a Circuit Bent page.'},
+ {n:'Boris Granular',m:'original',k:'Effect',r:[7,3],img:'boris',l:'24 grains over a 10-second buffer, synced to the MPC.'},
+];
+const M={circuit:'Circuit',firmware:'Firmware',port:'Port',original:'Original'};
+document.getElementById('specCards').innerHTML=P.map((p,i)=>`<a class="card" href="#specimen"><figure><img src="img/${p.img}.webp" alt="${p.n} panel" loading="lazy"></figure><div class="cb"><div class="ct"><span class="lab m-${p.m}">${M[p.m]} · ${p.k}</span><span class="m-${p.m}">${sig(p.r)}</span></div><h4>${p.n}</h4><p>${p.l}</p></div></a>`).join('');
+document.getElementById('resCards').innerHTML=P.map((p,i)=>`<a class="card" href="#resonance"><figure><img src="img/${p.img}.webp" alt="${p.n} panel" loading="lazy"></figure><div class="cb"><div class="ct"><span class="lab">SD88-${String(i+1).padStart(3,'0')} · ${M[p.m]}</span>${sig(p.r)}</div><h4>${p.n}</h4><p>${p.l}</p></div></a>`).join('');
+document.getElementById('orbCards').innerHTML=P.map(p=>`<a class="card" href="#orbit"><figure><img src="img/${p.img}.webp" alt="${p.n} panel" loading="lazy"></figure><div class="cb"><div class="ct"><h4>${p.n}</h4>${sig(p.r,'#102A2B')}</div><p>${p.l}</p><div class="ct" style="margin-top:.3rem"><span class="chip t-${p.m}">${M[p.m]}</span><span class="lab" style="color:var(--mute)">${p.k}</span></div></div></a>`).join('');
+
+/* ---- sand engine ---- */
+const RC=[[-.36,-.36],[.36,-.36],[-.36,.36],[.36,.36]];
+function ringsF(x,y){let F=9;/* distance to the nearest of four wobbly rings */for(let i=0;i<4;i++){const dx=x-RC[i][0],dy=y-RC[i][1],a=Math.atan2(dy,dx);const r=.43*(1+.035*Math.sin(3*a+i)+.02*Math.sin(5*a+2*i));const d=Math.abs(Math.hypot(dx,dy)-r);if(d<F)F=d}return F}
+function chl(x,y,n,m){const u=(x+1)/2,v=(y+1)/2;return Math.abs(Math.cos(n*Math.PI*u)*Math.cos(m*Math.PI*v)-Math.cos(m*Math.PI*u)*Math.cos(n*Math.PI*v))}
+function Sand(canvas,count,color,circle){const g=new Float32Array(count*2);
+  for(let i=0;i<count;i++){let x,y;do{x=Math.random()*2-1;y=Math.random()*2-1}while(circle&&x*x+y*y>1);g[i*2]=x;g[i*2+1]=y}
+  const cx=canvas.getContext('2d');const o={field:null,gain:.035,
+   step(){const f=o.field,k=o.gain;for(let i=0;i<count;i++){let x=g[i*2],y=g[i*2+1];const s=k*f(x,y)+.0012;x+=(Math.random()-.5)*s;y+=(Math.random()-.5)*s;
+     if(circle){const r=x*x+y*y;if(r>.985){const q=.985/Math.sqrt(r)*.99;x*=q;y*=q}}else{x=Math.max(-.98,Math.min(.98,x));y=Math.max(-.98,Math.min(.98,y))}g[i*2]=x;g[i*2+1]=y}},
+   scatter(a){for(let i=0;i<count*2;i++)g[i]+=(Math.random()-.5)*a},
+   draw(){const r=canvas.getBoundingClientRect();if(canvas.width!==Math.round(r.width*dpr)||canvas.height!==Math.round(r.height*dpr)){canvas.width=r.width*dpr;canvas.height=r.height*dpr}
+     const w=canvas.width,h=canvas.height,S=Math.min(w,h)*(circle?1:.82),ox=(w-S)/2,oy=(h-S)/2;cx.clearRect(0,0,w,h);cx.fillStyle=color;const p=Math.max(1,dpr*1.2);
+     for(let i=0;i<count;i++)cx.fillRect(ox+(g[i*2]+1)/2*S-p/2,oy+(g[i*2+1]+1)/2*S-p/2,p,p)}};return o}
+
+/* Specimen: logo forms from sand; tap → a tone pattern, then back */
+const specSand=Sand(document.getElementById('specSand'),8000,'#F4EEDF',false);
+specSand.field=ringsF;specSand.gain=.16;let specTimer=null;
+const specModes=[[2,5],[1,4],[3,7]];let sm=0;
+document.getElementById('specBtn').addEventListener('click',()=>{const [n,m]=specModes[sm++%specModes.length];specSand.field=(x,y)=>chl(x,y,n,m);specSand.gain=.035;specSand.scatter(.3);
+  document.getElementById('specCap').textContent=`A tone: mode (${n}, ${m})`;clearTimeout(specTimer);
+  specTimer=setTimeout(()=>{specSand.field=ringsF;specSand.gain=.16;specSand.scatter(.25);document.getElementById('specCap').textContent='Settling back into the mark'},5000);
+  if(reduce){for(let k=0;k<200;k++)specSand.step();specSand.draw()}});
+/* Resonance: Chladni plate */
+const resSand=Sand(document.getElementById('resSand'),9000,'#1F5FBF',true);
+const resModes=[[2,5],[1,4],[3,7],[2,6],[4,5],[1,6]];let rm=0;resSand.field=(x,y)=>chl(x,y,2,5);
+document.getElementById('resBtn').addEventListener('click',()=>{rm=(rm+1)%resModes.length;const [n,m]=resModes[rm];resSand.field=(x,y)=>chl(x,y,n,m);resSand.scatter(.25);document.getElementById('resMode').textContent=`(${n}, ${m})`;if(reduce){for(let k=0;k<200;k++)resSand.step();resSand.draw()}});
+for(let k=0;k<260;k++)specSand.step();for(let k=0;k<70;k++)resSand.step();
+
+/* Orbit: spinning sigil mandala */
+const oc=document.getElementById('orbit'),ox=oc.getContext('2d');
+const rings=[[6,[[2,1],[3,2]]],[10,[[3,1],[4,3],[5,4]]],[14,[[5,3],[7,4],[5,2]]],[20,[[7,3],[7,5],[9,8],[6,5]]],[28,[[2,1],[3,1],[5,4],[4,3]]]];
+function drawOrbit(t){const r=oc.getBoundingClientRect();if(oc.width!==Math.round(r.width*dpr)){oc.width=r.width*dpr;oc.height=r.height*dpr}
+  const w=oc.width,h=oc.height,cx=w/2,cy=h*.54,base=Math.min(w,h*1.35);ox.clearRect(0,0,w,h);ox.lineJoin='round';
+  rings.forEach(([n,rs],ri)=>{const R=base*(.12+ri*.105),s=base*(.024+ri*.005),rot=(t/1000)*(ri%2?-1:1)*(.028+ri*.005);
+    for(let i=0;i<n;i++){const a=rot+TAU*i/n,px=cx+R*Math.cos(a),py=cy+R*Math.sin(a),[p,q]=rs[i%rs.length];
+      ox.strokeStyle=(i%5===0&&ri>0)?`rgba(255,200,130,${.6-ri*.06})`:`rgba(255,248,236,${.42-ri*.06})`;ox.lineWidth=dpr*(1.5-ri*.14);ox.beginPath();
+      for(let j=0;j<=110;j++){const tt=TAU*j/110;const lx=s*Math.sin(p*tt+t/3000),ly=s*Math.sin(q*tt);const x=px+lx*Math.cos(a)-ly*Math.sin(a),y=py+lx*Math.sin(a)+ly*Math.cos(a);j?ox.lineTo(x,y):ox.moveTo(x,y)}ox.stroke()}
+    ox.beginPath();ox.arc(cx,cy,R,0,TAU);ox.strokeStyle='rgba(255,248,236,.09)';ox.lineWidth=dpr;ox.stroke()});
+  ox.beginPath();for(let j=0;j<=300;j++){const tt=TAU*j/300;const x=cx+base*.065*Math.sin(2*tt+t/2500),y=cy-base*.065*Math.sin(tt);j?ox.lineTo(x,y):ox.moveTo(x,y)}ox.strokeStyle='rgba(255,217,160,.85)';ox.lineWidth=dpr*2;ox.stroke()}
+
+/* loop & router */
+let view='symbols';
+function loop(t){if(!document.hidden){
+  if(view==='specimen'){if(!reduce){for(let k=0;k<4;k++)specSand.step()}specSand.draw()}
+  if(view==='resonance'){if(!reduce){resSand.step();resSand.step()}resSand.draw()}
+  if(view==='orbit')drawOrbit(reduce?0:t)}requestAnimationFrame(loop)}
+function route(){const h=location.hash.slice(1);view=['symbols','specimen','resonance','orbit'].includes(h)?h:'symbols';
+  document.querySelectorAll('[data-view]').forEach(s=>s.hidden=s.dataset.view!==view);
+  document.querySelectorAll('.tabs a[data-tab]').forEach(a=>a.dataset.tab===view?a.setAttribute('aria-current','page'):a.removeAttribute('aria-current'));
+  if(reduce){for(let k=0;k<200;k++){specSand.step();resSand.step()}}}
+addEventListener('hashchange',()=>{route();scrollTo(0,0)});route();requestAnimationFrame(loop);
+})();
+</script>
