@@ -20,3 +20,6 @@ Work in progress for review. Folders starting with `_` are not published by GitH
 
 ## Round 5
 - `round5/index.html`: Specimen with a palette switcher and a graphics-panel switcher (graphite, midnight blue, warm black, paper, full colour), and Orbit in Instrument Sans with four colour schemes (Ember, Ultramarine, Dune, Graphite & lime). Uses the logo files in `../round4/sym/`: copy that folder next to it as `sym/`, plus `img/`.
+
+## Round 6
+- `round6/index.html`: Cymatic with the Peaks + SD88ME logo (Mona Sans Wide, one colour), sand that forms the Peaks mark (or four rings), sigils on cards, a drifting sigil band and an optional sigil ring, and six colour themes. The logo is inlined, so it only needs `img/` next to it.
