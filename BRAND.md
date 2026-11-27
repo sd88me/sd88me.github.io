@@ -2,9 +2,9 @@
 
 **Positioning:** audio tools and plugins first: accurate, dependable, useful tools that help people get into a creative flow and stay there. Then, in order: MPC plugins, VST plugins, and open projects such as Open MPC.
 
-**Primary line:** Instruments for losing track of time. **Descriptive:** Accurate, useful tools for long sessions. **Brand line:** Sound made visible. **Sign-off:** Take your time.
+**Primary line:** Instruments for losing track of time. **Short:** Settle in. **About:** Stay as long as you like. **Under the sand plate:** Let it settle. **Sign-off:** Take your time.
 
-**The name:** say SD88ME fast and it sounds like "sedate me". Let that show in tone (calm, unhurried, settling in), not by spelling it out.
+**Tone:** calm and unhurried, with a sense of settling in. Words like settle, stay, drift, still and slow suit the brand. Never explain the name anywhere public; let it stay a little mysterious.
 
 ## Plugin categories
 - **Originals · modelled:** new engines modelled on classic hardware (Profit-08, Clementine-XT, Maze Voice).
@@ -46,4 +46,4 @@ Big Shoulders Display 900 (headlines, names, logo) · Mona Sans (body) · Martia
 Plain, specific, calm. Say what it does in the words a musician would use, with real numbers and names. Short sentences, no hype, no exclamation marks. Avoid stock phrasing (unlock, elevate, seamless, crafted) and "not X but Y" constructions. Credit upstream work by name.
 
 ## The name
-Keep SD88ME as brand, handle and manufacturer string. It started as initials, a birth year and "me"; said quickly it's "sedate me"; the 88 is the four sand rings. Domain idea: `sd88.me`. A paid line, if needed, is "SD88ME Editions".
+Keep SD88ME as brand, handle and manufacturer string. Don't explain it on the site or in copy. Domain idea: `sd88.me`. A paid line, if needed, is "SD88ME Editions".
