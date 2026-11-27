@@ -64,6 +64,15 @@ def dust_ring(cx,cy,rx,ry,col,core,dots,scale,i=0,seed=9,gmax=1.0):
         rr=gmax*max(.18,1-d/(scale*5))*rng.uniform(.6,1.1)
         out+=f'<circle cx="{cx+(rx*k+e)*math.cos(t):.2f}" cy="{cy+(ry*k+e)*math.sin(t):.2f}" r="{rr:.2f}" fill="{col}"/>'
     return out
+def spray(cx,cy,rx,ry,col,dots,scale,i=0,seed=31,gmin=.35,gmax=.8):
+    """wide outer spray: grains thrown off the ring, mostly outward, smaller the further they go"""
+    rng=np.random.default_rng(seed+i*17); out=''
+    for _ in range(dots):
+        t=rng.uniform(0,2*np.pi); k=1+.035*math.sin(3*t+i)+.02*math.sin(5*t+2*i)
+        e=rng.exponential(scale)*(1 if rng.random()<.62 else -.55)
+        rr=max(gmin,gmax*(1-abs(e)/(scale*6)))*rng.uniform(.7,1.1)
+        out+=f'<circle cx="{cx+(rx*k+e)*math.cos(t):.2f}" cy="{cy+(ry*k+e)*math.sin(t):.2f}" r="{rr:.2f}" fill="{col}"/>'
+    return out
 def word_dust(layout,ink,acc=None):
     acc=acc or ink
     d1,w1=g.text(FN,'SD',SIZE,AX,track=0,x=0,y=cap); _,w88=g.text(FN,'88',SIZE,AX,track=0,x=0,y=cap)
@@ -72,6 +81,7 @@ def word_dust(layout,ink,acc=None):
         W=w88*1.04
         for i,(cx,cy) in enumerate([(x0+W*.27,cap*.27),(x0+W*.73,cap*.27),(x0+W*.27,cap*.73),(x0+W*.73,cap*.73)]):
             body+=dust_ring(cx,cy,W*.25,cap*.25,acc,core,1100,2.3,i=i,gmax=.95)
+            body+=spray(cx,cy,W*.25,cap*.25,acc,700,3.4,i=i)
     else:
         W=w88; colw=(W-sp*.6)/2
         for c in range(2):
@@ -79,7 +89,7 @@ def word_dust(layout,ink,acc=None):
             body+=dust_ring(cx,cap*.245,colw/2*.86-core/2,cap*.245-core/2,acc,core,620,2.0,i=c*2,gmax=.9)
             body+=dust_ring(cx,cap*.73,colw/2-core/2,cap*.27-core/2,acc,core,700,2.0,i=c*2+1,gmax=.9)
     x3=x0+W+sp; d3,w3=g.text(FN,'ME',SIZE,AX,track=0,x=x3,y=cap)
-    return f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="-5 -6 {x3+w3+10:.1f} {cap+12:.1f}"><path d="{d1}" fill="{ink}"/>{body}<path d="{d3}" fill="{ink}"/></svg>'
+    return f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="-8 -12 {x3+w3+16:.1f} {cap+24:.1f}"><path d="{d1}" fill="{ink}"/>{body}<path d="{d3}" fill="{ink}"/></svg>'
 for lay in ['overlap','stacked']:
     for cn,ink,acc in [('ink','#16161D',None),('cream','#F2EEE6',None),('blue','#16161D','#2B33E8'),('lime','#F2EEE6','#B6FF3B'),('orange','#16161D','#FF5A1A')]:
         open(f'{OUT}w88-dust-{lay}-{cn}.svg','w').write(word_dust(lay,ink,acc))
@@ -88,6 +98,7 @@ def mark_dust(col,core=7,dots=2600,scale=3.2):
     body=''
     for i,(cx,cy) in enumerate([(-.36,-.36),(.36,-.36),(-.36,.36),(.36,.36)]):
         body+=dust_ring(100+cx*94,100+cy*94,40.4,40.4,col,core,dots//4*1,scale,i=i,gmax=1.3)
+        body+=spray(100+cx*94,100+cy*94,40.4,40.4,col,dots//6,scale*1.6,i=i,gmin=.45,gmax=1.0)
     return f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">{body}</svg>'
 for cn,c in [('ink','#16161D'),('cream','#F2EEE6')]:
     open(f'{OUT}rings-dust-l-{cn}.svg','w').write(mark_dust(c,core=6,dots=4000,scale=3.6))

@@ -4,10 +4,11 @@ The sd88me website, served by GitHub Pages at https://sd88me.github.io/.
 
 | Path | What it is |
 |---|---|
-| `index.html` | The site: home, `#reverbicon-224` plugin datasheet, `#brand` brand book. Static, no build step. |
+| `index.html` | The site (Cymatic design): home, `#reverbicon-224` plugin datasheet, `#brand` brand book. Static, no build step. |
 | `img/` | Plugin panel screenshots (WebP, 960 px wide), taken from each plugin repo's docs. |
-| `brand/` | Wordmark and mark (dusk and dawn), favicon, social share image. |
-| `BRAND.md` | Brand notes: name, logo, colour, type, voice, copy deck. |
+| `brand/` | SD88ME logo (sand-ring 88), the mark at four sizes, favicon, app icon, Stamp, Seal, social share image. |
+| `BRAND.md` | Brand notes: logo, mark, colour, type, motifs, voice, name. |
+| `_explorations/` | Design rounds 1–7 and the scripts that generate the logo files. Not published. |
 | `mpc-vst-plugins/` | Mirror of the Open MPC catalog. Linked from plugin READMEs; leave its path unchanged. |
 
 ## Preview locally

@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>sd88me Observatory</title>
+<title>SD88ME</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Circuit-true instruments for deep states. Free, open-source plugins for Akai MPC OS and Force, by sd88me.">
-<meta property="og:title" content="sd88me: circuit-true instruments for deep states">
+<meta name="description" content="Circuit-true instruments for deep states. Free, open-source plugins for Akai MPC OS and Force, rebuilt from schematics and original firmware.">
+<meta property="og:title" content="SD88ME: circuit-true instruments for deep states">
 <meta property="og:description" content="Free, open-source plugins for Akai MPC OS and Force, rebuilt from schematics and original firmware.">
 <meta property="og:image" content="https://sd88me.github.io/brand/og.jpg">
 <meta property="og:url" content="https://sd88me.github.io/">
@@ -14,880 +14,629 @@
 <link rel="icon" href="brand/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700;800&family=Instrument+Sans:ital,wdth,wght@0,75..100,400..700;1,75..100,400..600&family=Martian+Mono:wdth,wght@75..112.5,300..600&family=Cormorant+Garamond:ital,wght@1,500;1,600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Mona+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=Martian+Mono:wdth,wght@87.5,400;87.5,500&display=swap">
 <style>
-/* Layout: "observatory datasheet": a star-trail sky whose pole is a live oscilloscope, over a calm 12-column sheet where every plugin is labelled by how it was made. */
+/* Layout: Cymatic. Stone paper with grain, ink, one neon orange. Condensed capitals for headlines, a round sand plate that draws the Sand rings mark, sigils on every plugin, hairline-and-rule grid. One committed light look. */
 :root{
-  /* Dusk (dark) is the home look; Dawn is its daylight twin. */
-  --ground:#1F1A2C; --ground-2:#282139; --ground-3:#322A47;
-  --ink:#F1E8DA; --ink-2:#BDB2C9; --ink-3:#8C819C;
-  --line:rgba(241,232,218,.13); --line-2:rgba(241,232,218,.24);
-  --phos:#C9E27F;   /* scope trace: technical register */
-  --halo:#F2A3C6;   /* rose: spiritual register */
-  --sand:#EDC79A;   /* desert / warmth */
-  --gold:#F6D88E;   /* star-trail highlight */
-  --sky-top:#251D38; --sky-mid:#3B2B4F; --sky-low:#7A4C66; --sky-glow:#E7A58B;
-  --ridge-1:#4E3F63; --ridge-2:#3A3050; --ridge-3:#1F1A2C;
-  --panel:#15121E; --panel-ink:#EDE6DA;
-  --on-accent:#1F1A2C;
-  --grain-op:.09;
-  --font-display:"Syne","Avenir Next","Futura",system-ui,sans-serif;
-  --font-body:"Instrument Sans","Helvetica Neue",Arial,sans-serif;
-  --font-mono:"Martian Mono",ui-monospace,"SF Mono",Menlo,monospace;
-  --font-spirit:"Cormorant Garamond","Cormorant",Georgia,serif;
-  --s-1:.8125rem; --s0:1.0625rem; --s1:1.3rem; --s2:1.7rem; --s3:clamp(1.9rem,3.4vw,2.6rem); --s4:clamp(2.4rem,5vw,3.8rem); --s5:clamp(2.7rem,6.4vw,5.4rem);
-  --wrap:1220px; --r:14px;
-  color-scheme:dark;
+  --bg:#ECE8E1; --paper:#F5F1EA; --ink:#17140F; --mute:#6A6359; --acc:#FF5A1A; --acc-ink:#E24A0C; --on-acc:#17140F;
+  --panel:#1F1712; --panel-ink:#F6EBDD; --line:rgba(23,20,15,.14); --sand-1:#FF7A2A; --sand-2:#FFD08A;
+  --f-cond:"Big Shoulders Display","Arial Narrow",sans-serif; --f-body:"Mona Sans","Helvetica Neue",Arial,sans-serif;
+  --f-mono:"Martian Mono",ui-monospace,Menlo,monospace; --f-serif:"Instrument Serif",Georgia,serif;
+  --wrap:1200px; color-scheme:light;
 }
-@media (prefers-color-scheme: light){ :root:not([data-theme="dark"]){
-  --ground:#F0EAEF; --ground-2:#E7DFE8; --ground-3:#DCD2DF;
-  --ink:#231C31; --ink-2:#564B66; --ink-3:#7B7089;
-  --line:rgba(35,28,49,.13); --line-2:rgba(35,28,49,.24);
-  --phos:#56731A; --halo:#A83A70; --sand:#9A5F27; --gold:#8C6A12;
-  --sky-top:#CFC4DE; --sky-mid:#E3D2E0; --sky-low:#F2D3CB; --sky-glow:#F7C9A8;
-  --ridge-1:#BDB0CB; --ridge-2:#D2C6D8; --ridge-3:#F0EAEF;
-  --panel:#1B1726; --panel-ink:#EDE6DA; --on-accent:#F0EAEF; --grain-op:.06;
-  color-scheme:light;
-}}
-:root[data-theme="light"]{
-  --ground:#F0EAEF; --ground-2:#E7DFE8; --ground-3:#DCD2DF;
-  --ink:#231C31; --ink-2:#564B66; --ink-3:#7B7089;
-  --line:rgba(35,28,49,.13); --line-2:rgba(35,28,49,.24);
-  --phos:#56731A; --halo:#A83A70; --sand:#9A5F27; --gold:#8C6A12;
-  --sky-top:#CFC4DE; --sky-mid:#E3D2E0; --sky-low:#F2D3CB; --sky-glow:#F7C9A8;
-  --ridge-1:#BDB0CB; --ridge-2:#D2C6D8; --ridge-3:#F0EAEF;
-  --panel:#1B1726; --panel-ink:#EDE6DA; --on-accent:#F0EAEF; --grain-op:.06;
-  color-scheme:light;
-}
-
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:var(--ground);color:var(--ink);font:400 var(--s0)/1.6 var(--font-body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
-body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--ground)}
-body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:80;opacity:var(--grain-op);mix-blend-mode:overlay;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.6 var(--f-body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--bg)}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:70;opacity:.07;mix-blend-mode:multiply;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+img{max-width:100%;height:auto;display:block}
 a{color:inherit}
-img{max-width:100%;display:block}
-::selection{background:var(--halo);color:var(--on-accent)}
-:focus-visible{outline:2px solid var(--halo);outline-offset:3px;border-radius:4px}
-.wrap{max-width:var(--wrap);margin-inline:auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
-@media (min-width:720px){.wrap{padding-left:max(32px,env(safe-area-inset-left,0px));padding-right:max(32px,env(safe-area-inset-right,0px))}}
-
-/* type */
-h1,h2,h3{font-family:var(--font-display);font-weight:700;letter-spacing:-.02em;line-height:1.02;text-wrap:balance;margin:0}
-h2{font-size:var(--s4)}
-h3{font-size:var(--s1);letter-spacing:-.01em;line-height:1.15}
-p{margin:0}
-.spirit{font-family:var(--font-spirit);font-style:italic;font-weight:500;letter-spacing:-.01em}
-.mono,.eyebrow,.chip,.readout,.kv dt{font-family:var(--font-mono);font-variation-settings:"wdth" 87.5}
-.eyebrow{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);display:flex;gap:.75em;align-items:center}
-.eyebrow b{color:var(--halo);font-weight:500}
-.lede{font-size:var(--s1);line-height:1.5;color:var(--ink-2);max-width:36ch}
-.measure{max-width:62ch;color:var(--ink-2)}
+::selection{background:var(--acc);color:var(--on-acc)}
+:focus-visible{outline:2px solid var(--acc);outline-offset:3px}
+[hidden]{display:none!important}
+.gut{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+@media(min-width:760px){.gut{padding-left:max(32px,env(safe-area-inset-left,0px));padding-right:max(32px,env(safe-area-inset-right,0px))}}
+.inner{max-width:var(--wrap);margin-inline:auto}
+.cond{font-family:var(--f-cond);font-weight:900;text-transform:uppercase;letter-spacing:-.005em;line-height:.88;text-wrap:balance}
+.lab{font:500 .66rem/1.4 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
+.serif{font-family:var(--f-serif);font-style:italic;font-weight:400}
+.measure{max-width:62ch;color:var(--mute)}
 .measure strong{color:var(--ink);font-weight:600}
-
-/* buttons */
-.btn{--b:var(--ink);display:inline-flex;align-items:center;gap:.6em;font:600 .95rem/1 var(--font-body);padding:.95em 1.3em;border-radius:999px;border:1px solid var(--line-2);background:transparent;color:var(--ink);text-decoration:none;cursor:pointer;transition:background .25s,border-color .25s,transform .25s}
-.btn:hover{border-color:var(--ink);transform:translateY(-1px)}
-.btn.primary{background:var(--ink);color:var(--ground);border-color:var(--ink)}
-.btn.primary:hover{background:var(--halo);border-color:var(--halo);color:var(--on-accent)}
-.btn .arr{transition:transform .25s}.btn:hover .arr{transform:translateX(3px)}
-.link{color:var(--ink);text-decoration:underline;text-decoration-color:var(--halo);text-underline-offset:.25em;text-decoration-thickness:1px}
-.link:hover{color:var(--halo)}
+.link{color:var(--ink);text-decoration:underline;text-decoration-color:var(--acc);text-decoration-thickness:1.5px;text-underline-offset:.2em}
+.link:hover{color:var(--acc-ink)}
 
 /* nav */
-.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;backdrop-filter:blur(14px) saturate(1.2);-webkit-backdrop-filter:blur(14px) saturate(1.2);background:color-mix(in srgb,var(--ground) 72%,transparent);border-bottom:1px solid var(--line)}
-.nav .wrap{display:flex;align-items:center;gap:1.25rem;height:62px}
-.logo{display:flex;align-items:center;text-decoration:none;color:var(--ink)}
-.logo svg{height:24px;width:auto;overflow:visible}
-.nav ul{display:flex;gap:.25rem;list-style:none;margin:0 0 0 auto;padding:0}
-.nav ul a{display:block;padding:.5em .8em;border-radius:999px;font-size:.92rem;color:var(--ink-2);text-decoration:none}
-.nav ul a:hover,.nav ul a[aria-current="page"]{color:var(--ink);background:var(--ground-3)}
-.theme{display:inline-flex;align-items:center;gap:.5em;border:1px solid var(--line-2);background:transparent;color:var(--ink-2);border-radius:999px;padding:.45em .8em;font:500 .72rem/1 var(--font-mono);letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
-.theme:hover{color:var(--ink);border-color:var(--ink)}
-.theme i{width:12px;height:12px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--halo));display:block}
-@media (max-width:860px){.nav ul li.hide-s{display:none}}
-@media (max-width:560px){.nav ul{display:none}.theme{margin-left:auto}}
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.nav .inner{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:1.5rem;height:72px;border-bottom:1.5px solid var(--ink)}
+.nav .lg img{height:30px;width:auto}
+.nav ul{display:flex;gap:2rem;list-style:none;margin:0;padding:0;justify-content:center}
+.nav ul a{text-decoration:none;font-weight:600;font-size:.92rem}
+.nav ul a:hover,.nav ul a[aria-current="page"]{color:var(--acc-ink)}
+.nav .cta{font-weight:600;font-size:.92rem;text-decoration:none;background:var(--ink);color:var(--bg);padding:.8em 1.1em}
+.nav .cta:hover{background:var(--acc);color:var(--on-acc)}
+@media(max-width:820px){.nav ul{display:none}.nav .cta{justify-self:end}}
 
-[hidden]{display:none!important}
+/* buttons */
+.btn{display:inline-flex;gap:.6em;align-items:center;font:600 .95rem/1 var(--f-body);padding:.95em 1.2em;text-decoration:none;border:1.5px solid var(--ink);color:var(--ink);background:transparent;cursor:pointer}
+.btn.p{background:var(--ink);color:var(--bg)}
+.btn:hover{background:var(--acc);border-color:var(--acc);color:var(--on-acc)}
+.btns{display:flex;flex-wrap:wrap;gap:.5rem}
 
-/* HERO */
-.hero{position:relative;isolation:isolate;overflow:hidden;background:linear-gradient(180deg,var(--sky-top) 0%,var(--sky-mid) 45%,var(--sky-low) 74%,var(--ground) 100%)}
-.hero::before{content:"";position:absolute;inset:-20% auto auto -10%;width:70%;aspect-ratio:1;background:radial-gradient(circle,color-mix(in srgb,var(--halo) 30%,transparent),transparent 62%);z-index:-1;filter:blur(10px)}
-.hero::after{content:"";position:absolute;right:-10%;bottom:12%;width:60%;aspect-ratio:2/1;background:radial-gradient(ellipse,color-mix(in srgb,var(--sky-glow) 40%,transparent),transparent 65%);z-index:-1}
-#sky{position:absolute;inset:0;width:100%;height:100%;z-index:-1}
-.hero .wrap{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:2rem;align-items:center;padding-block:clamp(56px,9vw,120px) clamp(120px,14vw,190px)}
-.hero h1{font-size:var(--s5);font-weight:700;letter-spacing:-.035em;line-height:.98;margin:1.1rem 0 1.4rem}
-.hero h1 .spirit{font-size:1.12em;font-weight:500;letter-spacing:-.02em;color:var(--halo);display:inline-block;line-height:.9}
-.hero .cta{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:2rem}
-.scope-wrap{justify-self:center;display:grid;justify-items:center;gap:1rem}
-.scope{position:relative;width:clamp(240px,32vw,420px);aspect-ratio:1;border-radius:50%;cursor:pointer;border:0;padding:0;background:radial-gradient(circle at 50% 45%,color-mix(in srgb,var(--panel) 92%,var(--phos)) 0%,var(--panel) 70%);box-shadow:0 0 0 1px color-mix(in srgb,var(--panel-ink) 18%,transparent),0 0 0 12px color-mix(in srgb,var(--panel) 70%,transparent),0 0 0 13px color-mix(in srgb,var(--panel-ink) 12%,transparent),0 30px 80px -20px rgba(0,0,0,.55),0 0 120px -10px color-mix(in srgb,var(--phos) 35%,transparent)}
-.scope canvas{position:absolute;inset:0;width:100%;height:100%;border-radius:50%}
-.scope svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
-.readout{font-size:.7rem;letter-spacing:.06em;color:var(--ink-2);display:flex;flex-wrap:wrap;justify-content:center;gap:.4rem .9rem;text-align:center;max-width:420px}
-.readout b{color:var(--phos);font-weight:500}
-.readout .hint{width:100%;color:var(--ink-2);opacity:.8}
-.listen{font:500 .72rem/1 var(--font-mono);letter-spacing:.1em;text-transform:uppercase;display:inline-flex;align-items:center;gap:.6em;padding:.6em 1em;border-radius:999px;border:1px solid var(--line-2);background:color-mix(in srgb,var(--ground) 40%,transparent);color:var(--ink);cursor:pointer}
-.listen:hover{border-color:var(--phos)}
-.listen .dot{width:7px;height:7px;border-radius:50%;background:var(--ink-3)}
-.listen[aria-pressed="true"] .dot{background:var(--phos);box-shadow:0 0 10px var(--phos)}
-@media (max-width:860px){.hero .wrap{grid-template-columns:1fr;padding-block:40px 120px}.scope-wrap{order:-1}.scope{width:min(72vw,300px)}}
-
-/* bench strip */
-.bench{border-block:1px solid var(--line);background:var(--ground)}
-.bench .wrap{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
-.bench div.cell{padding:1.6rem 1.2rem 1.6rem 0;display:grid;gap:.45rem;align-content:start}
-.bench div.cell+div.cell{border-left:1px solid var(--line);padding-left:1.2rem}
-.bench .v{font-family:var(--font-display);font-size:var(--s2);font-weight:700;letter-spacing:-.02em;line-height:1}
-.bench .v small{font-size:.5em;font-family:var(--font-mono);font-weight:400;color:var(--ink-3);margin-left:.2em;letter-spacing:0}
-.bench p{font-size:.86rem;color:var(--ink-2);line-height:1.45}
-@media (max-width:860px){.bench .wrap{grid-template-columns:1fr 1fr}.bench div.cell:nth-child(3){border-left:0;padding-left:0}.bench div.cell:nth-child(n+3){border-top:1px solid var(--line)}}
-@media (max-width:460px){.bench .wrap{grid-template-columns:1fr}.bench div.cell{border-left:0!important;padding-left:0!important}.bench div.cell+div.cell{border-top:1px solid var(--line)}}
+/* hero */
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:2.4rem;align-items:center;padding-block:2.8rem 3.2rem;border-bottom:1.5px solid var(--ink)}
+.hero h1{font-size:clamp(2.7rem,6.6vw,6.4rem);margin:.8rem 0 0}
+.hero h1 span{color:var(--acc-ink)}
+.hero .lead{font-size:1.08rem;max-width:40ch;margin:1.4rem 0}
+.stats{display:flex;flex-wrap:wrap;gap:2rem;margin-top:1.8rem}
+.stats b{display:block;font:900 2rem/1 var(--f-cond);color:var(--ink);text-transform:uppercase}
+.stage{display:grid;gap:.8rem;justify-items:end}
+.plate{position:relative;width:100%;max-width:540px;aspect-ratio:1;border:0;padding:0;cursor:pointer;border-radius:50%;background:var(--panel);box-shadow:inset 0 2px 0 rgba(255,255,255,.06),0 30px 60px -30px rgba(23,20,15,.55),0 0 0 1.5px var(--ink)}
+.plate canvas{position:absolute;inset:0;width:100%;height:100%;border-radius:50%}
+.cap{display:flex;justify-content:space-between;gap:1rem;width:100%;max-width:540px}
+.cap b{color:var(--acc-ink);font-weight:500}
+@media(max-width:880px){.hero{grid-template-columns:1fr}.stage{justify-items:center}.plate{max-width:440px}}
 
 /* sections */
-section.block{padding-block:clamp(64px,8vw,112px)}
-.sec-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:1.5rem 3rem;align-items:end;margin-bottom:2.6rem}
-.sec-head h2{margin-top:.8rem}
-@media (max-width:860px){.sec-head{grid-template-columns:1fr}}
+.sec{padding-block:4.2rem}
+.sec+.sec{border-top:1.5px solid var(--ink)}
+.sec-h{display:flex;justify-content:space-between;align-items:end;gap:1rem 2rem;margin-bottom:1.6rem;flex-wrap:wrap}
+.sec-h h2{font-size:clamp(2.4rem,5.4vw,4.4rem);margin:0}
+.sec-h p{margin:0;max-width:52ch;color:var(--mute)}
 
-/* methods legend */
-.methods{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin-bottom:2rem}
-.methods div{background:var(--ground);padding:1rem 1.1rem;display:grid;gap:.4rem}
-.methods p{font-size:.86rem;color:var(--ink-2);line-height:1.45}
-@media (max-width:860px){.methods{grid-template-columns:1fr 1fr}}
-@media (max-width:460px){.methods{grid-template-columns:1fr}}
-.chip{display:inline-flex;align-items:center;gap:.5em;font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;padding:.42em .7em;border-radius:6px;border:1px solid currentColor;line-height:1;white-space:nowrap;width:max-content}
-.chip::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
-.m-circuit{color:var(--phos)}.m-firmware{color:var(--gold)}.m-port{color:var(--sand)}.m-original{color:var(--halo)}
-.chip.plain{color:var(--ink-3)}.chip.plain::before{display:none}
-
-/* filters */
+/* method legend + filters */
+.methods{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border:1.5px solid var(--ink);margin-bottom:1.4rem}
+.methods div{padding:1rem 1.1rem;display:grid;gap:.4rem;align-content:start}
+.methods div+div{border-left:1px solid var(--line)}
+.methods b{font:900 1.3rem/1 var(--f-cond);text-transform:uppercase}
+.methods p{margin:0;font-size:.88rem;color:var(--mute);line-height:1.45}
+@media(max-width:860px){.methods{grid-template-columns:1fr 1fr}.methods div:nth-child(3){border-left:0}.methods div:nth-child(n+3){border-top:1px solid var(--line)}}
+@media(max-width:480px){.methods{grid-template-columns:1fr}.methods div{border-left:0!important}.methods div+div{border-top:1px solid var(--line)}}
 .filters{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1.6rem}
-.filters button{font:500 .85rem/1 var(--font-body);padding:.65em 1em;border-radius:999px;border:1px solid var(--line-2);background:transparent;color:var(--ink-2);cursor:pointer}
-.filters button[aria-pressed="true"]{background:var(--ink);color:var(--ground);border-color:var(--ink)}
-.filters button:hover{border-color:var(--ink)}
-.filters .count{font-family:var(--font-mono);font-size:.7em;opacity:.6;margin-left:.35em}
+.filters button{font:600 .85rem/1 var(--f-body);padding:.7em 1em;border:1.5px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.filters button:hover{border-color:var(--acc);}
+.filters .n{font:500 .7em var(--f-mono);margin-left:.4em;opacity:.65}
 
 /* cards */
-.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.4rem}
-@media (max-width:1020px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:620px){.grid{grid-template-columns:1fr}}
-.card{display:grid;grid-template-rows:auto 1fr;border-radius:var(--r);background:var(--ground-2);border:1px solid var(--line);overflow:hidden;text-decoration:none;color:inherit;transition:transform .35s cubic-bezier(.2,.7,.2,1),border-color .35s,box-shadow .35s}
-.card:hover{transform:translateY(-3px);border-color:var(--line-2);box-shadow:0 24px 50px -28px rgba(0,0,0,.5)}
-.card figure{margin:0;position:relative;aspect-ratio:960/471;background:var(--panel);overflow:hidden}
-.card figure img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
-.card:hover figure img{transform:scale(1.035)}
-.card figure::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 1px rgba(255,255,255,.06);pointer-events:none}
-.card .body{padding:1.1rem 1.2rem 1.2rem;display:grid;grid-template-rows:auto auto 1fr auto;gap:.6rem}
-.card .top{display:flex;justify-content:space-between;align-items:center;gap:.5rem}
-.card h3{font-size:1.35rem}
-.card p{font-size:.92rem;color:var(--ink-2);line-height:1.5}
-.card .foot{display:flex;justify-content:space-between;align-items:center;gap:.6rem;padding-top:.8rem;border-top:1px solid var(--line);font-family:var(--font-mono);font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
-.card .foot span:last-child{color:var(--ink)}
-.sigil{width:30px;height:30px;flex:none}
-.sigil path{fill:none;stroke:currentColor;stroke-width:1.6;stroke-linejoin:round}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.6rem 1.4rem}
+@media(max-width:980px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:620px){.cards{grid-template-columns:1fr}}
+.card{display:grid;align-content:start;text-decoration:none}
+.card figure{margin:0;overflow:hidden;border:1.5px solid var(--ink);background:var(--panel)}
+.card figure img{width:100%;aspect-ratio:960/471;object-fit:cover;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.card:hover figure img{transform:scale(1.04)}
+.card .cb{display:grid;gap:.45rem;padding-top:.9rem}
+.card .ct{display:flex;justify-content:space-between;gap:.6rem}
+.card h3{margin:0;font:900 1.95rem/.9 var(--f-cond);text-transform:uppercase;display:flex;justify-content:space-between;align-items:center;gap:.8rem}
+.card h3 svg{width:34px;height:34px;flex:none;color:var(--acc-ink)}
+.card p{margin:0;color:var(--mute);font-size:.93rem}
+.card .go{font:600 .85rem var(--f-body);color:var(--ink)}
+.card:hover h3,.card:hover .go{color:var(--acc-ink)}
 
 /* index table */
-.index-wrap{margin-top:3.5rem}
-.index-head{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;flex-wrap:wrap;margin-bottom:1rem}
-.index-head h3{font-size:var(--s2)}
-.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r)}
-table{width:100%;border-collapse:collapse;font-size:.92rem;min-width:640px}
-th{font:500 .66rem/1 var(--font-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);text-align:left;padding:1rem;border-bottom:1px solid var(--line)}
-td{padding:.9rem 1rem;border-bottom:1px solid var(--line);vertical-align:middle;color:var(--ink-2)}
+.index{margin-top:3.4rem}
+.index-h{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;flex-wrap:wrap;margin-bottom:.8rem}
+.index-h h3{font-size:2.2rem;margin:0}
+.tbl{overflow-x:auto;border-top:1.5px solid var(--ink);border-bottom:1.5px solid var(--ink)}
+table{width:100%;border-collapse:collapse;min-width:680px;font-size:.93rem}
+th{font:500 .64rem/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--mute);text-align:left;padding:1rem .8rem;border-bottom:1px solid var(--line)}
+td{padding:.85rem .8rem;border-bottom:1px solid var(--line);color:var(--mute);vertical-align:middle}
 tr:last-child td{border-bottom:0}
-td:first-child{color:var(--ink);font-weight:600;white-space:nowrap}
-td:first-child .sigil{width:20px;height:20px;display:inline-block;vertical-align:-5px;margin-right:.6rem}
-tbody tr{transition:background .2s}tbody tr:hover{background:var(--ground-2)}
-td a{color:var(--ink-2);text-decoration:none}td a:hover{color:var(--halo)}
+td.nm{font:900 1.25rem/1 var(--f-cond);text-transform:uppercase;color:var(--ink);white-space:nowrap}
+td.nm svg{width:22px;height:22px;vertical-align:-5px;margin-right:.6rem;color:var(--acc-ink)}
+td .cat{font:500 .7rem var(--f-mono);color:var(--mute)}
+td a{text-decoration:none;font-weight:600;color:var(--ink)}td a:hover{color:var(--acc-ink)}
+tbody tr:hover{background:var(--paper)}
 
-/* feature (specimen) */
-.feature{background:var(--panel);color:var(--panel-ink);border-radius:calc(var(--r) * 1.6);overflow:hidden;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);position:relative}
-.feature .img{padding:clamp(18px,3vw,36px);display:grid;align-content:center;background:radial-gradient(circle at 30% 40%,rgba(242,163,198,.16),transparent 60%),radial-gradient(circle at 80% 80%,rgba(246,216,142,.12),transparent 55%)}
-.feature .img img{border-radius:10px;box-shadow:0 0 0 1px rgba(255,255,255,.08),0 30px 60px -25px rgba(0,0,0,.8)}
-.feature .txt{padding:clamp(24px,4vw,56px);display:grid;gap:1.2rem;align-content:center}
-.feature .eyebrow{color:rgba(237,230,218,.55)}
-.feature .eyebrow b{color:#F2A3C6}
-.feature h2{font-size:var(--s3)}
-.feature p{color:rgba(237,230,218,.75)}
-.feature .btn{color:#EDE6DA;border-color:rgba(237,230,218,.3)}
-.feature .btn.primary{background:#EDE6DA;color:#15121E;border-color:#EDE6DA}
-.feature .btn.primary:hover{background:#F2A3C6;border-color:#F2A3C6}
-.kv{display:grid;grid-template-columns:auto 1fr;gap:.55rem 1.2rem;margin:0;font-size:.9rem}
-.kv dt{font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(237,230,218,.5);padding-top:.25em}
+/* sigil band */
+.band{border-block:1.5px solid var(--ink);overflow:hidden;padding-block:1.3rem;background:var(--paper)}
+.band-track{display:flex;gap:2.4rem;width:max-content;animation:drift 80s linear infinite}
+.band:hover .band-track{animation-play-state:paused}
+.band-item{display:grid;justify-items:center;gap:.5rem;width:92px;text-align:center}
+.band-item svg{width:54px;height:54px;color:var(--ink)}
+.band-item:nth-child(3n+1) svg{color:var(--acc-ink)}
+.band-item span{font:500 .6rem/1.3 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
+@keyframes drift{to{transform:translateX(-50%)}}
+
+/* bench feature */
+.bench{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);border:1.5px solid var(--ink)}
+.bench .img{background:var(--panel);padding:clamp(16px,3vw,32px);display:grid;align-content:center}
+.bench .img img{border:1px solid rgba(246,235,221,.15)}
+.bench .txt{padding:clamp(22px,3.5vw,44px);display:grid;gap:1.1rem;align-content:center;background:var(--paper)}
+.bench h3{font-size:clamp(2.2rem,4.4vw,3.4rem);margin:0}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:.5rem 1.2rem;margin:0;font-size:.92rem}
+.kv dt{font:500 .64rem/1.8 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
 .kv dd{margin:0}
-@media (max-width:900px){.feature{grid-template-columns:1fr}}
+@media(max-width:900px){.bench{grid-template-columns:1fr}}
 
 /* editions */
-.editions{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:1.4rem}
-@media (max-width:900px){.editions{grid-template-columns:1fr}}
-.ed-card{position:relative;border-radius:calc(var(--r) * 1.4);overflow:hidden;min-height:460px;display:grid;align-content:end;padding:clamp(22px,3vw,36px);gap:.9rem;background:var(--panel);color:var(--panel-ink);isolation:isolate}
-.ed-card canvas{position:absolute;inset:0;width:100%;height:100%;z-index:-1}
-.ed-card .eyebrow{color:rgba(237,230,218,.6)}
-.ed-card .eyebrow b{color:#F6D88E}
-.ed-card h3{font-size:var(--s3);letter-spacing:-.025em}
-.ed-card p{color:rgba(237,230,218,.75);max-width:44ch}
-.ed-list{display:grid;gap:0;border:1px solid var(--line);border-radius:calc(var(--r) * 1.4);overflow:hidden}
-.ed-list div{padding:1.15rem 1.4rem;display:grid;grid-template-columns:8.5rem 1fr;gap:1rem;border-bottom:1px solid var(--line);align-items:baseline}
-.ed-list div:last-child{border-bottom:0}
-.ed-list dt{font:500 .66rem/1.4 var(--font-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}
-.ed-list dd{margin:0;color:var(--ink-2);font-size:.95rem}
-.ed-list dd strong{color:var(--ink)}
-@media (max-width:460px){.ed-list div{grid-template-columns:1fr;gap:.3rem}}
-form.signup{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.4rem}
-form.signup input{flex:1 1 200px;min-width:0;font:inherit;font-size:.95rem;padding:.85em 1.1em;border-radius:999px;border:1px solid rgba(237,230,218,.3);background:rgba(0,0,0,.25);color:#EDE6DA}
-form.signup input::placeholder{color:rgba(237,230,218,.5)}
-form.signup .btn{background:#EDE6DA;color:#15121E;border-color:#EDE6DA}
-.formnote{font:400 .7rem/1.4 var(--font-mono);color:rgba(237,230,218,.6);min-height:1.4em}
+.ed{background:var(--acc);color:var(--on-acc);border-block:1.5px solid var(--ink)}
+.ed .inner{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:2.4rem 4rem;padding-block:4rem}
+.ed h2{font-size:clamp(2.6rem,6.4vw,5.4rem);margin:0}
+.ed .lab{color:var(--on-acc);opacity:.75}
+.ed dl{margin:0;display:grid;border-top:1.5px solid var(--on-acc)}
+.ed dl div{display:grid;grid-template-columns:8rem 1fr;gap:1rem;padding:.8rem 0;border-bottom:1px solid rgba(23,20,15,.25)}
+.ed dt{font:500 .64rem/1.8 var(--f-mono);letter-spacing:.12em;text-transform:uppercase}
+.ed dd{margin:0;font-size:.95rem}
+.signup{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:1.4rem}
+.signup input{flex:1 1 220px;min-width:0;font:inherit;font-size:.95rem;padding:.9em 1em;border:1.5px solid var(--on-acc);background:rgba(255,255,255,.25);color:var(--on-acc)}
+.signup input::placeholder{color:rgba(23,20,15,.6)}
+.signup .btn{border-color:var(--on-acc);background:var(--on-acc);color:var(--acc)}
+.signup .btn:hover{background:transparent;color:var(--on-acc)}
+.formnote{font:400 .72rem/1.5 var(--f-mono);margin-top:.6rem;min-height:1.5em}
+@media(max-width:900px){.ed .inner{grid-template-columns:1fr}.ed dl div{grid-template-columns:1fr;gap:.2rem}}
 
-/* name decoder */
-.decode{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border-top:1px solid var(--line)}
-.decode article{padding:2rem 1.6rem 0 0;display:grid;gap:.9rem;align-content:start}
-.decode article+article{border-left:1px solid var(--line);padding-left:1.6rem}
-.decode .reading{font-family:var(--font-display);font-size:var(--s3);font-weight:700;letter-spacing:-.03em;line-height:1}
-.decode .reading.sp{font-family:var(--font-spirit);font-style:italic;font-weight:500;color:var(--halo);font-size:calc(var(--s3) * 1.15)}
-.decode .reading.ph{color:var(--phos)}
-.decode .k{font:500 .66rem/1 var(--font-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
-.decode p{color:var(--ink-2);font-size:.98rem}
-@media (max-width:860px){.decode{grid-template-columns:1fr}.decode article{padding:1.6rem 0;border-left:0!important;padding-left:0!important}.decode article+article{border-top:1px solid var(--line)}}
-.big-name{display:block;width:100%;height:auto;margin:0 0 2.6rem;opacity:.14}
+/* name */
+.read{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1.5px solid var(--ink)}
+.read div{padding:1.6rem 1.4rem 0 0;display:grid;gap:.6rem;align-content:start}
+.read div+div{border-left:1px solid var(--line);padding-left:1.4rem}
+.read b{font:900 2.6rem/.9 var(--f-cond);text-transform:uppercase}
+.read i{font:400 2.5rem/.9 var(--f-serif);color:var(--acc-ink)}
+.read p{margin:0;color:var(--mute)}
+@media(max-width:760px){.read{grid-template-columns:1fr}.read div{padding:1.3rem 0;border-left:0!important;padding-left:0!important}.read div+div{border-top:1px solid var(--line)}}
 
 /* lab */
-.lab{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1.2rem}
-@media (max-width:1020px){.lab{grid-template-columns:1fr 1fr}}
-@media (max-width:560px){.lab{grid-template-columns:1fr}}
-.lab a{display:grid;gap:.7rem;align-content:start;padding:1.3rem;border-radius:var(--r);border:1px solid var(--line);text-decoration:none;color:inherit;transition:border-color .3s,background .3s}
-.lab a:hover{border-color:var(--line-2);background:var(--ground-2)}
-.lab h3{font-size:1.2rem}
-.lab p{font-size:.9rem;color:var(--ink-2)}
-.lab .go{font:500 .66rem/1 var(--font-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);margin-top:.4rem}
-.lab a:hover .go{color:var(--halo)}
+.lab-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border:1.5px solid var(--ink)}
+.lab-grid a{display:grid;gap:.6rem;align-content:start;padding:1.3rem;text-decoration:none;min-height:220px}
+.lab-grid a+a{border-left:1px solid var(--line)}
+.lab-grid a:hover{background:var(--paper)}
+.lab-grid h3{font:900 1.7rem/.95 var(--f-cond);text-transform:uppercase;margin:0}
+.lab-grid p{margin:0;color:var(--mute);font-size:.92rem}
+.lab-grid .go{font:500 .64rem/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;margin-top:auto;color:var(--ink)}
+.lab-grid a:hover .go,.lab-grid a:hover h3{color:var(--acc-ink)}
+@media(max-width:980px){.lab-grid{grid-template-columns:1fr 1fr}.lab-grid a:nth-child(3){border-left:0}.lab-grid a:nth-child(n+3){border-top:1px solid var(--line)}}
+@media(max-width:520px){.lab-grid{grid-template-columns:1fr}.lab-grid a{border-left:0!important;min-height:0}.lab-grid a+a{border-top:1px solid var(--line)}}
 
 /* support */
 .support{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:3rem;align-items:start}
-@media (max-width:900px){.support{grid-template-columns:1fr;gap:2rem}}
-.tips{display:grid;gap:0;border-top:1px solid var(--line)}
-.tips div{display:grid;grid-template-columns:7rem 1fr;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--line);align-items:baseline}
-.tips dt{font-family:var(--font-display);font-weight:700;font-size:1.05rem}
-.tips dd{margin:0;color:var(--ink-2);font-size:.95rem}
-.community{border-radius:calc(var(--r) * 1.4);padding:1.6rem;display:grid;gap:1rem;background:linear-gradient(160deg,color-mix(in srgb,var(--halo) 18%,var(--ground-2)),var(--ground-2) 60%);border:1px solid var(--line)}
+.tips{margin:1.4rem 0 1.6rem;display:grid;border-top:1.5px solid var(--ink)}
+.tips div{display:grid;grid-template-columns:7rem 1fr;gap:1rem;padding:.9rem 0;border-bottom:1px solid var(--line)}
+.tips dt{font:900 1.3rem/1.1 var(--f-cond);text-transform:uppercase}
+.tips dd{margin:0;color:var(--mute)}
+.community{border:1.5px solid var(--ink);padding:1.5rem;display:grid;gap:.9rem;background:var(--paper)}
+.community h3{font-size:2.2rem;margin:0}
+@media(max-width:900px){.support{grid-template-columns:1fr}}
 
 /* footer */
-footer{border-top:1px solid var(--line);padding-block:3.5rem 2.5rem;margin-top:2rem}
-footer .wrap{display:grid;grid-template-columns:minmax(0,1.4fr) repeat(3,minmax(0,.6fr));gap:2rem}
-footer h4{font:500 .66rem/1 var(--font-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin:0 0 1rem}
+footer{border-top:1.5px solid var(--ink);margin-top:0}
+footer .inner{display:grid;grid-template-columns:minmax(0,1.4fr) repeat(3,minmax(0,.6fr));gap:2rem;padding-block:3rem 2.4rem}
+footer h4{font:500 .64rem/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin:0 0 1rem}
 footer ul{list-style:none;margin:0;padding:0;display:grid;gap:.5rem;font-size:.92rem}
-footer ul a{color:var(--ink-2);text-decoration:none}footer ul a:hover{color:var(--ink)}
-footer .legal{grid-column:1/-1;border-top:1px solid var(--line);padding-top:1.5rem;font-size:.78rem;color:var(--ink-3);display:grid;gap:.6rem;line-height:1.55}
-footer .say{font-family:var(--font-spirit);font-style:italic;font-size:1.25rem;color:var(--ink-2);margin-top:1rem}
-@media (max-width:860px){footer .wrap{grid-template-columns:1fr 1fr}footer .wrap>div:first-child{grid-column:1/-1}}
+footer ul a{text-decoration:none}footer ul a:hover{color:var(--acc-ink)}
+footer .say{font:400 1.4rem/1.2 var(--f-serif);font-style:italic;color:var(--mute);margin:1rem 0 0}
+footer .legal{grid-column:1/-1;border-top:1px solid var(--line);padding-top:1.4rem;font-size:.78rem;color:var(--mute);display:grid;gap:.5rem}
+@media(max-width:860px){footer .inner{grid-template-columns:1fr 1fr}footer .inner>div:first-child{grid-column:1/-1}}
 
-/* PRODUCT PAGE */
-.crumbs{font:500 .7rem/1 var(--font-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);display:flex;gap:.6rem;flex-wrap:wrap;padding-top:2rem}
-.crumbs a{text-decoration:none;color:var(--ink-3)}.crumbs a:hover{color:var(--ink)}
-.p-hero{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(24px,4vw,64px);align-items:center;padding-block:2rem 4rem}
-@media (max-width:960px){.p-hero{grid-template-columns:1fr}}
-.p-hero h1{font-size:clamp(2.4rem,4.8vw,4.2rem);letter-spacing:-.04em;margin:.9rem 0 1rem}
-.p-hero .chips{display:flex;flex-wrap:wrap;gap:.4rem;margin:1.2rem 0 1.6rem}
-.device{border-radius:22px;padding:clamp(10px,1.6vw,18px);background:linear-gradient(160deg,#2B2536,#121019);box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 40px 90px -30px rgba(0,0,0,.6),0 0 0 1px rgba(0,0,0,.4)}
-.device img{border-radius:8px}
-.device-cap{font:400 .68rem/1.4 var(--font-mono);color:var(--ink-3);margin-top:.8rem;text-align:center}
-.p-sec{display:grid;grid-template-columns:minmax(0,.35fr) minmax(0,.65fr);gap:2rem 3rem;padding-block:3.5rem;border-top:1px solid var(--line)}
-.p-sec h2{font-size:var(--s2)}
-@media (max-width:860px){.p-sec{grid-template-columns:1fr}}
-.p-sec .measure p+p{margin-top:1rem}
-.chain{overflow-x:auto;margin-top:1.6rem;border:1px solid var(--line);border-radius:var(--r);background:var(--ground-2)}
+/* product page */
+.crumbs{padding-top:1.6rem;display:flex;gap:.6rem;flex-wrap:wrap}
+.crumbs a{text-decoration:none}.crumbs a:hover{color:var(--ink)}
+.p-hero{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(24px,4vw,56px);align-items:center;padding-block:1.6rem 3.4rem;border-bottom:1.5px solid var(--ink)}
+.p-hero h1{font-size:clamp(3rem,7vw,6rem);margin:.8rem 0 1rem}
+.p-hero .lead{font-size:1.1rem;max-width:36ch;margin:0 0 1.2rem}
+.chips{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1.4rem}
+.chip{font:500 .64rem/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;padding:.55em .75em;border:1.5px solid var(--ink)}
+.chip.a{background:var(--acc);border-color:var(--acc);color:var(--on-acc)}
+.device{border:1.5px solid var(--ink);background:var(--panel);padding:clamp(10px,1.6vw,18px)}
+.device-cap{margin-top:.7rem}
+.led{font-family:var(--f-mono);color:#FF5A4E;background:#1A0E10;padding:.15em .45em;font-size:.85em;letter-spacing:.08em;text-shadow:0 0 8px rgba(255,90,78,.6)}
+.p-sec{display:grid;grid-template-columns:minmax(0,.35fr) minmax(0,.65fr);gap:1.4rem 3rem;padding-block:3.2rem;border-bottom:1.5px solid var(--ink)}
+.p-sec h2{font-size:clamp(2rem,3.6vw,2.8rem);margin:.6rem 0 0}
+.p-sec .measure p{margin:0}.p-sec .measure p+p{margin-top:1rem}
+@media(max-width:860px){.p-hero,.p-sec{grid-template-columns:1fr}}
+.chain{overflow-x:auto;margin-top:1.6rem;border:1.5px solid var(--ink);background:var(--paper)}
 .chain svg{display:block;min-width:620px;width:100%;height:auto}
-.chain text{font-family:var(--font-mono);font-size:11px;fill:var(--ink-2);letter-spacing:.04em}
-.chain .t{font-family:var(--font-display);font-size:14px;font-weight:700;fill:var(--ink);letter-spacing:0}
-.chain rect.box{fill:var(--ground);stroke:var(--line-2)}
-.chain rect.hot{stroke:var(--gold)}
-.chain path.w{stroke:var(--ink-3);fill:none;stroke-width:1.2}
-.chain path.sig{stroke:var(--phos);fill:none;stroke-width:1.6}
-.chain .ah{fill:var(--ink-3)}
-.specs{width:100%;min-width:0}
-.specs td:first-child{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);font-weight:400;width:11rem;white-space:normal}
-.specs td{color:var(--ink)}
-.led{font-family:var(--font-mono);color:#FF5A4E;background:#1A0E10;padding:.15em .45em;border-radius:4px;font-size:.85em;letter-spacing:.08em;text-shadow:0 0 8px rgba(255,90,78,.6)}
-.steps{display:grid;gap:0;counter-reset:s;margin:0;padding:0;list-style:none}
-.steps li{display:grid;grid-template-columns:2.6rem 1fr;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--line);color:var(--ink-2)}
-.steps li::before{counter-increment:s;content:counter(s);font:500 .8rem/1 var(--font-mono);width:2rem;height:2rem;border-radius:50%;border:1px solid var(--line-2);display:grid;place-items:center;color:var(--ink)}
-.steps li strong{color:var(--ink)}
-.pn{display:grid;grid-template-columns:1fr 1fr;gap:1rem;padding-block:3rem}
-.pn a{padding:1.4rem;border:1px solid var(--line);border-radius:var(--r);text-decoration:none;display:grid;gap:.4rem}
-.pn a:hover{border-color:var(--line-2);background:var(--ground-2)}
+.chain text{font-family:var(--f-mono);font-size:11px;fill:var(--mute)}
+.chain .t{font-family:var(--f-cond);font-size:17px;font-weight:900;fill:var(--ink);text-transform:uppercase}
+.chain rect.box{fill:var(--bg);stroke:var(--ink);stroke-width:1.2}
+.chain rect.hot{fill:var(--acc);stroke:var(--ink)}
+.chain path.w{stroke:var(--mute);fill:none;stroke-width:1.2}
+.chain path.sig{stroke:var(--acc-ink);fill:none;stroke-width:2}
+.chain .ah{fill:var(--mute)}
+.specs{min-width:0}
+.specs td:first-child{font:500 .66rem/1.5 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;width:11rem}
+.specs td:last-child{color:var(--ink)}
+.steps{list-style:none;margin:0;padding:0;counter-reset:s;border-top:1.5px solid var(--ink)}
+.steps li{display:grid;grid-template-columns:3rem 1fr;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--line);color:var(--mute)}
+.steps li::before{counter-increment:s;content:counter(s);font:900 2rem/1 var(--f-cond);color:var(--acc-ink)}
+.steps strong{color:var(--ink)}
+.mono{font-family:var(--f-mono);font-size:.82em}
+.pn{display:grid;grid-template-columns:1fr 1fr;gap:1rem;padding-block:2.6rem}
+.pn a{border:1.5px solid var(--ink);padding:1.2rem 1.3rem;text-decoration:none;display:grid;gap:.3rem}
+.pn a:hover{background:var(--paper)}
 .pn a:last-child{text-align:right}
-.pn small{font:500 .66rem/1 var(--font-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}
-.pn b{font-family:var(--font-display);font-size:1.3rem}
+.pn b{font:900 1.8rem/1 var(--f-cond);text-transform:uppercase}
 
-/* BRAND BOOK */
-.bb-hero{padding-block:clamp(56px,8vw,110px) 3rem;border-bottom:1px solid var(--line)}
-.bb-hero h1{font-size:var(--s5);letter-spacing:-.04em;margin:1rem 0 1.4rem;max-width:14ch}
-.bb{display:grid;grid-template-columns:13rem minmax(0,1fr);gap:3rem;padding-block:3rem}
-@media (max-width:900px){.bb{grid-template-columns:1fr}.toc{display:none}}
-.toc{position:sticky;top:90px;align-self:start;display:grid;gap:.2rem}
-.toc button{all:unset;cursor:pointer;font-size:.9rem;color:var(--ink-3);padding:.35rem 0}
-.toc button:hover{color:var(--ink)}
-.toc button:focus-visible{outline:2px solid var(--halo)}
-.bb-sec{padding-block:2.6rem;border-bottom:1px solid var(--line);display:grid;gap:1.4rem}
+/* brand book */
+.bb-hero{padding-block:3rem 2.4rem;border-bottom:1.5px solid var(--ink)}
+.bb-hero h1{font-size:clamp(3rem,7.4vw,6.4rem);margin:.8rem 0 1rem;max-width:12ch}
+.bb{display:grid;grid-template-columns:12rem minmax(0,1fr);gap:3rem;padding-block:2.6rem}
+@media(max-width:900px){.bb{grid-template-columns:1fr}.toc{display:none}}
+.toc{position:sticky;top:96px;align-self:start;display:grid;gap:.15rem}
+.toc button{all:unset;cursor:pointer;font-size:.92rem;color:var(--mute);padding:.3rem 0}
+.toc button:hover{color:var(--acc-ink)}
+.toc button:focus-visible{outline:2px solid var(--acc)}
+.bb-sec{padding-block:2.4rem;border-bottom:1px solid var(--line);display:grid;gap:1.3rem}
 .bb-sec:first-child{padding-top:0}
-.bb-sec>h2{font-size:var(--s3)}
-.bb-sec h3{font-size:var(--s1);margin-top:.6rem}
-.verdict{border-radius:var(--r);padding:1.4rem 1.6rem;border:1px solid var(--phos);background:color-mix(in srgb,var(--phos) 8%,transparent);display:grid;gap:.6rem}
-.verdict .eyebrow{color:var(--phos)}
-.verdict p{color:var(--ink);font-size:1.05rem}
-.cols2{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
-.cols3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
-@media (max-width:760px){.cols2,.cols3{grid-template-columns:1fr}}
-.pane{border:1px solid var(--line);border-radius:var(--r);padding:1.3rem;display:grid;gap:.7rem;align-content:start;min-width:0}
-.pane h4{margin:0;font-family:var(--font-display);font-size:1.1rem}
-.pane p,.pane li{color:var(--ink-2);font-size:.93rem}
-.pane ul{margin:0;padding-left:1.1rem;display:grid;gap:.35rem}
-.pane.yes{border-color:color-mix(in srgb,var(--phos) 60%,transparent)}
-.pane.no{border-color:color-mix(in srgb,var(--halo) 50%,transparent)}
-.logo-stage{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:1.2rem}
-@media (max-width:760px){.logo-stage{grid-template-columns:1fr 1fr}.logo-stage>:first-child{grid-column:1/-1}}
-.logo-tile{border-radius:var(--r);display:grid;place-items:center;padding:2.2rem 1.4rem;min-height:180px;position:relative}
-.logo-tile.d{background:#1F1A2C}.logo-tile.l{background:#F0EAEF;border:1px solid var(--line)}.logo-tile.p{background:linear-gradient(135deg,#3B2B4F,#7A4C66 60%,#E7A58B)}
-.logo-tile img{max-height:90px;width:auto}
-.logo-tile .cap{position:absolute;left:12px;bottom:10px;font:400 .62rem/1 var(--font-mono);letter-spacing:.1em;text-transform:uppercase;color:rgba(128,120,140,.9)}
-.swatches{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:.8rem}
-.sw{border-radius:12px;overflow:hidden;border:1px solid var(--line);font-family:var(--font-mono);font-size:.68rem}
-.sw i{display:block;height:84px}
-.sw div{padding:.6rem .7rem;display:grid;gap:.2rem;color:var(--ink-2)}
-.sw b{font-family:var(--font-body);font-size:.9rem;color:var(--ink);font-weight:600}
-.typespec{display:grid;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
-.typespec>div{background:var(--ground);padding:1.4rem;display:grid;grid-template-columns:11rem 1fr;gap:1.4rem;align-items:center}
-@media (max-width:640px){.typespec>div{grid-template-columns:1fr}}
-.typespec .meta{font:400 .7rem/1.5 var(--font-mono);color:var(--ink-3)}
-.typespec .meta b{display:block;font-family:var(--font-body);color:var(--ink);font-size:.95rem;font-weight:600}
-.sigils{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.8rem}
-@media (max-width:560px){.sigils{grid-template-columns:repeat(2,minmax(0,1fr))}}
-.sigils div{border:1px solid var(--line);border-radius:12px;padding:1rem .6rem;display:grid;justify-items:center;gap:.5rem;text-align:center}
-.sigils svg{width:54px;height:54px;color:var(--phos)}
-.sigils b{font-size:.82rem}
-.sigils small{font:400 .62rem/1.3 var(--font-mono);color:var(--ink-3)}
-.voice td:first-child{width:auto;white-space:normal}
-.quote{font-family:var(--font-spirit);font-style:italic;font-size:var(--s2);line-height:1.25;color:var(--ink);max-width:28ch}
-.copyblock{border:1px solid var(--line);border-radius:var(--r);padding:1.2rem 1.3rem;display:grid;gap:.6rem;position:relative}
-.copyblock .k{font:500 .64rem/1 var(--font-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}
-.copyblock p{color:var(--ink)}
-.copyblock button{position:absolute;top:.8rem;right:.8rem;font:500 .62rem/1 var(--font-mono);letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--line-2);background:transparent;color:var(--ink-2);border-radius:999px;padding:.5em .8em;cursor:pointer}
-.copyblock button:hover{color:var(--ink);border-color:var(--ink)}
-.taglines{display:grid;gap:0;border-top:1px solid var(--line)}
-.taglines div{padding:1rem 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:1rem;align-items:baseline;flex-wrap:wrap}
-.taglines div span:first-child{font-family:var(--font-display);font-weight:700;font-size:1.2rem;letter-spacing:-.01em}
-.taglines div span:last-child{font:400 .7rem/1.4 var(--font-mono);color:var(--ink-3)}
+.bb-sec>h2{font-size:clamp(2.2rem,4.4vw,3.2rem);margin:0}
+.bb-sec h3{font:900 1.5rem/1 var(--f-cond);text-transform:uppercase;margin:.6rem 0 0}
+.tiles{display:grid;gap:1px;background:var(--ink);border:1.5px solid var(--ink)}
+.tiles.c3{grid-template-columns:repeat(3,minmax(0,1fr))}.tiles.c2{grid-template-columns:repeat(2,minmax(0,1fr))}.tiles.c4{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media(max-width:760px){.tiles.c3,.tiles.c4{grid-template-columns:1fr 1fr}.tiles.c2{grid-template-columns:1fr}}
+.tile{background:var(--paper);padding:1.3rem;display:grid;gap:.7rem;place-items:center;align-content:center;min-height:170px;text-align:center}
+.tile.dk{background:var(--panel)}.tile.or{background:var(--acc)}
+.tile .lab{text-align:center}
+.tile.dk .lab{color:rgba(246,235,221,.6)}
+.pane{background:var(--paper);padding:1.2rem 1.3rem;display:grid;gap:.5rem;align-content:start}
+.pane b{font:900 1.3rem/1 var(--f-cond);text-transform:uppercase}
+.pane p,.pane li{margin:0;color:var(--mute);font-size:.93rem}
+.pane ul{margin:0;padding-left:1.1rem;display:grid;gap:.3rem}
+.verdict{border:1.5px solid var(--ink);background:var(--acc);color:var(--on-acc);padding:1.2rem 1.4rem;display:grid;gap:.4rem}
+.verdict .lab{color:var(--on-acc);opacity:.75}
+.verdict p{margin:0;font-size:1.05rem}
+.swatches{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:.7rem}
+.sw{background:var(--paper);font:500 .68rem/1.5 var(--f-mono);color:var(--mute);border:1.5px solid var(--ink)}
+.sw i{display:block;height:80px;border-bottom:1px solid var(--ink)}
+.sw div{padding:.6rem .7rem;display:grid}
+.sw b{font:600 .9rem var(--f-body);color:var(--ink)}
+.typespec{display:grid;border-top:1.5px solid var(--ink)}
+.typespec>div{display:grid;grid-template-columns:12rem 1fr;gap:1.4rem;align-items:center;padding:1.1rem 0;border-bottom:1px solid var(--line)}
+@media(max-width:640px){.typespec>div{grid-template-columns:1fr}}
+.typespec .meta b{display:block;font:600 .95rem var(--f-body)}
+.copyblock{border:1.5px solid var(--ink);background:var(--paper);padding:1.1rem 1.2rem;display:grid;gap:.5rem;position:relative}
+.copyblock p{margin:0}
+.copyblock button{position:absolute;top:.8rem;right:.8rem;font:500 .62rem/1 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;border:1.5px solid var(--ink);background:transparent;color:var(--ink);padding:.5em .8em;cursor:pointer}
+.copyblock button:hover{background:var(--acc);border-color:var(--acc)}
+.taglines{display:grid;border-top:1.5px solid var(--ink)}
+.taglines div{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;align-items:baseline;padding:.9rem 0;border-bottom:1px solid var(--line)}
+.taglines div span:first-child{font:900 1.5rem/1 var(--f-cond);text-transform:uppercase}
 
-/* reveal */
-.rv{transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
-.rv.pre{opacity:.001;transform:translateY(18px)}
-@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important;animation:none!important}.rv.pre{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
 </style>
 
-<!-- shared SVG symbols -->
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <symbol id="wm" viewBox="0 0 233 64">
-    <g fill="none" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round" style="stroke:var(--ink)">
-      <path d="M32,30 C28,24.5 12,24 11.5,33 C11,41 33,38.5 33,48 C33,57 14,58 10,51"/>
-      <path d="M71,6 V56 M71,40 A14,16 0 1 1 71,39.99"/>
-      <path d="M149,56 V36 A8.5,9 0 0 1 166,36 V56 M166,36 A8.5,9 0 0 1 183,36 V56 M149,40 V25"/>
-      <path d="M194,40.5 H222 A14,16 0 1 0 217.5,51.5" />
-    </g>
-    <g fill="none" stroke-width="5.5" stroke-linejoin="round" style="stroke:var(--phos)"><path d="M95.00,31.00 L95.65,30.35 L96.31,29.69 L96.96,29.04 L97.60,28.39 L98.24,27.74 L98.86,27.09 L99.48,26.44 L100.08,25.80 L100.67,25.16 L101.25,24.53 L101.81,23.90 L102.35,23.27 L102.87,22.65 L103.36,22.04 L103.84,21.43 L104.29,20.83 L104.71,20.24 L105.11,19.65 L105.48,19.07 L105.83,18.50 L106.14,17.94 L106.42,17.38 L106.67,16.84 L106.89,16.31 L107.07,15.78 L107.23,15.27 L107.35,14.76 L107.43,14.27 L107.48,13.79 L107.50,13.32 L107.48,12.87 L107.43,12.42 L107.35,11.99 L107.23,11.57 L107.07,11.17 L106.89,10.77 L106.67,10.40 L106.42,10.03 L106.14,9.68 L105.83,9.35 L105.48,9.03 L105.11,8.72 L104.71,8.44 L104.29,8.16 L103.84,7.90 L103.36,7.66 L102.87,7.43 L102.35,7.22 L101.81,7.03 L101.25,6.85 L100.67,6.69 L100.08,6.55 L99.48,6.42 L98.86,6.31 L98.24,6.21 L97.60,6.14 L96.96,6.08 L96.31,6.03 L95.65,6.01 L95.00,6.00 L94.35,6.01 L93.69,6.03 L93.04,6.08 L92.40,6.14 L91.76,6.21 L91.14,6.31 L90.52,6.42 L89.92,6.55 L89.33,6.69 L88.75,6.85 L88.19,7.03 L87.65,7.22 L87.13,7.43 L86.64,7.66 L86.16,7.90 L85.71,8.16 L85.29,8.44 L84.89,8.72 L84.52,9.03 L84.17,9.35 L83.86,9.68 L83.58,10.03 L83.33,10.40 L83.11,10.77 L82.93,11.17 L82.77,11.57 L82.65,11.99 L82.57,12.42 L82.52,12.87 L82.50,13.32 L82.52,13.79 L82.57,14.27 L82.65,14.76 L82.77,15.27 L82.93,15.78 L83.11,16.31 L83.33,16.84 L83.58,17.38 L83.86,17.94 L84.17,18.50 L84.52,19.07 L84.89,19.65 L85.29,20.24 L85.71,20.83 L86.16,21.43 L86.64,22.04 L87.13,22.65 L87.65,23.27 L88.19,23.90 L88.75,24.53 L89.33,25.16 L89.92,25.80 L90.52,26.44 L91.14,27.09 L91.76,27.74 L92.40,28.39 L93.04,29.04 L93.69,29.69 L94.35,30.35 L95.00,31.00 L95.65,31.65 L96.31,32.31 L96.96,32.96 L97.60,33.61 L98.24,34.26 L98.86,34.91 L99.48,35.56 L100.08,36.20 L100.67,36.84 L101.25,37.47 L101.81,38.10 L102.35,38.73 L102.87,39.35 L103.36,39.96 L103.84,40.57 L104.29,41.17 L104.71,41.76 L105.11,42.35 L105.48,42.93 L105.83,43.50 L106.14,44.06 L106.42,44.62 L106.67,45.16 L106.89,45.69 L107.07,46.22 L107.23,46.73 L107.35,47.24 L107.43,47.73 L107.48,48.21 L107.50,48.68 L107.48,49.13 L107.43,49.58 L107.35,50.01 L107.23,50.43 L107.07,50.83 L106.89,51.23 L106.67,51.60 L106.42,51.97 L106.14,52.32 L105.83,52.65 L105.48,52.97 L105.11,53.28 L104.71,53.56 L104.29,53.84 L103.84,54.10 L103.36,54.34 L102.87,54.57 L102.35,54.78 L101.81,54.97 L101.25,55.15 L100.67,55.31 L100.08,55.45 L99.48,55.58 L98.86,55.69 L98.24,55.79 L97.60,55.86 L96.96,55.92 L96.31,55.97 L95.65,55.99 L95.00,56.00 L94.35,55.99 L93.69,55.97 L93.04,55.92 L92.40,55.86 L91.76,55.79 L91.14,55.69 L90.52,55.58 L89.92,55.45 L89.33,55.31 L88.75,55.15 L88.19,54.97 L87.65,54.78 L87.13,54.57 L86.64,54.34 L86.16,54.10 L85.71,53.84 L85.29,53.56 L84.89,53.28 L84.52,52.97 L84.17,52.65 L83.86,52.32 L83.58,51.97 L83.33,51.60 L83.11,51.23 L82.93,50.83 L82.77,50.43 L82.65,50.01 L82.57,49.58 L82.52,49.13 L82.50,48.68 L82.52,48.21 L82.57,47.73 L82.65,47.24 L82.77,46.73 L82.93,46.22 L83.11,45.69 L83.33,45.16 L83.58,44.62 L83.86,44.06 L84.17,43.50 L84.52,42.93 L84.89,42.35 L85.29,41.76 L85.71,41.17 L86.16,40.57 L86.64,39.96 L87.13,39.35 L87.65,38.73 L88.19,38.10 L88.75,37.47 L89.33,36.84 L89.92,36.20 L90.52,35.56 L91.14,34.91 L91.76,34.26 L92.40,33.61 L93.04,32.96 L93.69,32.31 L94.35,31.65 L95.00,31.00 Z M126.00,31.00 L126.65,30.35 L127.31,29.69 L127.96,29.04 L128.60,28.39 L129.24,27.74 L129.86,27.09 L130.48,26.44 L131.08,25.80 L131.67,25.16 L132.25,24.53 L132.81,23.90 L133.35,23.27 L133.87,22.65 L134.36,22.04 L134.84,21.43 L135.29,20.83 L135.71,20.24 L136.11,19.65 L136.48,19.07 L136.83,18.50 L137.14,17.94 L137.42,17.38 L137.67,16.84 L137.89,16.31 L138.07,15.78 L138.23,15.27 L138.35,14.76 L138.43,14.27 L138.48,13.79 L138.50,13.32 L138.48,12.87 L138.43,12.42 L138.35,11.99 L138.23,11.57 L138.07,11.17 L137.89,10.77 L137.67,10.40 L137.42,10.03 L137.14,9.68 L136.83,9.35 L136.48,9.03 L136.11,8.72 L135.71,8.44 L135.29,8.16 L134.84,7.90 L134.36,7.66 L133.87,7.43 L133.35,7.22 L132.81,7.03 L132.25,6.85 L131.67,6.69 L131.08,6.55 L130.48,6.42 L129.86,6.31 L129.24,6.21 L128.60,6.14 L127.96,6.08 L127.31,6.03 L126.65,6.01 L126.00,6.00 L125.35,6.01 L124.69,6.03 L124.04,6.08 L123.40,6.14 L122.76,6.21 L122.14,6.31 L121.52,6.42 L120.92,6.55 L120.33,6.69 L119.75,6.85 L119.19,7.03 L118.65,7.22 L118.13,7.43 L117.64,7.66 L117.16,7.90 L116.71,8.16 L116.29,8.44 L115.89,8.72 L115.52,9.03 L115.17,9.35 L114.86,9.68 L114.58,10.03 L114.33,10.40 L114.11,10.77 L113.93,11.17 L113.77,11.57 L113.65,11.99 L113.57,12.42 L113.52,12.87 L113.50,13.32 L113.52,13.79 L113.57,14.27 L113.65,14.76 L113.77,15.27 L113.93,15.78 L114.11,16.31 L114.33,16.84 L114.58,17.38 L114.86,17.94 L115.17,18.50 L115.52,19.07 L115.89,19.65 L116.29,20.24 L116.71,20.83 L117.16,21.43 L117.64,22.04 L118.13,22.65 L118.65,23.27 L119.19,23.90 L119.75,24.53 L120.33,25.16 L120.92,25.80 L121.52,26.44 L122.14,27.09 L122.76,27.74 L123.40,28.39 L124.04,29.04 L124.69,29.69 L125.35,30.35 L126.00,31.00 L126.65,31.65 L127.31,32.31 L127.96,32.96 L128.60,33.61 L129.24,34.26 L129.86,34.91 L130.48,35.56 L131.08,36.20 L131.67,36.84 L132.25,37.47 L132.81,38.10 L133.35,38.73 L133.87,39.35 L134.36,39.96 L134.84,40.57 L135.29,41.17 L135.71,41.76 L136.11,42.35 L136.48,42.93 L136.83,43.50 L137.14,44.06 L137.42,44.62 L137.67,45.16 L137.89,45.69 L138.07,46.22 L138.23,46.73 L138.35,47.24 L138.43,47.73 L138.48,48.21 L138.50,48.68 L138.48,49.13 L138.43,49.58 L138.35,50.01 L138.23,50.43 L138.07,50.83 L137.89,51.23 L137.67,51.60 L137.42,51.97 L137.14,52.32 L136.83,52.65 L136.48,52.97 L136.11,53.28 L135.71,53.56 L135.29,53.84 L134.84,54.10 L134.36,54.34 L133.87,54.57 L133.35,54.78 L132.81,54.97 L132.25,55.15 L131.67,55.31 L131.08,55.45 L130.48,55.58 L129.86,55.69 L129.24,55.79 L128.60,55.86 L127.96,55.92 L127.31,55.97 L126.65,55.99 L126.00,56.00 L125.35,55.99 L124.69,55.97 L124.04,55.92 L123.40,55.86 L122.76,55.79 L122.14,55.69 L121.52,55.58 L120.92,55.45 L120.33,55.31 L119.75,55.15 L119.19,54.97 L118.65,54.78 L118.13,54.57 L117.64,54.34 L117.16,54.10 L116.71,53.84 L116.29,53.56 L115.89,53.28 L115.52,52.97 L115.17,52.65 L114.86,52.32 L114.58,51.97 L114.33,51.60 L114.11,51.23 L113.93,50.83 L113.77,50.43 L113.65,50.01 L113.57,49.58 L113.52,49.13 L113.50,48.68 L113.52,48.21 L113.57,47.73 L113.65,47.24 L113.77,46.73 L113.93,46.22 L114.11,45.69 L114.33,45.16 L114.58,44.62 L114.86,44.06 L115.17,43.50 L115.52,42.93 L115.89,42.35 L116.29,41.76 L116.71,41.17 L117.16,40.57 L117.64,39.96 L118.13,39.35 L118.65,38.73 L119.19,38.10 L119.75,37.47 L120.33,36.84 L120.92,36.20 L121.52,35.56 L122.14,34.91 L122.76,34.26 L123.40,33.61 L124.04,32.96 L124.69,32.31 L125.35,31.65 L126.00,31.00 Z"/></g>
-  </symbol>
-</svg>
-
-<nav class="nav" aria-label="Main">
-  <div class="wrap">
-    <a class="logo" href="#top" data-go="home" aria-label="sd88me home">
-      <svg viewBox="0 0 233 64" aria-hidden="true"><use href="#wm"/></svg>
-    </a>
+<header class="nav gut">
+  <div class="inner">
+    <a class="lg" href="#top" aria-label="SD88ME home"><img src="brand/logo-nav.svg" alt="SD88ME" width="240" height="60"></a>
     <ul>
-      <li><a href="#plugins">Plugins</a></li>
-      <li class="hide-s"><a href="#editions">Editions</a></li>
-      <li class="hide-s"><a href="#lab">Lab</a></li>
+      <li><a href="#catalogue">Catalogue</a></li>
+      <li><a href="#editions">Editions</a></li>
       <li><a href="#name">The name</a></li>
-      <li><a href="#brand" data-route="brand">Brand book</a></li>
+      <li><a href="#lab">Lab</a></li>
+      <li><a href="#brand" data-route="brand">Brand</a></li>
     </ul>
-    <button class="theme" id="themeBtn" type="button" aria-label="Switch between dusk and dawn"><i></i><span id="themeLbl">Dusk</span></button>
+    <a class="cta" href="https://open-mpc.github.io/install.html" target="_blank" rel="noopener">Install</a>
   </div>
-</nav>
+</header>
 
-<!-- ============ HOME ============ -->
+<!-- ================= HOME ================= -->
 <main data-view="home" id="top">
-  <header class="hero" id="hero">
-    <canvas id="sky" aria-hidden="true"></canvas>
-    <div class="wrap">
+  <div class="gut"><div class="inner">
+    <section class="hero">
       <div>
-        <p class="eyebrow"><b>●</b> Plugins for MPC OS, Force &amp; your DAW</p>
-        <h1>Circuit-true instruments for <span class="spirit">deep states.</span></h1>
-        <p class="lede">I rebuild classic machines from their schematics and original firmware, then put them inside the MPC. Free, open source, and made for long nights.</p>
-        <div class="cta">
-          <a class="btn primary" href="#plugins">Browse the plugins <span class="arr">→</span></a>
-          <a class="btn" href="https://discord.gg/sRRysZSgu3" target="_blank" rel="noopener">Join Open MPC on Discord</a>
-        </div>
+        <p class="lab">Plugins for MPC OS · Force · DAW</p>
+        <h1 class="cond">Circuit-true instruments for <span>deep states</span></h1>
+        <p class="lead">Classic machines rebuilt from their schematics and original firmware, then put inside the MPC. Free, open source, and made for long nights.</p>
+        <div class="btns"><a class="btn p" href="#catalogue">Browse the catalogue →</a><a class="btn" href="https://discord.gg/sRRysZSgu3" target="_blank" rel="noopener">Join the Discord</a></div>
+        <div class="stats lab"><span><b id="count">22</b>Plugins</span><span><b>3.0 dB</b>303 vs a real unit</span><span><b>Gen1+2</b>MPC &amp; Force</span></div>
       </div>
-      <div class="scope-wrap">
-        <button class="scope" id="scopeBtn" type="button" aria-label="Oscilloscope. Tap to change the interval.">
-          <canvas id="scope"></canvas>
-          <svg viewBox="0 0 100 100" aria-hidden="true">
-            <g stroke="currentColor" style="color:rgba(237,230,218,.16)" stroke-width=".25" fill="none">
-              <circle cx="50" cy="50" r="40"/><path d="M10,50H90M50,10V90"/>
-              <path d="M18,48.8V51.2M26,48.8V51.2M34,48.8V51.2M42,48.8V51.2M58,48.8V51.2M66,48.8V51.2M74,48.8V51.2M82,48.8V51.2M48.8,18H51.2M48.8,26H51.2M48.8,34H51.2M48.8,42H51.2M48.8,58H51.2M48.8,66H51.2M48.8,74H51.2M48.8,82H51.2"/>
-              <circle cx="50" cy="50" r="46" stroke-dasharray=".4 2.01"/>
-            </g>
-          </svg>
-        </button>
-        <div class="readout" aria-live="polite">
-          <span>CH1 <b id="f1">110.00</b> Hz</span><span>CH2 <b id="f2">220.07</b> Hz</span><span><b id="ratio">2:1</b> <span id="ivl">the octave</span></span>
-          <span class="hint">Two tones an octave apart draw an 8. Tap the scope to change the interval.</span>
-        </div>
-        <button class="listen" id="listenBtn" type="button" aria-pressed="false"><span class="dot"></span><span id="listenLbl">Hear it</span></button>
+      <div class="stage">
+        <button class="plate" id="plate" type="button" aria-label="Sand plate. Tap to scatter the sand into a tone’s pattern."><canvas id="sand"></canvas></button>
+        <div class="cap lab"><span id="capL">Sand settling into the mark</span><span>Tap the plate</span></div>
       </div>
-    </div>
-  </header>
+    </section>
 
-  <div class="bench" aria-label="From the bench">
-    <div class="wrap">
-      <div class="cell"><span class="eyebrow">Acid-303</span><span class="v">3.0<small>dB</small></span><p>Average spectral distance from a real TB-303 over 400 recorded notes. Two takes on the same unit differ by 2.2 to 2.5 dB.</p></div>
-      <div class="cell"><span class="eyebrow">Reverbicon 224</span><span class="v">v4.4<small>ROM</small></span><p>The Lexicon 224's own firmware, running on an emulated 8080 and the DSP it programs.</p></div>
-      <div class="cell"><span class="eyebrow">Machinemodule</span><span class="v">16<small>tracks</small></span><p>The whole Machinedrum from one plugin instance, using its own DSP, LFO and mixer maths.</p></div>
-      <div class="cell"><span class="eyebrow">Catalog</span><span class="v" id="plugCount">25+<small>plugins</small></span><p>On Force, Live, One, X, Key and Live III, installed from the Open MPC Plugin Manager.</p></div>
-    </div>
-  </div>
-
-  <section class="block" id="plugins">
-    <div class="wrap">
-      <div class="sec-head">
-        <div>
-          <p class="eyebrow">The plugins</p>
-          <h2>Instruments with <span class="spirit">lineage.</span></h2>
-        </div>
-        <p class="measure">Everything here is free and open source. Every card says <strong>how the plugin was made</strong>, because that decides how close it gets to the original.</p>
+    <section class="sec" id="catalogue">
+      <div class="sec-h"><h2 class="cond">Catalogue</h2><p>Every plugin is free and open source. Each one says <strong style="color:var(--ink)">how it was made</strong>, because that decides how close it gets to the original.</p></div>
+      <div class="methods">
+        <div><b>Circuit</b><p>Solved stage by stage from the service-notes schematic, with component values fitted to real units.</p></div>
+        <div><b>Firmware</b><p>The machine’s own ROM, running on emulated chips. You supply the ROM from hardware you own.</p></div>
+        <div><b>Port</b><p>A respected open-source engine, rebuilt to run natively on the MPC with its own page.</p></div>
+        <div><b>Original</b><p>My own design, from the DSP up. No ROMs, nothing to supply.</p></div>
       </div>
-
-      <div class="methods" role="list">
-        <div role="listitem"><span class="chip m-circuit">Circuit</span><p>Solved stage by stage from the service-notes schematic, with component values fitted to real units.</p></div>
-        <div role="listitem"><span class="chip m-firmware">Firmware</span><p>The machine's own ROM, running on emulated chips. You supply the ROM from hardware you own.</p></div>
-        <div role="listitem"><span class="chip m-port">Port</span><p>A respected open-source engine, rebuilt to run natively on the MPC with its own touchscreen page.</p></div>
-        <div role="listitem"><span class="chip m-original">Original</span><p>My own design, from the DSP up. No ROMs, nothing to supply.</p></div>
-      </div>
-
       <div class="filters" id="filters" role="group" aria-label="Filter plugins"></div>
-      <div class="grid" id="grid"></div>
-
-      <div class="index-wrap">
-        <div class="index-head">
-          <h3>The full index</h3>
-          <a class="link mono" style="font-size:.75rem" href="https://open-mpc.github.io/" target="_blank" rel="noopener">Install from the Open MPC catalog →</a>
-        </div>
-        <div class="tbl"><table>
-          <thead><tr><th>Plugin</th><th>What it is</th><th>Made by</th><th>Kind</th><th>Source</th></tr></thead>
-          <tbody id="index"></tbody>
-        </table></div>
+      <div class="cards" id="cards"></div>
+      <div class="index">
+        <div class="index-h"><h3 class="cond">The full index</h3><a class="link" href="https://open-mpc.github.io/" target="_blank" rel="noopener">Install from the Open MPC catalog →</a></div>
+        <div class="tbl"><table><thead><tr><th>Plugin</th><th>Cat. no.</th><th>What it is</th><th>Made by</th><th>Source</th></tr></thead><tbody id="index"></tbody></table></div>
       </div>
-    </div>
-  </section>
+    </section>
+  </div></div>
 
-  <section class="block" style="padding-top:0" aria-labelledby="spec-h">
-    <div class="wrap">
-      <div class="feature rv">
-        <div class="img"><img src="img/reverbicon224.webp" alt="Reverbicon 224 running on an MPC Live III: six program keys, decay sliders and a red LED readout" width="960" height="555" loading="lazy"></div>
+  <div class="band" aria-label="Every plugin’s sigil"><div class="band-track" id="band"></div></div>
+
+  <div class="gut"><div class="inner">
+    <section class="sec">
+      <div class="sec-h"><h2 class="cond">On the bench</h2><p>One plugin at a time, in depth.</p></div>
+      <div class="bench">
+        <div class="img"><img src="img/reverbicon224.webp" alt="Reverbicon 224 on an MPC Live III: six program keys, decay sliders and a red LED readout" width="960" height="555" loading="lazy"></div>
         <div class="txt">
-          <p class="eyebrow"><b>●</b> On the bench</p>
-          <h2 id="spec-h">Reverbicon 224</h2>
-          <p>The 224 ran its reverbs as a program on an 8080 and a custom DSP. So does this. Picking a program presses its key. Moving a slider moves the pot. The firmware does the rest, in its own steps, with its own red readout.</p>
-          <dl class="kv">
-            <dt>Firmware</dt><dd>Lexicon 224 v4.4, ROM1–ROM5 (yours)</dd>
-            <dt>Programs</dt><dd>6, from Small Hall B to Percussion Plate A</dd>
-            <dt>Decay</dt><dd>0.6 to 70 s, split at 100 Hz–10.9 kHz</dd>
-            <dt>Runs on</dt><dd>MPC Gen1 and Gen2</dd>
+          <p class="lab">SD88-002 · Firmware · Effect</p>
+          <h3 class="cond">Reverbicon 224</h3>
+          <p class="measure">The 224 ran its reverbs as a program on an 8080 and a custom DSP. So does this. Picking a program presses its key, moving a slider moves the pot, and the firmware does the rest, in its own steps, with its own red readout.</p>
+          <dl class="kv"><dt>Firmware</dt><dd>Lexicon 224 v4.4, ROM1–ROM5 (yours)</dd><dt>Programs</dt><dd>6, from Small Hall B to Percussion Plate A</dd><dt>Decay</dt><dd>0.6 to 70 s, split at 100 Hz–10.9 kHz</dd><dt>Runs on</dt><dd>MPC Gen1 and Gen2</dd></dl>
+          <div class="btns"><a class="btn p" href="#reverbicon-224" data-route="reverbicon-224">Open the datasheet →</a></div>
+        </div>
+      </div>
+    </section>
+  </div></div>
+
+  <section class="ed gut" id="editions"><div class="inner">
+    <div>
+      <p class="lab">Editions · Edition 01 in the workshop</p>
+      <h2 class="cond">Free stays free. Editions pay for it.</h2>
+      <p style="margin:1.2rem 0 0;max-width:44ch">An Edition is one instrument I spend months on, for the MPC and for your DAW, with installers, a proper manual and real support. Buying one funds everything else in the catalogue.</p>
+      <form class="signup" id="signup"><label for="email" style="position:absolute;left:-9999px">Email address</label><input id="email" type="email" required placeholder="you@studio.net" autocomplete="email"><button class="btn" type="submit">Get the first transmission</button></form>
+      <p class="formnote" id="formnote">One email per release. Nothing else.</p>
+    </div>
+    <dl>
+      <div><dt>Formats</dt><dd>MPC OS and Force, plus VST3, AU and CLAP for macOS, Windows and Linux.</dd></div>
+      <div><dt>Licence</dt><dd>Yours on three machines. No iLok, no online check on the MPC.</dd></div>
+      <div><dt>Updates</dt><dd>Free for the life of the major version.</dd></div>
+      <div><dt>In the box</dt><dd>Factory banks, a manual you can read in one sitting, and the circuit notes behind it.</dd></div>
+      <div><dt>Price</dt><dd>Set per Edition. Owners of an earlier Edition get a loyalty discount.</dd></div>
+    </dl>
+  </div></section>
+
+  <div class="gut"><div class="inner">
+    <section class="sec" id="name">
+      <div class="sec-h"><h2 class="cond">Three readings</h2><p>It started as a username and became a maker’s mark. Say it however you like. Each reading is true.</p></div>
+      <div class="read">
+        <div><span class="lab">The signature</span><b>S·D·88·ME</b><p>Initials, a birth year, and me. The name on every plugin folder, from the first one: <span class="mono">sd88me - VST - …</span></p></div>
+        <div><span class="lab">The state</span><i>sedate me</i><p>The hour where the room stops thinking. Long blends, slow filter sweeps, a reverb tail you could live in. What these instruments are for.</p></div>
+        <div><span class="lab">The signal</span><b>8 + 8</b><p>Two tones an octave apart draw an 8 on a scope. Stack two rings and you get one too. Two eights: one for the circuit, one for whatever it opens up.</p></div>
+      </div>
+    </section>
+
+    <section class="sec" id="lab">
+      <div class="sec-h"><h2 class="cond">Lab</h2><p>Tools, platforms and experiments. The launch pad for whatever comes next.</p></div>
+      <div class="lab-grid">
+        <a href="https://open-mpc.github.io/" target="_blank" rel="noopener"><span class="lab">Platform</span><h3>Open MPC</h3><p>The open toolchain, catalog and Plugin Manager that put these plugins on an MPC. Community-run, and I build a lot of it.</p><span class="go">open-mpc.github.io →</span></a>
+        <a href="https://github.com/sd88me/schwung-acid" target="_blank" rel="noopener"><span class="lab">Ableton Move</span><h3>Schwung modules</h3><p>Acid, Maze and Machinemodule for Move’s open Schwung host. Generative sequencers and a whole drum engine.</p><span class="go">On GitHub →</span></a>
+        <a href="https://github.com/sd88me/force-shadow" target="_blank" rel="noopener"><span class="lab">Force · MockbaMod</span><h3>Force Shadow</h3><p>Gives background audio engines a real touchscreen surface, then hands the screen straight back to MPC.</p><span class="go">On GitHub →</span></a>
+        <a href="#editions"><span class="lab">Next</span><h3>Desktop builds</h3><p>The same engines as VST3 in your DAW, wearing their MPC panels. Arriving with the Editions.</p><span class="go">Follow along →</span></a>
+      </div>
+    </section>
+
+    <section class="sec" id="support">
+      <div class="support">
+        <div>
+          <p class="lab">Tip jar</p>
+          <h2 class="cond" style="font-size:clamp(2.4rem,5vw,4rem);margin:.6rem 0 0">If it made your track better</h2>
+          <p class="measure" style="margin-top:1rem">This takes hours in the studio, and those hours come out of my wife’s time. Tips are never required and never unlock anything.</p>
+          <dl class="tips">
+            <div><dt>A coffee</dt><dd>For the 2 a.m. debugging sessions.</dd></div>
+            <div><dt>A beer</dt><dd>For when it finally compiles and the sound comes out right.</dd></div>
+            <div><dt>Flowers</dt><dd>For my wife, who hears “just five more minutes” a lot. Honestly, these are the priority.</dd></div>
           </dl>
-          <div style="display:flex;gap:.6rem;flex-wrap:wrap"><a class="btn primary" href="#reverbicon-224" data-route="reverbicon-224">Open the datasheet <span class="arr">→</span></a></div>
+          <a class="btn p" href="https://ko-fi.com/sd88me" target="_blank" rel="noopener">Open the tip jar on Ko-fi →</a>
         </div>
+        <aside class="community">
+          <p class="lab">Community</p>
+          <h3 class="cond">Open MPC on Discord</h3>
+          <p class="measure">Support, release announcements, plugin requests and MPC hacking. Bug reports reach me fastest here.</p>
+          <div class="btns"><a class="btn p" href="https://discord.gg/sRRysZSgu3" target="_blank" rel="noopener">Join the server →</a><a class="btn" href="https://github.com/sd88me" target="_blank" rel="noopener">GitHub →</a></div>
+        </aside>
       </div>
-    </div>
-  </section>
-
-  <section class="block" id="editions" style="background:linear-gradient(180deg,var(--ground),var(--ground-2))">
-    <div class="wrap">
-      <div class="sec-head">
-        <div>
-          <p class="eyebrow">Editions</p>
-          <h2>Free stays free. <span class="spirit">Editions</span> pay for it.</h2>
-        </div>
-        <p class="measure">An Edition is one instrument I spend months on, for the MPC and for your DAW, with installers, a printed-quality manual and real support. Buying one funds everything on this page.</p>
-      </div>
-      <div class="editions">
-        <div class="ed-card rv">
-          <canvas id="edCanvas" aria-hidden="true"></canvas>
-          <p class="eyebrow"><b>●</b> Edition 01 · in the workshop</p>
-          <h3>Name withheld until it’s ready.</h3>
-          <p>An original instrument with no ROMs and nothing to supply. The first transmission goes out when it’s ready to play.</p>
-          <form class="signup" id="signup">
-            <label class="mono" for="email" style="position:absolute;left:-9999px">Email address</label>
-            <input id="email" type="email" required placeholder="you@studio.net" autocomplete="email">
-            <button class="btn" type="submit">Get the first transmission</button>
-          </form>
-          <p class="formnote" id="formnote">One email per release. Nothing else.</p>
-        </div>
-        <dl class="ed-list rv">
-          <div><dt>Formats</dt><dd><strong>MPC OS and Force</strong>, plus VST3, AU and CLAP for macOS, Windows and Linux.</dd></div>
-          <div><dt>Licence</dt><dd>Yours on <strong>three machines</strong>. No iLok, no online check on the MPC.</dd></div>
-          <div><dt>Updates</dt><dd>Free for the life of the major version.</dd></div>
-          <div><dt>In the box</dt><dd>Factory banks, a manual you can read in one sitting, and the circuit notes behind it.</dd></div>
-          <div><dt>Price</dt><dd>Set per Edition. Owners of an earlier Edition get a loyalty discount.</dd></div>
-        </dl>
-      </div>
-    </div>
-  </section>
-
-  <section class="block" id="name">
-    <div class="wrap">
-      <svg class="big-name" viewBox="0 0 233 64" aria-hidden="true"><use href="#wm"/></svg>
-      <div class="sec-head">
-        <div>
-          <p class="eyebrow">The name</p>
-          <h2>Three ways to read it.</h2>
-        </div>
-        <p class="measure">It started as a username and turned into a maker’s mark. Say it however you like. Each reading is true.</p>
-      </div>
-      <div class="decode">
-        <article class="rv">
-          <span class="k">The signature</span>
-          <span class="reading">s·d·88·me</span>
-          <p>Initials, a birth year, and me. The name on every plugin folder, from the first one: <span class="mono" style="font-size:.8em">sd88me - VST - …</span></p>
-        </article>
-        <article class="rv">
-          <span class="k">The state</span>
-          <span class="reading sp">sedate me</span>
-          <p>The hour where the room stops thinking. Long blends, slow filter sweeps, a reverb tail you could live in. What these instruments are for.</p>
-        </article>
-        <article class="rv">
-          <span class="k">The signal</span>
-          <span class="reading ph">8 + 8</span>
-          <p>Feed a scope two tones an octave apart and it draws an 8. Two eights: one for the circuit, one for whatever the circuit opens up.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="block" id="lab" style="padding-top:0">
-    <div class="wrap">
-      <div class="sec-head">
-        <div>
-          <p class="eyebrow">The lab</p>
-          <h2>Other signals.</h2>
-        </div>
-        <p class="measure">Tools, platforms and experiments. The launch pad for whatever comes next.</p>
-      </div>
-      <div class="lab">
-        <a href="https://open-mpc.github.io/" target="_blank" rel="noopener" class="rv"><span class="chip plain">Platform</span><h3>Open MPC</h3><p>The open toolchain, catalog and Plugin Manager that put these plugins on an MPC. Community-run, and I build a lot of it.</p><span class="go">open-mpc.github.io →</span></a>
-        <a href="https://github.com/sd88me/schwung-acid" target="_blank" rel="noopener" class="rv"><span class="chip plain">Ableton Move</span><h3>Schwung modules</h3><p>Acid, Maze and Machinemodule for Move’s open Schwung host. Generative sequencers and a whole drum engine.</p><span class="go">On GitHub →</span></a>
-        <a href="https://github.com/sd88me/force-shadow" target="_blank" rel="noopener" class="rv"><span class="chip plain">Force · MockbaMod</span><h3>Force Shadow</h3><p>Gives background audio engines a real touchscreen surface, then hands the screen straight back to MPC.</p><span class="go">On GitHub →</span></a>
-        <a href="#editions" class="rv"><span class="chip plain">Next</span><h3>Desktop builds</h3><p>The same engines as VST3 in your DAW, wearing their MPC panels. Arriving with the Editions.</p><span class="go">Follow along →</span></a>
-      </div>
-    </div>
-  </section>
-
-  <section class="block" id="support" style="padding-top:0">
-    <div class="wrap support">
-      <div>
-        <p class="eyebrow">Tip jar</p>
-        <h2 style="margin:.8rem 0 1.4rem">If it made your track better.</h2>
-        <p class="measure" style="margin-bottom:1.6rem">This takes hours in the studio, and those hours come out of my wife’s time. Tips are never required and never unlock anything.</p>
-        <dl class="tips">
-          <div><dt>A coffee</dt><dd>For the 2 a.m. debugging sessions.</dd></div>
-          <div><dt>A beer</dt><dd>For when it finally compiles and the sound comes out right.</dd></div>
-          <div><dt>Flowers</dt><dd>For my wife, who hears “just five more minutes” a lot. Honestly, these are the priority.</dd></div>
-        </dl>
-        <div style="margin-top:1.6rem"><a class="btn primary" href="https://ko-fi.com/sd88me" target="_blank" rel="noopener">Open the tip jar on Ko-fi <span class="arr">→</span></a></div>
-      </div>
-      <aside class="community">
-        <p class="eyebrow"><b>●</b> Community</p>
-        <h3 style="font-size:var(--s2)">Open MPC on Discord</h3>
-        <p class="measure" style="font-size:.95rem">Support, release announcements, plugin requests and MPC hacking. Bug reports reach me fastest here.</p>
-        <a class="btn" href="https://discord.gg/sRRysZSgu3" target="_blank" rel="noopener">Join the server <span class="arr">→</span></a>
-        <a class="btn" href="https://github.com/sd88me" target="_blank" rel="noopener">Follow on GitHub <span class="arr">→</span></a>
-      </aside>
-    </div>
-  </section>
+    </section>
+  </div></div>
 </main>
 
-<!-- ============ PRODUCT: REVERBICON 224 ============ -->
+<!-- ================= PRODUCT: REVERBICON 224 ================= -->
 <main data-view="reverbicon-224" hidden>
-  <div class="wrap">
-    <nav class="crumbs" aria-label="Breadcrumb"><a href="#plugins" data-go="home">Plugins</a><span>/</span><span>Effects</span><span>/</span><span style="color:var(--ink)">Reverbicon 224</span></nav>
-    <div class="p-hero">
+  <div class="gut"><div class="inner">
+    <nav class="crumbs lab" aria-label="Breadcrumb"><a href="#catalogue">Catalogue</a><span>/</span><span>Effects</span><span>/</span><span style="color:var(--ink)">Reverbicon 224</span></nav>
+    <section class="p-hero">
       <div>
-        <p class="eyebrow"><svg class="sigil" style="width:22px;height:22px;color:var(--gold)" data-ratio="5,4" viewBox="0 0 40 40" aria-hidden="true"></svg> Sigil 5:4 · the major third</p>
-        <h1>Reverbicon 224</h1>
-        <p class="lede">The Lexicon 224, running its own firmware inside your MPC.</p>
-        <div class="chips"><span class="chip m-firmware">Firmware</span><span class="chip plain">Effect</span><span class="chip plain">Gen1 + Gen2</span><span class="chip plain">Free · open source</span></div>
-        <div style="display:flex;gap:.6rem;flex-wrap:wrap">
-          <a class="btn primary" href="https://open-mpc.github.io/install.html" target="_blank" rel="noopener">Install with Plugin Manager <span class="arr">→</span></a>
-          <a class="btn" href="https://github.com/sd88me/mpc-vst-reverbicon224/releases" target="_blank" rel="noopener">Download a release</a>
-        </div>
+        <p class="lab">SD88-002 · Sigil 5:4, the major third</p>
+        <h1 class="cond">Reverbicon 224</h1>
+        <p class="lead">The Lexicon 224, running its own firmware inside your MPC.</p>
+        <div class="chips"><span class="chip a">Firmware</span><span class="chip">Effect</span><span class="chip">Gen1 + Gen2</span><span class="chip">Free · open source</span></div>
+        <div class="btns"><a class="btn p" href="https://open-mpc.github.io/install.html" target="_blank" rel="noopener">Install with Plugin Manager →</a><a class="btn" href="https://github.com/sd88me/mpc-vst-reverbicon224/releases" target="_blank" rel="noopener">Download a release</a></div>
       </div>
       <div>
         <div class="device"><img src="img/reverbicon224.webp" alt="Reverbicon 224 page on an MPC Live III" width="960" height="555"></div>
-        <p class="device-cap">On an MPC Live III. The readout shows what the firmware stores: <span class="led">2.6 SEC</span> <span class="led">8.80 KHZ</span> <span class="led">024 MS</span></p>
+        <p class="device-cap lab">On an MPC Live III. The readout shows what the firmware stores: <span class="led">2.6 SEC</span> <span class="led">8.80 KHZ</span> <span class="led">024 MS</span></p>
       </div>
-    </div>
-
-    <div class="p-sec">
-      <div><p class="eyebrow">How it works</p><h2 style="margin-top:.8rem">A machine inside the machine.</h2></div>
+    </section>
+    <section class="p-sec">
+      <div><p class="lab">How it works</p><h2 class="cond">A machine inside the machine</h2></div>
       <div class="measure">
         <p>Most reverb plugins imitate the 224’s sound. This one rebuilds the computer that made it. The <strong>8080 control CPU</strong> runs the original v4.4 ROMs and reads a front panel. The <strong>DSP</strong> it programs runs row by row, with the original arithmetic, delay memory and timing. Then the <strong>12-bit gain-ranging converters</strong> and the input and output filters shape what you hear.</p>
         <p>The plugin works the front panel for you. Change program and the reverb mutes for about 50 ms while the firmware loads it into the DSP, as it did on the hardware.</p>
-        <div class="chain" role="img" aria-label="Signal chain: MPC screen and Q-Links press keys and move pots on the emulated front panel; the 8080 runs the v4.4 ROM and programs the DSP; audio passes through the input converter, the DSP with delay memory, and the output converter and filters.">
+        <div class="chain" role="img" aria-label="Signal chain: the MPC page presses keys and moves pots on the emulated front panel; the 8080 runs the v4.4 ROM and programs the DSP; audio passes through the input converter, the DSP with delay memory, and the output converter and filters.">
           <svg viewBox="0 0 830 210">
             <defs><marker id="ah" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path class="ah" d="M0,0L8,4L0,8z"/></marker></defs>
-            <rect class="box" x="16" y="20" width="176" height="58" rx="8"/><text class="t" x="30" y="44">MPC page</text><text x="30" y="64">Q-Links · sliders</text>
-            <rect class="box" x="240" y="20" width="176" height="58" rx="8"/><text class="t" x="254" y="44">Front panel</text><text x="254" y="64">keys · pots · LED</text>
-            <rect class="box hot" x="464" y="20" width="176" height="58" rx="8"/><text class="t" x="478" y="44">8080 CPU</text><text x="478" y="64">v4.4 ROM1–ROM5</text>
+            <rect class="box" x="16" y="20" width="176" height="58"/><text class="t" x="30" y="45">MPC page</text><text x="30" y="65">Q-Links · sliders</text>
+            <rect class="box" x="240" y="20" width="176" height="58"/><text class="t" x="254" y="45">Front panel</text><text x="254" y="65">keys · pots · LED</text>
+            <rect class="box hot" x="464" y="20" width="176" height="58"/><text class="t" x="478" y="45">8080 CPU</text><text x="478" y="65" style="fill:#17140F">v4.4 ROM1–ROM5</text>
             <path class="w" d="M192,49H238" marker-end="url(#ah)"/><path class="w" d="M416,49H462" marker-end="url(#ah)"/>
             <path class="w" d="M552,78V120" marker-end="url(#ah)"/><text x="562" y="103">programs</text>
-            <rect class="box" x="16" y="122" width="176" height="58" rx="8"/><text class="t" x="30" y="146">Audio in</text><text x="30" y="166">12-bit gain-ranging</text>
-            <rect class="box hot" x="464" y="122" width="176" height="58" rx="8"/><text class="t" x="478" y="146">DSP</text><text x="478" y="166">rows · delay memory</text>
-            <rect class="box" x="664" y="122" width="150" height="58" rx="8"/><text class="t" x="678" y="146">Audio out</text><text x="678" y="166">4 outs · filters</text>
-            <path class="sig" d="M192,151H462" marker-end="url(#ah)"/><path class="sig" d="M640,151H662" marker-end="url(#ah)"/>
-            <text x="300" y="143">signal</text>
+            <rect class="box" x="16" y="122" width="176" height="58"/><text class="t" x="30" y="147">Audio in</text><text x="30" y="167">12-bit gain-ranging</text>
+            <rect class="box hot" x="464" y="122" width="176" height="58"/><text class="t" x="478" y="147">DSP</text><text x="478" y="167" style="fill:#17140F">rows · delay memory</text>
+            <rect class="box" x="664" y="122" width="150" height="58"/><text class="t" x="678" y="147">Audio out</text><text x="678" y="167">4 outs · filters</text>
+            <path class="sig" d="M192,151H462" marker-end="url(#ah)"/><path class="sig" d="M640,151H662" marker-end="url(#ah)"/><text x="300" y="143">signal</text>
           </svg>
         </div>
       </div>
-    </div>
-
-    <div class="p-sec">
-      <div><p class="eyebrow">Controls</p><h2 style="margin-top:.8rem">The front panel.</h2></div>
-      <div class="tbl" style="border:0"><table class="specs" style="min-width:0">
-        <tbody>
-          <tr><td>Program 1–6</td><td>Small Hall B, Vocal Plate, Large Hall B, Acoustic Chamber, Percussion Plate A, Small Hall A</td></tr>
-          <tr><td>Bass · Mid</td><td>Reverb time below and above the crossover, 0.6 to 70 seconds</td></tr>
-          <tr><td>Crossover</td><td>100 Hz to 10.9 kHz</td></tr>
-          <tr><td>Treble decay</td><td>High-frequency rolloff, 100 Hz to 10.9 kHz</td></tr>
-          <tr><td>Pre-delay</td><td>The loaded program’s full range: halls 24–152 ms, plates 0–107 ms, chamber 25–255 ms</td></tr>
-          <tr><td>Depth · Diffusion</td><td>00–71 · 01–63 (the 224’s SHIFT page)</td></tr>
-          <tr><td>Mode Enh · Decay Opt</td><td>The 224’s PROG 7 and 8</td></tr>
-          <tr><td>Outputs</td><td>Any two of the four outputs, A–D, on left and right</td></tr>
-          <tr><td>Dirt</td><td>My addition: converter hiss, gain-range mismatch and a soft input limit. Off at 0.</td></tr>
-          <tr><td>Presets</td><td>16 in MPC’s PRESET menu. The Q-Links follow the sliders.</td></tr>
-        </tbody>
-      </table></div>
-    </div>
-
-    <div class="p-sec">
-      <div><p class="eyebrow">Install</p><h2 style="margin-top:.8rem">Three steps.</h2></div>
-      <div>
-        <ol class="steps">
-          <li><div><strong>Get the plugin.</strong> On MPC OS 3.10.1 or later, copy the SDK-format folder into <span class="mono" style="font-size:.8em">VST2 Plugins</span> on any drive. On older systems, install it from the OpenMPC Plugin Manager.</div></li>
-          <li><div><strong>Add your ROMs.</strong> Put the five v4.4 EPROM images from a 224 you own in <span class="mono" style="font-size:.8em">Content/ROMs/</span>. File names don’t matter; each chip is recognised by its checksum. No ROMs are included, ever.</div></li>
-          <li><div><strong>Load it on a track.</strong> The firmware boots in under a second on a Live III. Until then, audio passes through untouched.</div></li>
-        </ol>
-      </div>
-    </div>
-
-    <div class="p-sec">
-      <div><p class="eyebrow">Credits</p><h2 style="margin-top:.8rem">Notes.</h2></div>
-      <p class="measure" style="font-size:.92rem">Reverbicon 224 is an independent project, not affiliated with or endorsed by Lexicon or Harman. “224” names the instrument it emulates. Source code is on <a class="link" href="https://github.com/sd88me/mpc-vst-reverbicon224" target="_blank" rel="noopener">GitHub</a>.</p>
-    </div>
-
-    <nav class="pn" aria-label="More plugins">
-      <a href="#plugins" data-go="home"><small>← Back to</small><b>All plugins</b></a>
-      <a href="https://github.com/sd88me/mpc-vst-acid303" target="_blank" rel="noopener"><small>Next on the bench →</small><b>Acid-303</b></a>
-    </nav>
-  </div>
+    </section>
+    <section class="p-sec">
+      <div><p class="lab">Controls</p><h2 class="cond">The front panel</h2></div>
+      <div class="tbl" style="border-top:1.5px solid var(--ink)"><table class="specs"><tbody>
+        <tr><td>Program 1–6</td><td>Small Hall B, Vocal Plate, Large Hall B, Acoustic Chamber, Percussion Plate A, Small Hall A</td></tr>
+        <tr><td>Bass · Mid</td><td>Reverb time below and above the crossover, 0.6 to 70 seconds</td></tr>
+        <tr><td>Crossover</td><td>100 Hz to 10.9 kHz</td></tr>
+        <tr><td>Treble decay</td><td>High-frequency rolloff, 100 Hz to 10.9 kHz</td></tr>
+        <tr><td>Pre-delay</td><td>The loaded program’s full range: halls 24–152 ms, plates 0–107 ms, chamber 25–255 ms</td></tr>
+        <tr><td>Depth · Diffusion</td><td>00–71 · 01–63 (the 224’s SHIFT page)</td></tr>
+        <tr><td>Mode Enh · Decay Opt</td><td>The 224’s PROG 7 and 8</td></tr>
+        <tr><td>Outputs</td><td>Any two of the four outputs, A–D, on left and right</td></tr>
+        <tr><td>Dirt</td><td>My addition: converter hiss, gain-range mismatch and a soft input limit. Off at 0.</td></tr>
+        <tr><td>Presets</td><td>16 in MPC’s PRESET menu. The Q-Links follow the sliders.</td></tr>
+      </tbody></table></div>
+    </section>
+    <section class="p-sec">
+      <div><p class="lab">Install</p><h2 class="cond">Three steps</h2></div>
+      <ol class="steps">
+        <li><div><strong>Get the plugin.</strong> On MPC OS 3.10.1 or later, copy the SDK-format folder into <span class="mono">VST2 Plugins</span> on any drive. On older systems, install it from the OpenMPC Plugin Manager.</div></li>
+        <li><div><strong>Add your ROMs.</strong> Put the five v4.4 EPROM images from a 224 you own in <span class="mono">Content/ROMs/</span>. File names don’t matter; each chip is recognised by its checksum. No ROMs are included, ever.</div></li>
+        <li><div><strong>Load it on a track.</strong> The firmware boots in under a second on a Live III. Until then, audio passes through untouched.</div></li>
+      </ol>
+    </section>
+    <section class="p-sec">
+      <div><p class="lab">Credits</p><h2 class="cond">Notes</h2></div>
+      <p class="measure">Reverbicon 224 is an independent project, not affiliated with or endorsed by Lexicon or Harman. “224” names the instrument it emulates. Source code is on <a class="link" href="https://github.com/sd88me/mpc-vst-reverbicon224" target="_blank" rel="noopener">GitHub</a>.</p>
+    </section>
+    <nav class="pn" aria-label="More plugins"><a href="#catalogue"><span class="lab">← Back to</span><b>Catalogue</b></a><a href="https://github.com/sd88me/mpc-vst-acid303" target="_blank" rel="noopener"><span class="lab">Next on the bench →</span><b>Acid-303</b></a></nav>
+  </div></div>
 </main>
 
-<!-- ============ BRAND BOOK ============ -->
+<!-- ================= BRAND BOOK ================= -->
 <main data-view="brand" hidden>
-  <div class="wrap">
+  <div class="gut"><div class="inner">
     <header class="bb-hero">
-      <p class="eyebrow"><b>●</b> Brand book · v0.1 draft</p>
-      <h1>Precision for the <span class="spirit" style="color:var(--halo)">ineffable.</span></h1>
-      <p class="lede" style="max-width:52ch">How sd88me looks, sounds and names things. Exact engineering meets the deep, hypnotic end of techno and psy culture. Never dark for its own sake, and never cheesy.</p>
+      <p class="lab">Brand book · v1.0</p>
+      <h1 class="cond">Sound made <span style="color:var(--acc-ink)">visible</span></h1>
+      <p class="measure" style="font-size:1.08rem">How SD88ME looks, sounds and names things. Exact engineering meets the deep, hypnotic end of techno and psy culture: schematics on one side, long nights on the other.</p>
     </header>
     <div class="bb">
-      <aside class="toc" aria-label="Sections">
-        <button data-jump="bb-pos">Positioning</button><button data-jump="bb-name">The name</button><button data-jump="bb-logo">Logo &amp; sigils</button><button data-jump="bb-color">Colour</button><button data-jump="bb-type">Type</button><button data-jump="bb-motif">Motifs</button><button data-jump="bb-voice">Voice</button><button data-jump="bb-copy">Copy deck</button><button data-jump="bb-naming">Naming plugins</button>
-      </aside>
+      <aside class="toc" aria-label="Sections"><button data-jump="bb-logo">Logo</button><button data-jump="bb-mark">The mark</button><button data-jump="bb-name">The name</button><button data-jump="bb-color">Colour</button><button data-jump="bb-type">Type</button><button data-jump="bb-motif">Motifs</button><button data-jump="bb-voice">Voice</button><button data-jump="bb-copy">Copy deck</button><button data-jump="bb-naming">Naming plugins</button></aside>
       <div>
-        <section class="bb-sec" id="bb-pos">
-          <h2>Positioning</h2>
-          <p class="quote">The engineer’s rigour, the dancefloor’s trance.</p>
-          <div class="cols2">
-            <div class="pane"><h4>The technical register</h4><ul><li>Schematics, firmware, measured numbers in real units</li><li>Panels drawn like the hardware</li><li>Credits upstream work by name, every time</li><li>Visual cues: scope traces, graticules, datasheets, mono type</li></ul></div>
-            <div class="pane"><h4>The spiritual register</h4><ul><li>Long nights, deep states, ritual, altitude, starlight</li><li>Faded-film colour, light leaks, star trails, halos</li><li>A sense of discovery: things to find and decode</li><li>Visual cues: Cormorant italic, rose and gold, concentric rings</li></ul></div>
-          </div>
-          <p class="measure">The brand lives where the two meet. Every page pairs one hard fact with one feeling. Example: <strong>“3.0 dB from a real 303”</strong> sits beside <span class="spirit" style="font-size:1.15em">“for deep states.”</span></p>
-          <p class="measure"><strong>Audience:</strong> MPC and Force owners who go deep (hackers, beatmakers, live-set techno and psy producers), then desktop producers who care how a machine is modelled.</p>
-        </section>
-
-        <section class="bb-sec" id="bb-name">
-          <h2>The name: keep it, decode it</h2>
-          <div class="verdict"><p class="eyebrow">Recommendation</p><p>Keep <strong>sd88me</strong> as the brand, the handle and the manufacturer string. Don’t rename. Give the name a story instead. It already has three good ones.</p></div>
-          <div class="cols2">
-            <div class="pane yes"><h4>Why keep it</h4><ul>
-              <li>It is already the name on every plugin folder (<span class="mono" style="font-size:.85em">sd88me - VST - …</span>), across the Open MPC catalog, Discord and GitHub. That recognition took a year to build.</li>
-              <li>It is unique. Searching “sd88me” only finds you, which no dictionary word can promise.</li>
-              <li>Underground culture rewards cryptic names: AFX, µ-Ziq, Ø, Autechre. Mystery is on-brand.</li>
-              <li><strong>sd88.me</strong> is a domain hack of the handle itself. It looked unregistered when I checked DNS today (no records found). Grab it first, then check sd88me.com.</li>
-            </ul></div>
-            <div class="pane no"><h4>What a rename would cost</h4><ul>
-              <li>Changing the manufacturer field on every plugin and re-releasing all of them.</li>
-              <li>Two names in the wild for months: old installs, forum posts, catalog history and saved projects would still say sd88me.</li>
-              <li>Folder names change, so installers, the Plugin Manager and upgrade paths need migration work. Test on one device before trusting any host to recall projects across a vendor change.</li>
-              <li>A new name has no search history and no community behind it.</li>
-            </ul></div>
-          </div>
-          <h3>If you do want a second name</h3>
-          <p class="measure">Use it as a <strong>product line under sd88me</strong>, never as a replacement. The handle stays the maker. The manufacturer string stays <span class="mono" style="font-size:.85em">sd88me</span>.</p>
-          <div class="cols3">
-            <div class="pane"><h4>sd88me Editions</h4><p>The paid line. Plain, premium and clear. My pick.</p></div>
-            <div class="pane"><h4>Double Eight</h4><p>Spoken form of “88”. Works for a label or a sample-pack imprint.</p></div>
-            <div class="pane"><h4>Octave Works</h4><p>Nods to the 2:1 ratio in the logo. A good name for desktop plugins, if they ever need their own house.</p></div>
-          </div>
-        </section>
-
         <section class="bb-sec" id="bb-logo">
-          <h2>Logo &amp; sigils</h2>
-          <p class="measure">The wordmark is drawn in one stroke weight, like a scope trace. The <strong>88</strong> is literal: each 8 is the Lissajous figure two tones an octave apart draw on an oscilloscope (x = sin 2t, y = sin t). It glows in phosphor. The letters stay in ink.</p>
-          <div class="logo-stage">
-            <div class="logo-tile d"><img src="brand/sd88me-wordmark-dusk.svg" alt="sd88me wordmark on dusk"><span class="cap">Wordmark · dusk</span></div>
-            <div class="logo-tile l"><img src="brand/sd88me-mark-dawn.svg" alt="sd88me scope mark, dawn" style="max-height:110px"><span class="cap">Mark · dawn</span></div>
-            <div class="logo-tile p"><img src="brand/sd88me-mark-dusk.svg" alt="sd88me scope mark, dusk" style="max-height:110px"><span class="cap" style="color:rgba(255,255,255,.7)">Mark · on sky</span></div>
+          <h2 class="cond">Logo</h2>
+          <p class="measure">SD88ME in Big Shoulders Display 900, with the <strong>88 drawn as four sand rings</strong>. Two rings stacked make an 8, so the square of four is the 88. Each ring has a dense, rough core with grains thrown off it, the way sand settles on a vibrating plate. The core keeps it readable small; the spray shows it is sand when large.</p>
+          <div class="tiles c2">
+            <div class="tile" style="min-height:220px"><img src="brand/logo.svg" alt="SD88ME logo" style="height:110px;width:auto"><span class="lab">Primary · ink on stone</span></div>
+            <div class="tile dk" style="min-height:220px"><img src="brand/logo-cream.svg" alt="SD88ME logo on dark" style="height:110px;width:auto"><span class="lab">Reversed · on warm black</span></div>
+            <div class="tile"><img src="brand/logo-orange.svg" alt="SD88ME logo with orange rings" style="height:80px;width:auto"><span class="lab">Accent · rings in neon orange</span></div>
+            <div class="tile"><div style="display:flex;gap:1.4rem;align-items:center"><img src="brand/logo-nav.svg" alt="" style="height:30px;width:auto"><img src="brand/logo-nav.svg" alt="" style="height:20px;width:auto"></div><span class="lab">Small · the light file for menus and footers</span></div>
           </div>
-          <div class="cols3">
-            <div class="pane"><h4>Clear space</h4><p>Leave the height of one 8 empty on every side. Minimum size: 72 px wide on screen, 18 mm in print.</p></div>
-            <div class="pane"><h4>Lowercase, always</h4><p>Write it <strong>sd88me</strong> in running text: never SD88ME, Sd88me or SD88.me.</p></div>
-            <div class="pane"><h4>Don’t</h4><p>Don’t outline it, add drop shadows, swap the 8s for a typed “88”, or recolour the letters in phosphor.</p></div>
+          <div class="tiles c3">
+            <div class="pane"><b>Clear space</b><p>Leave the height of one ring empty on every side. Minimum size: 90 px wide on screen, 22 mm in print.</p></div>
+            <div class="pane"><b>Capitals, always</b><p>In running text write <strong>SD88ME</strong>. The handle and plugin folders stay lowercase: <span class="mono">sd88me - VST - Name</span>.</p></div>
+            <div class="pane"><b>Don’t</b><p>Don’t replace the rings with a typed 88, outline the letters, add shadows, or colour the letters orange. Only the rings take the accent.</p></div>
           </div>
-          <h3>Sigils: one for every plugin</h3>
-          <p class="measure">Every plugin gets a Lissajous <strong>sigil</strong>: the figure two tones in a chosen ratio draw. It goes on the card, the datasheet, the panel corner and the installer. Pick the ratio for the instrument’s character. A few examples:</p>
-          <div class="sigils" id="sigilGrid"></div>
         </section>
-
+        <section class="bb-sec" id="bb-mark">
+          <h2 class="cond">The mark</h2>
+          <p class="measure">The four rings on their own. Drawn at four sizes: dense sand when large, then bolder and simpler as it shrinks, down to solid rings at favicon size. Always use the smallest file that fits.</p>
+          <div class="tiles c4">
+            <div class="tile"><img src="brand/mark-large.svg" alt="Mark, large" width="130"><span class="lab">Large · hero, print</span></div>
+            <div class="tile"><img src="brand/mark-medium.svg" alt="Mark, medium" width="80"><span class="lab">Medium · 48–120 px</span></div>
+            <div class="tile"><img src="brand/mark-small.svg" alt="Mark, small" width="40"><span class="lab">Small · 24–48 px</span></div>
+            <div class="tile"><img src="brand/mark-favicon.svg" alt="Mark, favicon" width="18"><span class="lab">Favicon · 16 px</span></div>
+            <div class="tile"><img src="brand/favicon.svg" alt="Favicon tile" width="64"><span class="lab">Favicon tile</span></div>
+            <div class="tile"><img src="brand/app-icon.svg" alt="App icon" width="72"><span class="lab">App icon</span></div>
+            <div class="tile or"><img src="brand/stamp.svg" alt="Stamp" style="height:120px;width:auto"><span class="lab" style="color:var(--on-acc)">Stamp · avatars, vinyl</span></div>
+            <div class="tile dk"><img src="brand/seal.svg" alt="Seal" style="height:120px;width:auto"><span class="lab">Seal · stickers, installers</span></div>
+          </div>
+        </section>
+        <section class="bb-sec" id="bb-name">
+          <h2 class="cond">The name</h2>
+          <div class="verdict"><span class="lab">Decision</span><p>Keep <strong>SD88ME</strong> as the brand, the handle and the manufacturer string. Don’t rename. It is already on every plugin folder, the Open MPC catalog, Discord and GitHub, and searching for it only finds you.</p></div>
+          <div class="tiles c3">
+            <div class="pane"><b>S·D·88·ME</b><p>The signature: initials, a birth year, and me.</p></div>
+            <div class="pane"><b class="serif" style="font:400 1.5rem/1 var(--f-serif);color:var(--acc-ink);text-transform:none">sedate me</b><p>The state: the hour where the room stops thinking.</p></div>
+            <div class="pane"><b>8 + 8</b><p>The signal: an octave on a scope draws an 8; two stacked rings make one.</p></div>
+          </div>
+          <p class="measure"><strong>Domain:</strong> <span class="mono">sd88.me</span> is a domain hack of the handle. Register it if it’s free, then point it at this site. A paid line, if needed, is <strong>SD88ME Editions</strong>, never a new name.</p>
+        </section>
         <section class="bb-sec" id="bb-color">
-          <h2>Colour</h2>
-          <p class="measure">Taken from faded film at twilight: lifted shadows, never pure black, split-toned toward rose and sage. <strong>Dusk</strong> is the home look. <strong>Dawn</strong> is its daylight twin, for docs and print. The four signal colours also encode how each plugin is made.</p>
+          <h2 class="cond">Colour</h2>
+          <p class="measure">Stone paper with grain, warm ink, and one neon orange. The orange is for the rings, the sand, buttons on hover, and one highlighted phrase per view. Never for body text on stone: use the deeper orange for text.</p>
           <div class="swatches" id="swatches"></div>
         </section>
-
         <section class="bb-sec" id="bb-type">
-          <h2>Type</h2>
+          <h2 class="cond">Type</h2>
           <div class="typespec">
-            <div><p class="meta"><b>Syne</b>Display · 700/800<br>Headlines, plugin names</p><p style="font-family:var(--font-display);font-weight:700;font-size:var(--s3);letter-spacing:-.03em;line-height:1">Machinemodule 16</p></div>
-            <div><p class="meta"><b>Cormorant Garamond</b>Italic 500 · one phrase per view</p><p class="spirit" style="font-size:var(--s3);line-height:1;color:var(--halo)">for deep states</p></div>
-            <div><p class="meta"><b>Instrument Sans</b>Body · 400/600</p><p style="color:var(--ink-2)">The voice is the TB-303 machine from Lemus, solved as a circuit from Roland’s service-notes schematic.</p></div>
-            <div><p class="meta"><b>Martian Mono</b>Data · labels, specs, readouts</p><p class="mono" style="font-size:.85rem;letter-spacing:.06em">CH1 110.00 HZ · 2:1 · 0.6–70 SEC</p></div>
+            <div><p class="lab meta"><b>Big Shoulders Display</b>900 · headlines, names, the logo</p><p class="cond" style="font-size:2.6rem;margin:0">Circuit-true instruments</p></div>
+            <div><p class="lab meta"><b>Mona Sans</b>400–700 · body, buttons</p><p style="margin:0">The voice is the TB-303 machine from Lemus, solved as a circuit from Roland’s service-notes schematic.</p></div>
+            <div><p class="lab meta"><b>Martian Mono</b>labels, specs, catalogue numbers</p><p class="lab" style="margin:0;font-size:.8rem;color:var(--ink)">SD88-002 · 0.6–70 SEC · GEN1 + GEN2</p></div>
+            <div><p class="lab meta"><b>Instrument Serif Italic</b>one phrase per view</p><p class="serif" style="font-size:2.4rem;margin:0;color:var(--acc-ink)">sedate me</p></div>
           </div>
-          <p class="measure">Syne was made for Synesthésies, a French art centre named after crossed senses. That suits a brand about hearing shapes. Use the italic serif for <strong>one phrase per view</strong>, at most. It works because it’s rare.</p>
         </section>
-
         <section class="bb-sec" id="bb-motif">
-          <h2>Motifs</h2>
-          <div class="cols2">
-            <div class="pane"><h4>Star trails</h4><p>Concentric arcs from a long exposure, turning around a pole. On the site the pole is the oscilloscope. Use them in heroes and covers only.</p></div>
-            <div class="pane"><h4>The scope</h4><p>Round bezel, graticule, phosphor trace. Make it interactive where possible: tap to change interval, play to hear it.</p></div>
-            <div class="pane"><h4>Ridgelines</h4><p>Layered mountain silhouettes fading into the page colour. They stand for altitude, distance and the long view.</p></div>
-            <div class="pane"><h4>Grain &amp; light leak</h4><p>Fine film grain over everything, plus one soft rose leak per view. Keep both subtle: if you notice them, they’re too strong.</p></div>
+          <h2 class="cond">Motifs</h2>
+          <div class="tiles c2">
+            <div class="pane"><b>Sand plate</b><p>Grains on a vibrating plate settle into the mark; tap it and they scatter into a tone’s pattern. The hero of the site. Sound made visible.</p></div>
+            <div class="pane"><b>Sigils</b><p>Every plugin has a Lissajous sigil: the figure two tones in a chosen ratio draw. On cards, the datasheet, the panel corner, and the ring around the plate.</p></div>
+            <div class="pane"><b>Rules and grain</b><p>1.5 px ink rules divide the page like a datasheet. Fine paper grain over everything, never strong enough to notice first.</p></div>
+            <div class="pane"><b>Catalogue numbers</b><p>Plugins are numbered like records: SD88-001, SD88-002. They give the catalogue a label’s sense of order.</p></div>
           </div>
-          <p class="measure">For collage art like your reference piece (pyramids, statues, desert, star trails), keep it to <strong>release covers and social posts</strong>, where it can be loud. Use only images you have rights to. The website stays calmer so the panels can shine.</p>
         </section>
-
         <section class="bb-sec" id="bb-voice">
-          <h2>Voice</h2>
-          <div class="cols3">
-            <div class="pane"><h4>Exact</h4><p>Real numbers and real units. “3.0 dB from 400 notes”, never “incredibly authentic”.</p></div>
-            <div class="pane"><h4>Warm</h4><p>First person and human. Mention the 2 a.m. sessions, the wife, the flowers.</p></div>
-            <div class="pane"><h4>Lightly mystical</h4><p>One evocative line per page, earned by the facts around it. Never stack two.</p></div>
+          <h2 class="cond">Voice</h2>
+          <div class="tiles c3">
+            <div class="pane"><b>Exact</b><p>Real numbers and real units. “3.0 dB from 400 notes”, never “incredibly authentic”.</p></div>
+            <div class="pane"><b>Warm</b><p>First person and human. The 2 a.m. sessions, the wife, the flowers.</p></div>
+            <div class="pane"><b>Lightly mystical</b><p>One evocative line per page, earned by the facts around it. Never two.</p></div>
           </div>
-          <div class="tbl"><table class="voice" style="min-width:560px">
-            <thead><tr><th>Write</th><th>Not</th></tr></thead>
-            <tbody>
-              <tr><td>It runs the 224’s own firmware.</td><td>Legendary reverb, faithfully recreated!</td></tr>
-              <tr><td>You supply the ROM from hardware you own.</td><td>ROM not included (legal reasons).</td></tr>
-              <tr><td>Made for long nights.</td><td>Unleash your sonic journey into the cosmos.</td></tr>
-              <tr><td>The voice comes from Lemus. Thank you.</td><td>Based on open-source code.</td></tr>
-            </tbody>
-          </table></div>
+          <div class="tbl" style="border-top:1.5px solid var(--ink)"><table style="min-width:520px"><thead><tr><th>Write</th><th>Not</th></tr></thead><tbody>
+            <tr><td style="color:var(--ink)">It runs the 224’s own firmware.</td><td>Legendary reverb, faithfully recreated!</td></tr>
+            <tr><td style="color:var(--ink)">You supply the ROM from hardware you own.</td><td>ROM not included (legal reasons).</td></tr>
+            <tr><td style="color:var(--ink)">Made for long nights.</td><td>Unleash your sonic journey into the cosmos.</td></tr>
+            <tr><td style="color:var(--ink)">The voice comes from Lemus. Thank you.</td><td>Based on open-source code.</td></tr>
+          </tbody></table></div>
         </section>
-
         <section class="bb-sec" id="bb-copy">
-          <h2>Copy deck</h2>
-          <h3>Taglines</h3>
+          <h2 class="cond">Copy deck</h2>
           <div class="taglines">
-            <div><span>Circuit-true instruments for deep states.</span><span>Primary · site hero</span></div>
-            <div><span>Precision for the ineffable.</span><span>Brand line · about, merch</span></div>
-            <div><span>Two eights. One for the circuit, one for the cosmos.</span><span>Story line · about</span></div>
-            <div><span>Schematics for the subconscious.</span><span>Playful · social, stickers</span></div>
-            <div><span>Made for long nights.</span><span>Sign-off · footers, emails</span></div>
+            <div><span>Circuit-true instruments for deep states.</span><span class="lab">Primary · site hero</span></div>
+            <div><span>Sound made visible.</span><span class="lab">Brand line · about, merch</span></div>
+            <div><span>Two eights. One for the circuit, one for the cosmos.</span><span class="lab">Story · about</span></div>
+            <div><span>Made for long nights.</span><span class="lab">Sign-off · footers, emails</span></div>
           </div>
-          <div class="cols2">
-            <div class="copyblock"><span class="k">Short bio · 1 line</span><p>sd88me builds circuit-true instruments for the Akai MPC: classic machines rebuilt from schematics and firmware, free and open source.</p><button type="button" data-copy>Copy</button></div>
-            <div class="copyblock"><span class="k">Social bio · 160 chars</span><p>Circuit-true instruments for deep states. MPC / Force plugins from schematics &amp; firmware. Open MPC. Free + open source. ∞∞</p><button type="button" data-copy>Copy</button></div>
-            <div class="copyblock" style="grid-column:1/-1"><span class="k">Long bio · about page, press</span><p>sd88me is a one-person instrument workshop. It began as a username (initials, a birth year, and “me”) and became the name behind more than 25 plugins for Akai’s MPC and Force: a transistor-level TB-303, a Lexicon 224 running its own firmware, a whole Machinedrum in one plugin, and original tools like Crate Digger and Boris Granular. The work sits where exact engineering meets the deep end of techno and psy culture: schematics and service notes on one side, long hypnotic nights on the other. Everything on the MPC is free and open source, built on and around the Open MPC toolchain, and credited to the people whose work it stands on.</p><button type="button" data-copy>Copy</button></div>
+          <div class="tiles c2" style="background:transparent;border:0;gap:1rem">
+            <div class="copyblock"><span class="lab">Short bio</span><p>SD88ME builds circuit-true instruments for the Akai MPC: classic machines rebuilt from schematics and firmware, free and open source.</p><button type="button" data-copy>Copy</button></div>
+            <div class="copyblock"><span class="lab">Social bio · 160 chars</span><p>Circuit-true instruments for deep states. MPC / Force plugins from schematics &amp; firmware. Open MPC. Free + open source.</p><button type="button" data-copy>Copy</button></div>
           </div>
+          <div class="copyblock"><span class="lab">Long bio · about page, press</span><p>SD88ME is a one-person instrument workshop. It began as a username (initials, a birth year, and “me”) and became the name behind more than 20 plugins for Akai’s MPC and Force: a transistor-level TB-303, a Lexicon 224 running its own firmware, a whole Machinedrum in one plugin, and original tools like Crate Digger and Boris Granular. The work sits where exact engineering meets the deep end of techno and psy culture. Everything on the MPC is free and open source, built on and around the Open MPC toolchain, and credited to the people whose work it stands on.</p><button type="button" data-copy>Copy</button></div>
         </section>
-
         <section class="bb-sec" id="bb-naming" style="border-bottom:0">
-          <h2>Naming plugins</h2>
+          <h2 class="cond">Naming plugins</h2>
           <p class="measure">You already have a naming voice: <strong>8W8, 6W6, CW-78, Reverbicon, Osirus, Welle, Profit-8</strong>. Keep it. It stays clear of trademarks and rewards people who know the gear.</p>
-          <div class="cols3">
-            <div class="pane"><h4>Emulations</h4><p>Wink at the model: swap letters for symbols (8W8), translate it (Welle), or blend words (Reverbicon). Never use the maker’s name in the product name.</p></div>
-            <div class="pane"><h4>Originals</h4><p>Give them a person’s name or a place: Boris, Clementine, Maze. Short, warm and easy to say on a stream.</p></div>
-            <div class="pane"><h4>Folder string</h4><p>Always <span class="mono" style="font-size:.85em">sd88me - VST - Name</span>. It is the brand’s most-seen typography, so keep it consistent forever.</p></div>
+          <div class="tiles c3">
+            <div class="pane"><b>Emulations</b><p>Wink at the model: swap letters for symbols (8W8), translate it (Welle) or blend words (Reverbicon). Never use the maker’s name.</p></div>
+            <div class="pane"><b>Originals</b><p>A person’s name or a place: Boris, Clementine, Maze. Short, warm, easy to say on a stream.</p></div>
+            <div class="pane"><b>Catalogue</b><p>Every release gets the next number: SD88-023, SD88-024. Folder string stays <span class="mono">sd88me - VST - Name</span>.</p></div>
           </div>
         </section>
       </div>
     </div>
-  </div>
+  </div></div>
 </main>
 
-<footer>
-  <div class="wrap">
-    <div>
-      <a class="logo" href="#top" data-go="home" aria-label="sd88me home"><svg viewBox="0 0 233 64" style="height:30px" aria-hidden="true"><use href="#wm"/></svg></a>
-      <p class="say">Made for long nights.</p>
-    </div>
-    <div><h4>Plugins</h4><ul><li><a href="#plugins">All plugins</a></li><li><a href="#editions">Editions</a></li><li><a href="https://open-mpc.github.io/" target="_blank" rel="noopener">Open MPC catalog</a></li></ul></div>
+<footer class="gut">
+  <div class="inner">
+    <div><a href="#top" aria-label="SD88ME home"><img src="brand/logo-nav.svg" alt="SD88ME" style="height:36px;width:auto"></a><p class="say">Made for long nights.</p></div>
+    <div><h4>Plugins</h4><ul><li><a href="#catalogue">Catalogue</a></li><li><a href="#editions">Editions</a></li><li><a href="https://open-mpc.github.io/" target="_blank" rel="noopener">Open MPC catalog</a></li></ul></div>
     <div><h4>Elsewhere</h4><ul><li><a href="https://github.com/sd88me" target="_blank" rel="noopener">GitHub</a></li><li><a href="https://discord.gg/sRRysZSgu3" target="_blank" rel="noopener">Discord</a></li><li><a href="https://ko-fi.com/sd88me" target="_blank" rel="noopener">Ko-fi</a></li></ul></div>
     <div><h4>About</h4><ul><li><a href="#name">The name</a></li><li><a href="#brand" data-route="brand">Brand book</a></li><li><a href="#lab">Lab</a></li></ul></div>
     <div class="legal">
-      <p>Built on the work of others, with thanks: Lemus, gearmulator (dsp56300), Dexed, Airwindows (Chris Johnson), Vital (Matt Tytel), mo0kid, shnolk, the MockbaMod community and everyone in Open MPC.</p>
-      <p>Roland, Lexicon, Elektron, Access, Waldorf, Korg, Sequential and Akai are trademarks of their owners. Their names appear only to describe what a plugin emulates. No ROMs or firmware are distributed. © 2026 sd88me.</p>
+      <p style="margin:0">Built on the work of others, with thanks: Lemus, gearmulator (dsp56300), Dexed, Airwindows (Chris Johnson), Vital (Matt Tytel), mo0kid, shnolk, the MockbaMod community and everyone in Open MPC.</p>
+      <p style="margin:0">Roland, Lexicon, Elektron, Access, Waldorf, Korg, Sequential and Akai are trademarks of their owners. Their names appear only to describe what a plugin emulates. No ROMs or firmware are distributed. © 2026 SD88ME.</p>
     </div>
   </div>
 </footer>
 
 <script>
 (()=>{
-const TAU=Math.PI*2, root=document.documentElement;
-const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-const css=n=>getComputedStyle(root).getPropertyValue(n).trim();
+const TAU=Math.PI*2,reduce=matchMedia('(prefers-reduced-motion: reduce)').matches,dpr=Math.min(devicePixelRatio||1,2);
+const liss=(a,b,n=200)=>{let d='';for(let i=0;i<=n;i++){const t=TAU*i/n;d+=(i?'L':'M')+(20+16*Math.sin(a*t+(a===b?Math.PI/4:Math.PI/(2*b+1)))).toFixed(2)+','+(20-16*Math.sin(b*t)).toFixed(2)}return d+'Z'};
+const sig=r=>`<svg viewBox="0 0 40 40" aria-hidden="true"><path d="${liss(r[0],r[1])}" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>`;
 
-/* ---------- Lissajous helpers ---------- */
-function lissPath(a,b,cx,cy,rx,ry,ph=0,n=260){
-  let d='';for(let i=0;i<=n;i++){const t=TAU*i/n;const x=cx+rx*Math.sin(a*t+ph),y=cy-ry*Math.sin(b*t);d+=(i?'L':'M')+x.toFixed(2)+','+y.toFixed(2)}return d+'Z';
-}
-function sigilSVG(svg,[a,b]){svg.innerHTML=`<path d="${lissPath(a,b,20,20,16,16,a===b?Math.PI/4:Math.PI/(2*b+1))}"/>`;svg.classList.add('sigil')}
-document.querySelectorAll('svg[data-ratio]').forEach(s=>sigilSVG(s,s.dataset.ratio.split(',').map(Number)));
-
-/* ---------- Data (from each repo's README) ---------- */
+/* ---- catalogue data (from each repo's README) ---- */
 const M={circuit:'Circuit',firmware:'Firmware',port:'Port',original:'Original'};
-const featured=[
- {n:'Acid-303',k:'instrument',m:'circuit',r:[3,1],img:'acid303',l:'A TB-303 solved transistor by transistor from the service notes, with every Devil Fish mod switchable.',p:'Gen1 + Gen2',repo:'mpc-vst-acid303'},
- {n:'Reverbicon 224',k:'effect',m:'firmware',r:[5,4],img:'reverbicon224',l:'The Lexicon 224’s own v4.4 firmware on an emulated 8080, with its red LED readout.',p:'Gen1 + Gen2',route:'reverbicon-224'},
- {n:'Machinemodule',k:'drums',m:'firmware',r:[4,3],img:'machinemodule',l:'The Machinedrum SPS-1 UW engine. All 16 tracks play from one plugin instance.',p:'Gen1 + Gen2',repo:'mpc-vst-machinedrum'},
- {n:'TR-MPC',k:'drums',m:'circuit',r:[5,3],img:'8w8',l:'Four circuit-modelled drum machines (8W8, 6W6, CW-78, 9W9) and a 16-slot kit of all 49 voices.',p:'MPC OS',repo:'mpc-vst-TR-MPC'},
- {n:'Mono-101',k:'instrument',m:'circuit',r:[5,2],img:'mono101',l:'An SH-101 solved from the schematic, with a Circuit Bent page of new circuits and the original 40 sounds.',p:'MPC OS',repo:'mpc-vst-mono101'},
- {n:'Monomodule',k:'instrument',m:'firmware',r:[7,4],img:'monomodule',l:'The Monomachine’s synth engine, chip-accurate: 15 synth machines, plus 7 effect machines as an FX.',p:'Gen1 + Gen2',repo:'mpc-vst-monomodule'},
- {n:'Mini-JV',k:'instrument',m:'firmware',r:[6,5],img:'jv880',l:'The JV-880 ROM engine with its own reverb and chorus, behind a backlit rack-style screen.',p:'Gen1 + Gen2',repo:'mpc-vst-jv880'},
- {n:'Boris Granular',k:'effect',m:'original',r:[7,3],img:'boris',l:'Up to 24 grains over a 10-second buffer, tempo-synced to the MPC, with freeze and 22 presets.',p:'MPC OS',repo:'mpc-vst-boris'},
- {n:'Crate Digger',k:'tool',m:'original',r:[9,8],img:'cratedigger',l:'Digs Discogs by genre, decade and country, then streams the record into an MPC track to sample.',p:'MPC OS',repo:'mpc-vst-cratedigger'},
+const FEATURED=[
+ {n:'Acid-303',k:'instrument',m:'circuit',r:[3,1],img:'acid303',l:'A TB-303 solved transistor by transistor from the service notes, with every Devil Fish mod switchable.',repo:'mpc-vst-acid303'},
+ {n:'Reverbicon 224',k:'effect',m:'firmware',r:[5,4],img:'reverbicon224',l:'The Lexicon 224’s own v4.4 firmware on an emulated 8080, with its red LED readout.',route:'reverbicon-224'},
+ {n:'Machinemodule',k:'drums',m:'firmware',r:[4,3],img:'machinemodule',l:'The Machinedrum SPS-1 UW engine. All 16 tracks play from one plugin instance.',repo:'mpc-vst-machinedrum'},
+ {n:'TR-MPC',k:'drums',m:'circuit',r:[5,3],img:'8w8',l:'Four circuit-modelled drum machines (8W8, 6W6, CW-78, 9W9) and a 16-slot kit of all 49 voices.',repo:'mpc-vst-TR-MPC'},
+ {n:'Mono-101',k:'instrument',m:'circuit',r:[5,2],img:'mono101',l:'An SH-101 solved from the schematic, with a Circuit Bent page and the original 40 sounds.',repo:'mpc-vst-mono101'},
+ {n:'Monomodule',k:'instrument',m:'firmware',r:[7,4],img:'monomodule',l:'The Monomachine’s synth engine, chip-accurate: 15 synth machines, plus 7 effect machines as an FX.',repo:'mpc-vst-monomodule'},
+ {n:'Mini-JV',k:'instrument',m:'firmware',r:[6,5],img:'jv880',l:'The JV-880 ROM engine with its own reverb and chorus, behind a backlit rack-style screen.',repo:'mpc-vst-jv880'},
+ {n:'Boris Granular',k:'effect',m:'original',r:[7,3],img:'boris',l:'Up to 24 grains over a 10-second buffer, tempo-synced to the MPC, with freeze and 22 presets.',repo:'mpc-vst-boris'},
+ {n:'Crate Digger',k:'tool',m:'original',r:[9,8],img:'cratedigger',l:'Digs Discogs by genre, decade and country, then streams the record into an MPC track to sample.',repo:'mpc-vst-cratedigger'},
 ];
-const index=[
+const INDEX=[
  {n:'Osirus',k:'instrument',m:'firmware',r:[7,5],l:'Access Virus A, B and C firmware on gearmulator’s DSP56300 emulation (Gen2)',repo:'mpc-vst-osirus'},
  {n:'Welle',k:'instrument',m:'firmware',r:[8,5],l:'Waldorf Wave: OS 1.700 on emulated 68000s, on mo0kid’s model of the voice circuits',repo:'mpc-vst-welle'},
  {n:'JE-8086',k:'instrument',m:'firmware',r:[8,3],l:'JP-8000 firmware on gearmulator’s chip emulation',repo:'mpc-vst-je8086'},
@@ -902,151 +651,54 @@ const index=[
  {n:'Acid',k:'sequencer',m:'original',r:[3,1],l:'Generative 303-style bassline sequencer',repo:'mpc-vst-acid'},
  {n:'Maze',k:'sequencer',m:'original',r:[6,1],l:'Two generative 8-step sequencers quantised to a scale',repo:'mpc-vst-maze'},
 ];
-const all=[...featured,...index];
-document.getElementById('plugCount').innerHTML=all.length+'+<small>plugins</small>';
+const ALL=[...FEATURED,...INDEX];ALL.forEach((p,i)=>p.cat='SD88-'+String(i+1).padStart(3,'0'));
+document.getElementById('count').textContent=ALL.length;
+document.getElementById('cards').innerHTML=FEATURED.map(p=>{const href=p.route?'#'+p.route:'https://github.com/sd88me/'+p.repo;const ext=p.route?`data-route="${p.route}"`:'target="_blank" rel="noopener"';
+  return `<a class="card" href="${href}" ${ext} data-kind="${p.k}"><figure><img src="img/${p.img}.webp" alt="${p.n} on an MPC touchscreen" width="960" height="471" loading="lazy"></figure><div class="cb"><div class="ct lab"><span>${p.cat}</span><span>${M[p.m]} · ${p.k}</span></div><h3>${p.n}${sig(p.r)}</h3><p>${p.l}</p><span class="go">${p.route?'Datasheet →':'Free · source on GitHub →'}</span></div></a>`}).join('');
+document.getElementById('index').innerHTML=INDEX.map(p=>`<tr data-kind="${p.k}"><td class="nm">${sig(p.r)}${p.n}</td><td><span class="cat">${p.cat}</span></td><td>${p.l}</td><td>${M[p.m]}</td><td><a href="https://github.com/sd88me/${p.repo}" target="_blank" rel="noopener">GitHub →</a></td></tr>`).join('');
+const band=ALL.map(p=>`<div class="band-item">${sig(p.r)}<span>${p.n}</span></div>`).join('');document.getElementById('band').innerHTML=band+band;
+const KINDS=[['all','All'],['instrument','Instruments'],['drums','Drums'],['effect','Effects'],['sequencer','Sequencers'],['tool','Tools']];
+const fb=document.getElementById('filters');
+fb.innerHTML=KINDS.map(([k,l])=>`<button type="button" data-k="${k}" aria-pressed="${k==='all'}">${l}<span class="n">${k==='all'?ALL.length:ALL.filter(p=>p.k===k).length}</span></button>`).join('');
+fb.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;const k=b.dataset.k;fb.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b));document.querySelectorAll('[data-kind]').forEach(el=>el.hidden=!(k==='all'||el.dataset.kind===k))});
 
-/* ---------- Cards ---------- */
-const grid=document.getElementById('grid');
-const sig=r=>`<svg class="sigil" viewBox="0 0 40 40" aria-hidden="true"><path d="${lissPath(r[0],r[1],20,20,16,16,r[0]===r[1]?Math.PI/4:Math.PI/(2*r[1]+1))}"/></svg>`;
-grid.innerHTML=featured.map(p=>{
-  const href=p.route?`#${p.route}`:`https://github.com/sd88me/${p.repo}`;
-  const ext=p.route?`data-route="${p.route}"`:'target="_blank" rel="noopener"';
-  return `<a class="card" href="${href}" ${ext} data-kind="${p.k}">
-   <figure><img src="img/${p.img}.webp" alt="${p.n} on an MPC touchscreen" width="960" height="471" loading="lazy"></figure>
-   <div class="body"><div class="top"><span class="chip m-${p.m}">${M[p.m]}</span><span class="m-${p.m}">${sig(p.r)}</span></div>
-   <h3>${p.n}</h3><p>${p.l}</p>
-   <div class="foot"><span>${p.k} · ${p.p}</span><span>${p.route?'Datasheet →':'Free · source →'}</span></div></div></a>`;
-}).join('');
-document.getElementById('index').innerHTML=index.map(p=>`<tr data-kind="${p.k}"><td><span class="m-${p.m}">${sig(p.r)}</span>${p.n}</td><td>${p.l}</td><td><span class="chip m-${p.m}">${M[p.m]}</span></td><td style="text-transform:capitalize">${p.k}</td><td><a href="https://github.com/sd88me/${p.repo}" target="_blank" rel="noopener">GitHub →</a></td></tr>`).join('');
+/* ---- brand book swatches & copy ---- */
+document.getElementById('swatches').innerHTML=[['Stone','#ECE8E1','Page'],['Paper','#F5F1EA','Raised surfaces'],['Ink','#17140F','Text, rules'],['Neon orange','#FF5A1A','Rings, sand, accents'],['Deep orange','#E24A0C','Accent text on stone'],['Warm black','#1F1712','Sand plate, panels'],['Sand glow','#FFD08A','Highlight grains']].map(([n,h,u])=>`<div class="sw"><i style="background:${h}"></i><div><b>${n}</b><span>${h}</span><span>${u}</span></div></div>`).join('');
+document.addEventListener('click',e=>{const b=e.target.closest('[data-copy]');if(!b)return;const p=b.parentElement.querySelector('p');const done=()=>{b.textContent='Copied';setTimeout(()=>b.textContent='Copy',1600)};
+  const sel=()=>{const r=document.createRange();r.selectNodeContents(p);const s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent='Selected'};
+  try{navigator.clipboard.writeText(p.textContent).then(done,sel)}catch(_){sel()}});
+document.getElementById('signup').addEventListener('submit',e=>{e.preventDefault();document.getElementById('formnote').textContent='Sign-ups open with the first Edition. Connect this form to a mailing service to collect them.'});
 
-/* ---------- Filters ---------- */
-const kinds=[['all','All'],['instrument','Instruments'],['drums','Drums'],['effect','Effects'],['sequencer','Sequencers'],['tool','Tools']];
-const fbox=document.getElementById('filters');
-fbox.innerHTML=kinds.map(([k,l])=>`<button type="button" data-k="${k}" aria-pressed="${k==='all'}">${l}<span class="count">${k==='all'?all.length:all.filter(p=>p.k===k).length}</span></button>`).join('');
-fbox.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;const k=b.dataset.k;
-  fbox.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b));
-  document.querySelectorAll('[data-kind]').forEach(el=>el.hidden=!(k==='all'||el.dataset.kind===k));
-});
+/* ---- sand plate: grains settle into the four rings; tap for a tone ---- */
+const cv=document.getElementById('sand'),cx=cv.getContext('2d'),G=9000,gr=new Float32Array(G*2);
+for(let i=0;i<G*2;i++)gr[i]=Math.random()*1.9-.95;
+const RC=[[-.36,-.36],[.36,-.36],[-.36,.36],[.36,.36]];
+const ringsF=(x,y)=>{let F=9;for(let i=0;i<4;i++){const dx=x-RC[i][0],dy=y-RC[i][1],a=Math.atan2(dy,dx);const r=.43*(1+.035*Math.sin(3*a+i)+.02*Math.sin(5*a+2*i));const d=Math.abs(Math.hypot(dx,dy)-r);if(d<F)F=d}return F};
+const chl=(x,y,n,m)=>{const u=(x+1)/2,v=(y+1)/2;return Math.abs(Math.cos(n*Math.PI*u)*Math.cos(m*Math.PI*v)-Math.cos(m*Math.PI*u)*Math.cos(n*Math.PI*v))};
+let field=ringsF,gain=.16,timer=null;const capL=document.getElementById('capL');
+const scatter=a=>{for(let i=0;i<G*2;i++)gr[i]+=(Math.random()-.5)*a};
+function step(){for(let i=0;i<G;i++){let x=gr[i*2],y=gr[i*2+1];const s=gain*field(x,y)+.0011;x+=(Math.random()-.5)*s;y+=(Math.random()-.5)*s;const r=x*x+y*y;if(r>.93){const q=Math.sqrt(.93/r);x*=q;y*=q}gr[i*2]=x;gr[i*2+1]=y}}
+const MODES=[[2,5],[1,4],[3,7],[2,6]];let mi=0;
+document.getElementById('plate').addEventListener('click',()=>{const [n,m]=MODES[mi++%MODES.length];field=(x,y)=>chl(x,y,n,m);gain=.035;scatter(.3);capL.innerHTML=`A tone · mode <b>(${n}, ${m})</b>`;clearTimeout(timer);
+  timer=setTimeout(()=>{field=ringsF;gain=.16;scatter(.25);capL.textContent='Sand settling into the mark'},5000);if(reduce){for(let k=0;k<220;k++)step();draw(0)}});
+const RING=ALL.slice(0,16).map(p=>p.r);
+function draw(t){const r=cv.getBoundingClientRect();if(!r.width)return;if(cv.width!==Math.round(r.width*dpr)){cv.width=r.width*dpr;cv.height=r.height*dpr}
+  const w=cv.width,h=cv.height,S=w*.8,ox=(w-S)/2,oy=(h-S)/2,p=Math.max(1,dpr*1.2);cx.clearRect(0,0,w,h);
+  const R=w*.42,s=w*.026,rot=t/1000*.03;cx.lineJoin='round';cx.strokeStyle='#FF7A2A';cx.globalAlpha=.55;cx.lineWidth=dpr*1.1;
+  RING.forEach(([a,b],i)=>{const an=rot+TAU*i/RING.length,px=w/2+R*Math.cos(an),py=h/2+R*Math.sin(an);cx.beginPath();for(let j=0;j<=90;j++){const tt=TAU*j/90,lx=s*Math.sin(a*tt+t/3000),ly=s*Math.sin(b*tt),x=px+lx*Math.cos(an)-ly*Math.sin(an),y=py+lx*Math.sin(an)+ly*Math.cos(an);j?cx.lineTo(x,y):cx.moveTo(x,y)}cx.stroke()});
+  cx.globalAlpha=1;cx.fillStyle='#FF7A2A';for(let i=0;i<G;i++){if(i%9===0)continue;cx.fillRect(ox+(gr[i*2]+1)/2*S-p/2,oy+(gr[i*2+1]+1)/2*S-p/2,p,p)}
+  cx.fillStyle='#FFD08A';for(let i=0;i<G;i+=9)cx.fillRect(ox+(gr[i*2]+1)/2*S-p/2,oy+(gr[i*2+1]+1)/2*S-p/2,p,p)}
+for(let k=0;k<300;k++)step();
+let vis=true;new IntersectionObserver(es=>es.forEach(e=>vis=e.isIntersecting)).observe(cv);
+(function loop(t){if(vis&&!document.hidden&&!document.querySelector('[data-view="home"]').hidden){if(!reduce){for(let k=0;k<4;k++)step()}draw(reduce?0:t)}requestAnimationFrame(loop)})(0);
 
-/* ---------- Brand book: sigils & swatches ---------- */
-const sg=document.getElementById('sigilGrid');
-const ivn={'1,1':'unison','2,1':'octave','3,2':'fifth','4,3':'fourth','5,4':'major third','6,5':'minor third','3,1':'twelfth','5,3':'major sixth'};
-sg.innerHTML=featured.slice(0,6).concat(index.slice(7,9)).map(p=>`<div><span class="m-${p.m}" style="display:contents">${sig(p.r).replace('class="sigil"','class="sigil" style="width:54px;height:54px"')}</span><b>${p.n}</b><small>${p.r.join(':')}${ivn[p.r.join(',')]?' · '+ivn[p.r.join(',')]:''}</small></div>`).join('');
-const sw=[['Dusk','--ground','#1F1A2C','Home ground'],['Dusk raised','--ground-2','#282139','Cards, panels'],['Bone','--ink','#F1E8DA','Text on dusk'],['Phosphor','--phos','#C9E27F','Scope trace · Circuit'],['Halo','--halo','#F2A3C6','Spirit accent · Original'],['Star gold','--gold','#F6D88E','Highlights · Firmware'],['Sand','--sand','#EDC79A','Warmth · Port'],['Dawn','—','#F0EAEF','Daylight ground'],['Dawn ink','—','#231C31','Text on dawn']];
-document.getElementById('swatches').innerHTML=sw.map(([n,t,h,u])=>`<div class="sw"><i style="background:${h}"></i><div><b>${n}</b><span>${h}</span><span>${u}</span></div></div>`).join('');
-
-/* ---------- Copy buttons ---------- */
-document.addEventListener('click',e=>{const b=e.target.closest('[data-copy]');if(!b)return;const t=b.parentElement.querySelector('p').textContent;
-  const done=()=>{b.textContent='Copied';setTimeout(()=>b.textContent='Copy',1600)};
-  try{navigator.clipboard.writeText(t).then(done,()=>{selectText(b.parentElement.querySelector('p'));b.textContent='Selected'})}catch(_){selectText(b.parentElement.querySelector('p'))}
-});
-function selectText(el){const r=document.createRange();r.selectNodeContents(el);const s=getSelection();s.removeAllRanges();s.addRange(r)}
-
-/* ---------- Signup (prototype) ---------- */
-document.getElementById('signup').addEventListener('submit',e=>{e.preventDefault();document.getElementById('formnote').textContent='Prototype: connect this form to Buttondown or Mailchimp to collect sign-ups.'});
-
-/* ---------- Theme ---------- */
-const themeBtn=document.getElementById('themeBtn'),themeLbl=document.getElementById('themeLbl');
-const isDark=()=>root.dataset.theme?root.dataset.theme==='dark':!matchMedia('(prefers-color-scheme: light)').matches;
-function syncTheme(){themeLbl.textContent=isDark()?'Dusk':'Dawn';readColors()}
-try{const s=localStorage.getItem('sd88-theme');if(s)root.dataset.theme=s}catch(_){}
-themeBtn.addEventListener('click',()=>{root.dataset.theme=isDark()?'light':'dark';try{localStorage.setItem('sd88-theme',root.dataset.theme)}catch(_){}syncTheme()});
-matchMedia('(prefers-color-scheme: light)').addEventListener('change',syncTheme);
-
-/* ---------- Sky: star trails around the scope + ridgelines ---------- */
-const sky=document.getElementById('sky'),sx=sky.getContext('2d'),hero=document.getElementById('hero'),scopeBtn=document.getElementById('scopeBtn');
-let C={},W=0,H=0,dpr=1,pole={x:0,y:0},stars=[],ridges=[],t0=performance.now(),rot=0,heroVisible=true;
-function rand(seed){return()=>{seed=(seed*1664525+1013904223)%4294967296;return seed/4294967296}}
-function readColors(){C={gold:css('--gold'),halo:css('--halo'),phos:css('--phos'),ink:css('--ink'),sand:css('--sand'),r1:css('--ridge-1'),r2:css('--ridge-2'),r3:css('--ridge-3'),dark:isDark()};if(reduce)drawSky(1)}
-function sizeSky(){
-  dpr=Math.min(devicePixelRatio||1,2);const r=hero.getBoundingClientRect();W=r.width;H=r.height;sky.width=W*dpr;sky.height=H*dpr;sx.setTransform(dpr,0,0,dpr,0,0);
-  const s=scopeBtn.getBoundingClientRect();pole={x:s.left-r.left+s.width/2,y:s.top-r.top+s.height/2};
-  const R=Math.hypot(Math.max(pole.x,W-pole.x),Math.max(pole.y,H-pole.y));const rnd=rand(88);
-  const palette=['gold','gold','ink','ink','ink','halo','halo','sand','phos'];
-  stars=Array.from({length:Math.round(Math.min(620,W*.5))},()=>{const r=s.width*.62+Math.pow(rnd(),.8)*R;return{r,a:rnd()*TAU,span:.18+rnd()*.85,w:.35+rnd()*rnd()*1.6,c:palette[Math.floor(rnd()*palette.length)],o:.25+rnd()*.6}});
-  ridges=[0,1,2].map(i=>{const pts=[],base=H*(.70+i*.085),amp=H*(.11-i*.025),f=rand(8+i*31);const k=[f()*TAU,f()*TAU,f()*TAU];
-    for(let x=0;x<=W+8;x+=8){const u=x/W;pts.push([x,base-amp*(.55*Math.sin(u*(3+i)*1.3+k[0])+.3*Math.sin(u*(9+i*2)+k[1])+.15*Math.sin(u*23+k[2])+.2*Math.abs(Math.sin(u*5.5+k[1])))])}return pts});
-}
-function drawSky(grow){
-  sx.clearRect(0,0,W,H);sx.lineCap='round';
-  const tx=W*.52;for(const s of stars){const mx=pole.x+s.r*Math.cos(s.a+rot-s.span*grow/2);const fade=W<860?.55:(mx<tx?.28+.72*Math.max(0,mx/tx)**3:1);sx.globalAlpha=s.o*fade*(C.dark?1:.6);sx.strokeStyle=C[s.c];sx.lineWidth=s.w;sx.beginPath();const e=s.a+rot;sx.arc(pole.x,pole.y,s.r,e-s.span*grow,e);sx.stroke()}
-  sx.globalAlpha=1;
-  [C.r1,C.r2,C.r3].forEach((col,i)=>{const p=ridges[i];sx.beginPath();sx.moveTo(0,H);p.forEach(([x,y])=>sx.lineTo(x,y));sx.lineTo(W,H);sx.closePath();
-    const g=sx.createLinearGradient(0,H*.55,0,H);g.addColorStop(0,col);g.addColorStop(1,C.r3);sx.fillStyle=g;sx.fill()});
-}
-function skyLoop(now){
-  if(heroVisible&&!document.hidden){const el=(now-t0)/1000;const grow=Math.min(1,1-Math.pow(1-Math.min(el/4.5,1),3));rot+=0.00028;drawSky(.04+grow*.96)}
-  requestAnimationFrame(skyLoop);
-}
-
-/* ---------- Scope ---------- */
-const sc=document.getElementById('scope'),cx=sc.getContext('2d');
-const intervals=[[2,1,'the octave'],[3,2,'the fifth'],[4,3,'the fourth'],[5,4,'the major third'],[3,1,'the twelfth'],[1,1,'unison']];
-let iv=0,phase=0,last=performance.now(),F1=110,DET=.015;
-function sizeScope(){const r=sc.getBoundingClientRect();sc.width=r.width*dpr;sc.height=r.height*dpr}
-function drawScope(){
-  const w=sc.width,h=sc.height,R=w*.3;const [a,b]=intervals[iv];
-  cx.globalCompositeOperation='source-over';cx.clearRect(0,0,w,h);
-  cx.lineJoin='round';cx.lineCap='round';
-  const trace=(width,alpha,blur,ph)=>{cx.beginPath();for(let i=0;i<=600;i++){const t=TAU*i/600;const x=w/2+R*Math.sin(a*t+ph),y=h/2-R*Math.sin(b*t);i?cx.lineTo(x,y):cx.moveTo(x,y)}
-    cx.strokeStyle=C.phosScope;cx.globalAlpha=alpha;cx.lineWidth=width;cx.shadowColor=C.phosScope;cx.shadowBlur=blur;cx.stroke()};
-  trace(dpr*1.2,.18,0,phase-.18);trace(dpr*1.2,.32,0,phase-.08);
-  trace(dpr*7,.16,dpr*22,phase);trace(dpr*2.2,1,dpr*8,phase);
-  // beam
-  const tb=(performance.now()/1000*1.3)%1*TAU;const bx=w/2+R*Math.sin(a*tb+phase),by=h/2-R*Math.sin(b*tb);
-  cx.globalAlpha=1;cx.shadowBlur=dpr*18;cx.fillStyle='#F6FFE0';cx.beginPath();cx.arc(bx,by,dpr*2.6,0,TAU);cx.fill();cx.shadowBlur=0;
-}
-function scopeLoop(now){const dt=Math.min(.05,(now-last)/1000);last=now;if(heroVisible&&!document.hidden){if(!reduce)phase+=TAU*DET*dt;drawScope()}requestAnimationFrame(scopeLoop)}
-function setReadout(){const [a,b,name]=intervals[iv];const f2=F1*a/b+DET;document.getElementById('f1').textContent=F1.toFixed(2);document.getElementById('f2').textContent=f2.toFixed(2);document.getElementById('ratio').textContent=a+':'+b;document.getElementById('ivl').textContent=name}
-scopeBtn.addEventListener('click',()=>{iv=(iv+1)%intervals.length;setReadout();if(audio)retune();if(reduce)drawScope()});
-
-/* ---------- Audio: hear the interval ---------- */
-let audio=null;const listenBtn=document.getElementById('listenBtn'),listenLbl=document.getElementById('listenLbl');
-function retune(){const [a,b]=intervals[iv];const t=audio.ctx.currentTime;audio.o1.frequency.setTargetAtTime(F1,t,.08);audio.o2.frequency.setTargetAtTime(F1*a/b+DET,t,.08)}
-listenBtn.addEventListener('click',async()=>{
-  try{
-    if(!audio){const AC=window.AudioContext||window.webkitAudioContext;const ctx=new AC();const g=ctx.createGain();g.gain.value=0;const lp=ctx.createBiquadFilter();lp.type='lowpass';lp.frequency.value=1800;
-      const o1=ctx.createOscillator(),o2=ctx.createOscillator();o1.type=o2.type='sine';const g1=ctx.createGain(),g2=ctx.createGain();g1.gain.value=.55;g2.gain.value=.4;
-      o1.connect(g1).connect(lp);o2.connect(g2).connect(lp);lp.connect(g).connect(ctx.destination);o1.start();o2.start();audio={ctx,g,o1,o2,on:false};retune()}
-    await audio.ctx.resume();audio.on=!audio.on;const t=audio.ctx.currentTime;audio.g.gain.cancelScheduledValues(t);audio.g.gain.setTargetAtTime(audio.on?.09:0,t,audio.on?.6:.25);
-    listenBtn.setAttribute('aria-pressed',audio.on);listenLbl.textContent=audio.on?'Stop':'Hear it';
-  }catch(err){listenLbl.textContent='Audio unavailable'}
-});
-
-/* ---------- Edition card canvas: slow rings ---------- */
-const ed=document.getElementById('edCanvas'),ex=ed.getContext('2d');
-function drawEd(t){const r=ed.getBoundingClientRect();if(ed.width!==Math.round(r.width*dpr)){ed.width=r.width*dpr;ed.height=r.height*dpr}
-  const w=ed.width,h=ed.height;ex.clearRect(0,0,w,h);const g=ex.createRadialGradient(w*.8,h*.2,0,w*.8,h*.2,w*.9);g.addColorStop(0,'#5A3A63');g.addColorStop(.5,'#2A2038');g.addColorStop(1,'#15121E');ex.fillStyle=g;ex.fillRect(0,0,w,h);
-  for(let i=1;i<40;i++){const rr=i*w*.028;ex.beginPath();ex.strokeStyle=i%7===0?'rgba(246,216,142,.5)':'rgba(237,230,218,.08)';ex.lineWidth=dpr*(i%7===0?1.2:.8);const s=(t/9000)*(i%2?1:-1)+i;ex.arc(w*.8,h*.2,rr,s,s+TAU*.72);ex.stroke()}
-  ex.save();ex.translate(w*.8,h*.2);ex.strokeStyle='rgba(242,163,198,.9)';ex.lineWidth=dpr*1.6;ex.shadowColor='rgba(242,163,198,.8)';ex.shadowBlur=dpr*14;ex.beginPath();
-  for(let i=0;i<=400;i++){const tt=TAU*i/400;const x=w*.065*Math.sin(3*tt+t/4000),y=-w*.065*Math.sin(2*tt);i?ex.lineTo(x,y):ex.moveTo(x,y)}ex.stroke();ex.restore();
-}
-let edVisible=false;new IntersectionObserver(es=>es.forEach(e=>edVisible=e.isIntersecting)).observe(ed);
-(function edLoop(t){if(edVisible&&!document.hidden)drawEd(reduce?0:t);requestAnimationFrame(edLoop)})(0);
-
-/* ---------- Reveal ---------- */
-const rvs=[...document.querySelectorAll('.rv')];
-if(!reduce&&'IntersectionObserver' in window){const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.remove('pre');io.unobserve(e.target)}}),{rootMargin:'0px 0px -8% 0px'});
-  rvs.forEach(el=>{const r=el.getBoundingClientRect();if(r.top>innerHeight){el.classList.add('pre');io.observe(el)}})}
-
-/* ---------- Router: home, #reverbicon-224, #brand ---------- */
-const views=['reverbicon-224','brand'];
-function route(){const h=location.hash.slice(1);const v=views.includes(h)?h:'home';
+/* ---- router: home, #reverbicon-224, #brand ---- */
+const VIEWS=['reverbicon-224','brand'];
+function route(){const h=location.hash.slice(1);const v=VIEWS.includes(h)?h:'home';
   document.querySelectorAll('[data-view]').forEach(m=>m.hidden=m.dataset.view!==v);
   document.querySelectorAll('.nav ul a[data-route]').forEach(a=>a.dataset.route===v?a.setAttribute('aria-current','page'):a.removeAttribute('aria-current'));
-  if(v!=='home'){scrollTo(0,0)}else{heroVisible=true;requestAnimationFrame(()=>{sizeSky();sizeScope();const el=h&&document.getElementById(h);if(el)el.scrollIntoView()})}
-}
-addEventListener('hashchange',route);
-document.addEventListener('click',e=>{const a=e.target.closest('[data-go="home"]');if(a&&location.hash&&views.includes(location.hash.slice(1))){/* let href navigate */}});
+  if(v!=='home')scrollTo(0,0);else if(h){const el=document.getElementById(h);if(el)requestAnimationFrame(()=>el.scrollIntoView())}}
+addEventListener('hashchange',route);route();
 document.querySelectorAll('[data-jump]').forEach(b=>b.addEventListener('click',()=>document.getElementById(b.dataset.jump).scrollIntoView({behavior:reduce?'auto':'smooth'})));
-
-/* ---------- Boot ---------- */
-new IntersectionObserver(es=>es.forEach(e=>heroVisible=e.isIntersecting)).observe(hero);
-readColors();C.phosScope='#C9E27F';
-const boot=()=>{sizeSky();sizeScope();setReadout();syncTheme();C.phosScope='#C9E27F';
-  if(reduce){drawSky(1);drawScope()}else{requestAnimationFrame(skyLoop);requestAnimationFrame(scopeLoop)}};
-let rz;addEventListener('resize',()=>{clearTimeout(rz);rz=setTimeout(()=>{sizeSky();sizeScope();if(reduce){drawSky(1);drawScope()}},120)});
-route();boot();
-document.fonts&&document.fonts.ready.then(()=>{sizeSky();sizeScope()});
 })();
 </script>
