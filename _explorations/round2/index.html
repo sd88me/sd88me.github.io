@@ -1,0 +1,406 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>sd88me Directions II</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Mona+Sans:wght@400;500;600;700&family=Instrument+Sans:wght@400;500;600&family=Martian+Mono:wdth,wght@87.5,400;87.5,500&family=Cormorant+Garamond:ital,wght@1,500&family=Fraunces:ital,opsz,wght@1,9..144,400&display=swap">
+<style>
+/* Layout: round-two review board. Sticky switcher; a symbols board; then three mini-homepages that each mix Signal's type with an organic hero and screenshot cards. */
+:root{--frame-bg:#F3F1EE;--frame-ink:#1C1A22;--frame-mute:#6D6878;--frame-line:rgba(28,26,34,.12);--frame-acc:#2639FF;
+  --f-ui:"Instrument Sans","Helvetica Neue",Arial,sans-serif;--f-mono:"Martian Mono",ui-monospace,Menlo,monospace;--f-cond:"Big Shoulders Display","Arial Narrow",sans-serif;--f-body:"Mona Sans","Helvetica Neue",Arial,sans-serif}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--frame-bg:#17151C;--frame-ink:#EFEBF2;--frame-mute:#9A94A6;--frame-line:rgba(239,235,242,.12);--frame-acc:#9AA5FF;color-scheme:dark}}
+:root[data-theme="dark"]{--frame-bg:#17151C;--frame-ink:#EFEBF2;--frame-mute:#9A94A6;--frame-line:rgba(239,235,242,.12);--frame-acc:#9AA5FF;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--frame-bg);color:var(--frame-ink);font:400 16px/1.55 var(--f-ui);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:90;background:var(--frame-bg)}
+img{max-width:100%;display:block}a{color:inherit}
+:focus-visible{outline:2px solid var(--frame-acc);outline-offset:3px}
+[hidden]{display:none!important}
+.gut{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+@media(min-width:760px){.gut{padding-left:max(32px,env(safe-area-inset-left,0px));padding-right:max(32px,env(safe-area-inset-right,0px))}}
+.inner{max-width:1200px;margin-inline:auto}
+.switch{position:sticky;top:env(safe-area-inset-top,0px);z-index:80;background:color-mix(in srgb,var(--frame-bg) 88%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--frame-line)}
+.switch .inner{display:flex;align-items:center;gap:1rem;height:58px}
+.switch b{font-weight:600;font-size:.95rem;white-space:nowrap}.switch b span{color:var(--frame-mute);font-weight:400}
+.tabs{display:flex;gap:.25rem;margin-left:auto;overflow-x:auto;scrollbar-width:none}
+.tabs a{white-space:nowrap;text-decoration:none;font-size:.9rem;padding:.45em .9em;border-radius:999px;color:var(--frame-mute)}
+.tabs a:hover{color:var(--frame-ink)}.tabs a[aria-current="page"]{background:var(--frame-ink);color:var(--frame-bg)}
+.tabs a.ext{border:1px solid var(--frame-line)}
+@media(max-width:620px){.switch b span{display:none}}
+.note{font:400 .72rem/1.5 var(--f-mono);color:var(--frame-mute);letter-spacing:.02em}
+.brief{padding-block:1.4rem;border-bottom:1px solid var(--frame-line)}
+.brief .inner{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:1rem 3rem;align-items:start}
+.brief h1{font:600 1.5rem/1.2 var(--f-ui);margin:0}
+.brief p{margin:0;color:var(--frame-mute);max-width:62ch}
+.brief dl{margin:.6rem 0 0;display:grid;grid-template-columns:auto 1fr;gap:.2rem 1rem;font-size:.88rem}
+.brief dt{font:500 .68rem/1.9 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--frame-mute)}.brief dd{margin:0}
+@media(max-width:760px){.brief .inner{grid-template-columns:1fr}}
+
+/* ===== SYMBOLS ===== */
+.syms{display:grid;gap:1.4rem;padding-block:2rem 4rem}
+.sym{border:1px solid var(--frame-line);border-radius:16px;overflow:hidden;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr)}
+@media(max-width:900px){.sym{grid-template-columns:1fr}}
+.sym .hero{display:grid;grid-template-columns:1fr 1fr;min-height:300px}
+.sym .hero div{display:grid;place-items:center;padding:1.6rem}
+.sym .hero img{width:min(100%,230px);height:auto}
+.sym .side{display:grid;grid-template-rows:auto 1fr;border-left:1px solid var(--frame-line)}
+@media(max-width:900px){.sym .side{border-left:0;border-top:1px solid var(--frame-line)}}
+.sym .txt{padding:1.2rem 1.4rem;display:grid;gap:.5rem}
+.sym h2{margin:0;font:600 1.2rem/1.2 var(--f-ui);display:flex;gap:1rem;justify-content:space-between;align-items:baseline}
+.sym h2 small{font:500 .64rem/1 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--frame-mute)}
+.sym p{margin:0;color:var(--frame-mute);font-size:.93rem}
+.sym .lock{display:grid;grid-template-columns:.62fr 1fr;gap:1px;background:var(--frame-line);border-top:1px solid var(--frame-line)}
+.sym .lock div{display:grid;place-items:center;padding:1rem;min-height:150px}
+.sym .lock .st{background:#F04E23;grid-row:span 2}.sym .lock .st img{max-height:230px;width:auto}
+.sym .lock .hz{background:#1F1A2C}.sym .lock .hz img{max-height:46px;width:auto}
+.sym .lock .se{background:#1F1A2C}.sym .lock .se img{max-height:150px;width:auto}
+.sym .tiny{display:flex;gap:.6rem;align-items:center;padding:.2rem 0}
+.sym .tiny span{display:grid;place-items:center;width:40px;height:40px;border-radius:9px}
+.sym .tiny img{width:28px;height:28px}
+.sym.pick{border-color:var(--frame-acc);box-shadow:0 0 0 1px var(--frame-acc)}
+.verdict{border:1px dashed var(--frame-line);border-radius:16px;padding:1.2rem 1.4rem;color:var(--frame-mute)}
+.verdict strong{color:var(--frame-ink)}
+
+/* ===== shared mini-site pieces ===== */
+.cond{font-family:var(--f-cond);font-weight:900;text-transform:uppercase;letter-spacing:-.005em;line-height:.86}
+.lab{font:500 .66rem/1.3 var(--f-mono);letter-spacing:.12em;text-transform:uppercase}
+.site-nav{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:1.5rem;height:76px}
+.site-nav .lg{height:34px;width:auto}
+.site-nav ul{display:flex;gap:2rem;list-style:none;margin:0;padding:0;justify-content:center}
+.site-nav ul a{text-decoration:none;font-weight:600;font-size:.92rem;font-family:var(--f-body)}
+.site-nav .cta{justify-self:end;font:600 .92rem/1 var(--f-body);text-decoration:none;padding:.8em 1.1em}
+@media(max-width:760px){.site-nav ul{display:none}}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.2rem}
+@media(max-width:960px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.cards{grid-template-columns:1fr}}
+.card{display:grid;text-decoration:none;font-family:var(--f-body)}
+.card figure{margin:0;overflow:hidden;position:relative}
+.card figure img{width:100%;aspect-ratio:960/471;object-fit:cover;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.card:hover figure img{transform:scale(1.04)}
+.card .c-body{display:grid;gap:.5rem;padding:1rem 0 0}
+.card .c-top{display:flex;justify-content:space-between;align-items:center;gap:.6rem}
+.card h4{margin:0;font-family:var(--f-cond);font-weight:900;font-size:2rem;line-height:.9;text-transform:uppercase}
+.card p{margin:0;font-size:.93rem}
+.card .sg{width:30px;height:30px;flex:none}
+.foot{padding-block:2rem 3rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font:400 .85rem/1.4 var(--f-body)}
+.sec{padding-block:4rem}
+.sec-h{display:flex;justify-content:space-between;align-items:end;gap:1rem;margin-bottom:1.6rem;flex-wrap:wrap}
+.sec-h h3{font-size:clamp(2.4rem,6vw,4.6rem);margin:0}
+
+/* ===== CYMATIC ===== */
+.v-cym{--bg:#E9E7E1;--ink:#16161D;--mute:#64636B;--acc:#2B33E8;--line:rgba(22,22,29,.14);background:var(--bg);color:var(--ink);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .07 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.v-cym .site-nav{border-bottom:1.5px solid var(--ink)}
+.v-cym .site-nav ul a:hover{color:var(--acc)}
+.v-cym .site-nav .cta{background:var(--ink);color:var(--bg)}
+.v-cym .site-nav .cta:hover{background:var(--acc)}
+.cym-hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:2rem;align-items:center;padding-block:2.6rem 3rem;border-bottom:1.5px solid var(--ink)}
+.cym-hero h2{font-size:clamp(3.2rem,8.6vw,8.4rem);margin:0}
+.cym-hero h2 span{color:var(--acc)}
+.cym-hero .lead{font:500 1.1rem/1.5 var(--f-body);max-width:40ch;margin:1.6rem 0 1.4rem}
+.plate{position:relative;aspect-ratio:1;width:100%;max-width:520px;justify-self:end;border-radius:50%;cursor:pointer;border:0;padding:0;background:radial-gradient(circle at 45% 40%,#F4F2EC,#DEDBD3 70%,#CFCBC2);box-shadow:inset 0 2px 0 rgba(255,255,255,.6),inset 0 -14px 40px rgba(0,0,0,.08),0 30px 60px -30px rgba(0,0,0,.35)}
+.plate canvas{position:absolute;inset:0;width:100%;height:100%;border-radius:50%}
+.plate-cap{display:flex;justify-content:space-between;gap:1rem;max-width:520px;justify-self:end;width:100%;margin-top:.8rem;color:var(--mute)}
+.plate-cap b{color:var(--acc);font-weight:500}
+@media(max-width:860px){.cym-hero{grid-template-columns:1fr}.plate,.plate-cap{justify-self:center}}
+.v-cym .card figure{border:1.5px solid var(--ink)}
+.v-cym .card .cat{color:var(--mute)}
+.v-cym .card p{color:var(--mute)}
+.v-cym .card:hover h4{color:var(--acc)}
+.cbtn{display:inline-flex;gap:.6em;align-items:center;font:600 .95rem/1 var(--f-body);padding:.95em 1.2em;text-decoration:none;border:1.5px solid var(--ink);margin:0 .4rem .4rem 0}
+.cbtn.p{background:var(--ink);color:var(--bg)}.cbtn:hover{background:var(--acc);border-color:var(--acc);color:#fff}
+.cym-name{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1.5px solid var(--ink)}
+.cym-name div{padding:1.6rem 1.4rem 0 0;display:grid;gap:.6rem;align-content:start}
+.cym-name div+div{border-left:1px solid var(--line);padding-left:1.4rem}
+.cym-name b{font-family:var(--f-cond);font-size:2.6rem;font-weight:900;line-height:.9;text-transform:uppercase}
+.cym-name i{font-family:"Cormorant Garamond",serif;font-size:2.4rem;font-weight:500;line-height:.9;color:var(--acc)}
+.cym-name p{margin:0;color:var(--mute);font:400 .95rem/1.5 var(--f-body)}
+@media(max-width:760px){.cym-name{grid-template-columns:1fr}.cym-name div{padding:1.2rem 0;border-left:0!important;padding-left:0!important}.cym-name div+div{border-top:1px solid var(--line)}}
+.v-cym .foot{border-top:1.5px solid var(--ink);color:var(--mute)}
+
+/* ===== NOCTURNE ===== */
+.v-noc{--bg:#1E1929;--bg2:#272037;--ink:#F1E8DA;--mute:#ABA0BA;--rose:#F2A3C6;--gold:#F6D88E;--line:rgba(241,232,218,.14);background:var(--bg);color:var(--ink)}
+.noc-hero{position:relative;isolation:isolate;overflow:hidden;background:radial-gradient(120% 90% at 70% 10%,#3A2A52 0%,#241D33 55%,var(--bg) 100%)}
+.noc-hero canvas{position:absolute;inset:0;width:100%;height:100%;z-index:-1}
+.v-noc .site-nav{border-bottom:1px solid var(--line)}
+.v-noc .site-nav ul a{color:var(--mute)}.v-noc .site-nav ul a:hover{color:var(--ink)}
+.v-noc .site-nav .cta{background:var(--rose);color:#1E1929;border-radius:999px}
+.noc-copy{padding-block:6rem 7rem;display:grid;gap:1.4rem;max-width:880px}
+.noc-copy h2{font-size:clamp(3.4rem,10vw,9.5rem);margin:0;text-shadow:0 10px 60px rgba(20,10,40,.6)}
+.noc-copy h2 i{font-family:"Cormorant Garamond",serif;font-weight:500;text-transform:none;letter-spacing:-.01em;color:var(--rose);font-size:1.02em}
+.noc-copy p{font:400 1.15rem/1.55 var(--f-body);color:var(--mute);max-width:44ch;margin:0}
+.nbtn{display:inline-flex;gap:.6em;align-items:center;font:600 .95rem/1 var(--f-body);padding:1em 1.3em;border-radius:999px;text-decoration:none;border:1px solid rgba(241,232,218,.35);color:var(--ink);margin:0 .4rem .4rem 0}
+.nbtn.p{background:var(--ink);color:#1E1929;border-color:var(--ink)}.nbtn:hover{border-color:var(--rose);background:var(--rose);color:#1E1929}
+.noc-coords{position:absolute;right:max(16px,env(safe-area-inset-right,0px));bottom:1.2rem;color:var(--mute);text-align:right}
+.v-noc .card{background:var(--bg2);border:1px solid var(--line);border-radius:14px;overflow:hidden;padding:0}
+.v-noc .card .c-body{padding:1rem 1.1rem 1.2rem}
+.v-noc .card p{color:var(--mute)}
+.v-noc .card .cat{color:var(--gold)}
+.v-noc .card:hover{border-color:rgba(242,163,198,.5)}
+.v-noc .card:hover h4{color:var(--rose)}
+.noc-ed{border-radius:22px;overflow:hidden;position:relative;padding:clamp(28px,5vw,64px);background:linear-gradient(135deg,#3B2B4F,#7A4C66 55%,#E7A58B);display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:2rem;align-items:end}
+.noc-ed h3{font-size:clamp(2.6rem,6vw,5rem);margin:0}
+.noc-ed p{margin:0 0 1.2rem;font:400 1.05rem/1.5 var(--f-body);color:#FFF1E6}
+@media(max-width:860px){.noc-ed{grid-template-columns:1fr}}
+.v-noc .foot{border-top:1px solid var(--line);color:var(--mute)}
+
+/* ===== BLOOM ===== */
+.v-blm{--bg:#F7EEE6;--ink:#2B1A33;--mute:#76627E;--cream:#FFF6EC;--line:rgba(43,26,51,.12);background:var(--bg);color:var(--ink)}
+.blm-hero{position:relative;isolation:isolate;overflow:hidden;color:var(--cream);background:#A8457F}
+.blm-hero canvas{position:absolute;inset:0;width:100%;height:100%;z-index:-2;filter:blur(40px) saturate(1.1)}
+.blm-hero::after{content:"";position:absolute;inset:0;z-index:-1;opacity:.35;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.v-blm .site-nav ul a{color:var(--cream);opacity:.85}.v-blm .site-nav ul a:hover{opacity:1}
+.v-blm .site-nav .cta{background:var(--cream);color:var(--ink);border-radius:999px}
+.blm-grid{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,.6fr);gap:2rem;align-items:center;padding-block:4rem 6rem}
+.blm-grid h2{font-size:clamp(3.4rem,10vw,10rem);margin:0}
+.blm-grid h2 i{font-family:"Fraunces",serif;font-weight:400;text-transform:none;letter-spacing:-.03em;font-size:.92em}
+.blm-grid p{font:500 1.12rem/1.5 var(--f-body);max-width:42ch;margin:1.4rem 0;text-shadow:0 1px 16px rgba(80,20,70,.5)}
+.blm-seal{width:min(100%,300px);justify-self:center;animation:spin 60s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media(max-width:860px){.blm-grid{grid-template-columns:1fr}.blm-seal{width:200px;order:-1}}
+.bbtn{display:inline-flex;gap:.6em;align-items:center;font:600 .95rem/1 var(--f-body);padding:1em 1.4em;border-radius:999px;text-decoration:none;margin:0 .4rem .4rem 0;background:var(--cream);color:var(--ink)}
+.bbtn.g{background:transparent;color:var(--cream);box-shadow:inset 0 0 0 1.5px rgba(255,246,236,.7)}
+.bbtn:hover{transform:translateY(-2px)}
+.v-blm .card{background:var(--cream);border-radius:24px;padding:10px;box-shadow:0 20px 40px -30px rgba(43,26,51,.4)}
+.v-blm .card figure{border-radius:16px}
+.v-blm .card .c-body{padding:.9rem .6rem .6rem}
+.v-blm .card p{color:var(--mute)}
+.v-blm .card .cat{color:var(--mute)}
+.v-blm .card:hover{transform:translateY(-3px)}
+.v-blm .card{transition:transform .3s}
+.chip{font:600 .7rem/1 var(--f-body);padding:.45em .8em;border-radius:999px;color:#fff}
+.t-circuit{background:#1FA382}.t-firmware{background:#E8742C}.t-original{background:#D64A8A}.t-port{background:#6B3FD4}
+.blm-name{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
+.blm-name div{border-radius:24px;padding:1.6rem;display:grid;gap:.6rem;align-content:start;color:var(--cream)}
+.blm-name b{font-family:var(--f-cond);font-weight:900;font-size:2.6rem;text-transform:uppercase;line-height:.9}
+.blm-name p{margin:0;font:400 .95rem/1.5 var(--f-body);opacity:.92}
+.b1{background:linear-gradient(150deg,#F28A5B,#D64A8A)}.b2{background:linear-gradient(150deg,#A65CC9,#5B3BBE)}.b3{background:linear-gradient(150deg,#22A889,#2E78C6)}
+@media(max-width:760px){.blm-name{grid-template-columns:1fr}}
+.v-blm .foot{border-top:1px solid var(--line);color:var(--mute)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+<header class="switch gut"><div class="inner">
+  <b>sd88me <span>· round 2</span></b>
+  <nav class="tabs" aria-label="Directions">
+    <a href="#symbols" data-tab="symbols">Symbols</a>
+    <a href="#cymatic" data-tab="cymatic">Cymatic</a>
+    <a href="#nocturne" data-tab="nocturne">Nocturne</a>
+    <a href="#bloom" data-tab="bloom">Bloom</a>
+    <a class="ext" href="https://claude.ai/artifact/N9NHj1ehupPRP1KHQVXDB8" target="_blank" rel="noopener">Round 1 ↗</a>
+    <a class="ext" href="https://claude.ai/artifact/5WYy2hiXbWJHgu7guihRgF" target="_blank" rel="noopener">Observatory ↗</a>
+  </nav>
+</div></header>
+
+<!-- ============ SYMBOLS ============ -->
+<section data-view="symbols">
+  <div class="brief gut"><div class="inner">
+    <div><h1>Organic symbols</h1><p class="note" style="margin-top:.5rem">The Quad idea (two 8s seen from above), grown instead of drawn with a compass</p></div>
+    <p>Each one is made by a natural process in code: sand settling on a vibrating plate, contour lines over four peaks, a hand-drawn pen line, cells dividing. Each row shows the symbol on light and dark, inside the Stamp (where it replaces the 88), beside the name, inside the Seal, and at favicon size.</p>
+  </div></div>
+  <div class="gut"><div class="inner syms" id="syms"></div></div>
+</section>
+
+<!-- ============ CYMATIC ============ -->
+<section data-view="cymatic" hidden>
+  <div class="brief gut"><div class="inner">
+    <div><h1>Cymatic</h1><p class="note" style="margin-top:.5rem">Signal’s type and grid · symbol: Sand rings</p></div>
+    <div><p>Signal, warmed up and made organic. Stone-grey paper with grain, ink and one deep blue. The hero is a live Chladni plate: thousands of grains of sand dance until they settle where the plate is still, drawing the pattern of a tone. Tap it to change the note. Sound made visible, which is the brand in one image.</p>
+    <dl><dt>Organic edge</dt><dd>Sand, grain, patterns that form on their own</dd><dt>Keeps</dt><dd>Signal’s confidence, plus screenshot cards</dd></dl></div>
+  </div></div>
+  <div class="v-cym">
+    <div class="gut"><div class="inner">
+      <nav class="site-nav"><img class="lg" src="sym/sand-rings-horiz-ink.svg" alt="sd88me"><ul><li><a href="#cymatic">Catalogue</a></li><li><a href="#cymatic">Editions</a></li><li><a href="#cymatic">The name</a></li><li><a href="#cymatic">Lab</a></li></ul><a class="cta" href="#cymatic">Install</a></nav>
+      <div class="cym-hero">
+        <div>
+          <p class="lab" style="color:var(--mute)">Plugins for MPC OS · Force · DAW</p>
+          <h2 class="cond">Circuit-true instruments for <span>deep states</span></h2>
+          <p class="lead">Classic machines rebuilt from their schematics and original firmware, then put inside the MPC. Free, open source, and made for long nights.</p>
+          <a class="cbtn p" href="#cymatic">Browse the catalogue →</a><a class="cbtn" href="#cymatic">Join the Discord</a>
+        </div>
+        <div style="display:grid">
+          <button class="plate" id="plateBtn" type="button" aria-label="Chladni plate. Tap to change the tone."><canvas id="plate"></canvas></button>
+          <div class="plate-cap lab"><span>Mode <b id="mode">(2, 5)</b></span><span>Tap the plate to change the tone</span></div>
+        </div>
+      </div>
+      <div class="sec">
+        <div class="sec-h"><h3 class="cond">Catalogue</h3><span class="lab" style="color:var(--mute)">22 releases · all free</span></div>
+        <div class="cards" id="cymCards"></div>
+      </div>
+      <div class="sec" style="padding-top:0">
+        <div class="sec-h"><h3 class="cond">Three readings</h3></div>
+        <div class="cym-name">
+          <div><span class="lab" style="color:var(--mute)">The signature</span><b>s·d·88·me</b><p>Initials, a birth year, and me.</p></div>
+          <div><span class="lab" style="color:var(--mute)">The state</span><i>sedate me</i><p>The hour where the room stops thinking.</p></div>
+          <div><span class="lab" style="color:var(--mute)">The signal</span><b>8 + 8</b><p>An octave drawn on a scope is an 8. Two of them: circuit and cosmos.</p></div>
+        </div>
+      </div>
+      <footer class="foot"><span>sd88me · made for long nights</span><span>No ROMs included. Trademarks belong to their owners.</span></footer>
+    </div></div>
+  </div>
+</section>
+
+<!-- ============ NOCTURNE ============ -->
+<section data-view="nocturne" hidden>
+  <div class="brief gut"><div class="inner">
+    <div><h1>Nocturne</h1><p class="note" style="margin-top:.5rem">Observatory’s palette × Signal’s type · symbol: Peaks</p></div>
+    <div><p>Signal’s huge condensed type, set at night in the Observatory’s dusk colours. Behind it, a topographic map drifts slowly, like terrain seen from above or a heat map of sound. Four peaks rise out of it now and then: the symbol, hidden in the landscape. Calm, deep and a little mysterious.</p>
+    <dl><dt>Organic edge</dt><dd>Moving terrain, mountains, night</dd><dt>Keeps</dt><dd>Observatory’s mood, Signal’s punch, screenshot cards</dd></dl></div>
+  </div></div>
+  <div class="v-noc">
+    <div class="noc-hero">
+      <canvas id="topo" aria-hidden="true"></canvas>
+      <div class="gut"><div class="inner">
+        <nav class="site-nav"><img class="lg" src="sym/peaks-horiz-rose.svg" alt="sd88me"><ul><li><a href="#nocturne">Catalogue</a></li><li><a href="#nocturne">Editions</a></li><li><a href="#nocturne">The name</a></li><li><a href="#nocturne">Lab</a></li></ul><a class="cta" href="#nocturne">Install</a></nav>
+        <div class="noc-copy">
+          <p class="lab" style="color:var(--gold)">● Plugins for MPC OS, Force &amp; your DAW</p>
+          <h2 class="cond">Circuit-true instruments for <i>deep states.</i></h2>
+          <p>Classic machines rebuilt from their schematics and original firmware, then put inside the MPC. Free, open source, and made for long nights.</p>
+          <div><a class="nbtn p" href="#nocturne">Browse the catalogue →</a><a class="nbtn" href="#nocturne">Join the Discord</a></div>
+        </div>
+      </div></div>
+      <span class="noc-coords lab" id="coords">Elev. 2 880 m · 4 peaks</span>
+    </div>
+    <div class="gut"><div class="inner">
+      <div class="sec">
+        <div class="sec-h"><h3 class="cond">Catalogue</h3><span class="lab" style="color:var(--mute)">22 releases · all free</span></div>
+        <div class="cards" id="nocCards"></div>
+      </div>
+      <div class="sec" style="padding-top:0">
+        <div class="noc-ed"><h3 class="cond">Free stays free. Editions pay for it.</h3><div><p>One instrument, months of work, for the MPC and your DAW. Buying one funds everything else here.</p><a class="nbtn p" href="#nocturne">Get the first transmission →</a></div></div>
+      </div>
+      <footer class="foot"><span>sd88me · made for long nights</span><span>No ROMs included. Trademarks belong to their owners.</span></footer>
+    </div></div>
+  </div>
+</section>
+
+<!-- ============ BLOOM ============ -->
+<section data-view="bloom" hidden>
+  <div class="brief gut"><div class="inner">
+    <div><h1>Bloom</h1><p class="note" style="margin-top:.5rem">Mandala’s warmth × Signal’s type · symbol: Pen, in the Seal</p></div>
+    <div><p>Mandala, grown up. Instead of drawn sigils, slow blurred light moves behind the type like a light leak on film, with heavy grain. The Seal turns slowly like a record label. Soft rounded cards with a colour for each way a plugin is made. Psychedelic and positive, without the festival feel.</p>
+    <dl><dt>Organic edge</dt><dd>Light leaks, film grain, hand-drawn mark</dd><dt>Keeps</dt><dd>Mandala’s joy, Signal’s type, screenshot cards</dd></dl></div>
+  </div></div>
+  <div class="v-blm">
+    <div class="blm-hero">
+      <canvas id="bloom" aria-hidden="true"></canvas>
+      <div class="gut"><div class="inner">
+        <nav class="site-nav"><img class="lg" src="sym/pen-horiz-cream.svg" alt="sd88me"><ul><li><a href="#bloom">Plugins</a></li><li><a href="#bloom">Editions</a></li><li><a href="#bloom">The name</a></li><li><a href="#bloom">Tip jar</a></li></ul><a class="cta" href="#bloom">Install</a></nav>
+        <div class="blm-grid">
+          <div>
+            <h2 class="cond">Exact circuits. <i>Open minds.</i></h2>
+            <p>Classic machines rebuilt from schematics and original firmware, then set loose inside your MPC for long, bright nights.</p>
+            <a class="bbtn" href="#bloom">Browse the plugins →</a><a class="bbtn g" href="#bloom">Join the Discord</a>
+          </div>
+          <img class="blm-seal" src="sym/pen-seal-cream.svg" alt="">
+        </div>
+      </div></div>
+    </div>
+    <div class="gut"><div class="inner">
+      <div class="sec">
+        <div class="sec-h"><h3 class="cond">The plugins</h3><span class="lab" style="color:var(--mute)">22 free · open source</span></div>
+        <div class="cards" id="blmCards"></div>
+      </div>
+      <div class="sec" style="padding-top:0">
+        <div class="blm-name">
+          <div class="b1"><span class="lab" style="opacity:.8">The signature</span><b>s·d·88·me</b><p>Initials, a birth year, and me.</p></div>
+          <div class="b2"><span class="lab" style="opacity:.8">The state</span><b>sedate me</b><p>The hour where the room stops thinking.</p></div>
+          <div class="b3"><span class="lab" style="opacity:.8">The signal</span><b>8 + 8</b><p>An octave on a scope draws an 8. Circuit and cosmos.</p></div>
+        </div>
+      </div>
+      <footer class="foot"><span>sd88me · made for long nights</span><span>No ROMs included. Trademarks belong to their owners.</span></footer>
+    </div></div>
+  </div>
+</section>
+
+<script>
+(()=>{
+const TAU=Math.PI*2,reduce=matchMedia('(prefers-reduced-motion: reduce)').matches,dpr=Math.min(devicePixelRatio||1,2);
+/* ---- symbols board ---- */
+const SY=[
+ ['sand-rings','Sand rings','Recommended','Your four rings, drawn the way sand draws them on a vibrating plate. Keeps the Quad shape you liked, but every edge is grainy and alive. It never looks the same twice at large sizes, and the idea behind it (sound made visible) is the brand.'],
+ ['peaks','Peaks','Strong second','Four summits as contour lines, like a map seen from above. Echoes the mountains in your collage art and reads as terrain, fingerprints or a heat map of sound. Works best in one colour, line only.'],
+ ['pen','Pen','Simple','The Quad redrawn with a pen: slightly uneven loops with a changing line width. The closest to your favourite, but human. The easiest to use small and on hardware panels.'],
+ ['sand-plate','Plate','Wild card','A real Chladni pattern: the shape sand makes on a square plate at one tone. More cosmic and star-like, less about the 88. Strong on posters, harder as a logo.'],
+ ['cells','Cells','Wild card','A four-cell embryo: two divisions, the start of something. Bold and graphic, works at any size. Reads more biological than musical.'],
+];
+document.getElementById('syms').innerHTML=SY.map(([k,n,tag,d],i)=>`<article class="sym${i===0?' pick':''}">
+ <div class="hero"><div style="background:#EFEAE3"><img src="sym/${k}-light.svg" alt="${n} symbol on light"></div><div style="background:#1F1A2C"><img src="sym/${k}-dark.svg" alt="${n} symbol on dark"></div></div>
+ <div class="side"><div class="txt"><h2>${n}<small>${tag}</small></h2><p>${d}</p>
+  <div class="tiny"><span style="background:#EFEAE3"><img src="sym/${k}-light.svg" alt=""></span><span style="background:#1F1A2C"><img src="sym/${k}-dark.svg" alt=""></span><span class="note">Favicon size</span></div></div>
+  <div class="lock"><div class="st"><img src="sym/${k}-stamp.svg" alt="${n} in the Stamp"></div><div class="hz"><img src="sym/${k}-horiz-dark.svg" alt="${n} beside the name"></div><div class="se"><img src="sym/${k}-seal-dark.svg" alt="${n} in the Seal"></div></div>
+ </div></article>`).join('')+`<div class="verdict"><strong>My pick: Sand rings.</strong> It keeps the shape you liked and loses the logo-on-a-handbag look. It also carries the whole idea: sound made visible, exact physics making something organic. Use the <strong>Stamp</strong> version for avatars, merch and vinyl, the <strong>horizontal</strong> one for the site header, and the <strong>Seal</strong> for stickers and installers. For tiny sizes (favicon, plugin panel corner) I’d draw a simplified version with fewer, larger grains.</div>`;
+
+/* ---- cards ---- */
+const P=[
+ {n:'Acid-303',m:'circuit',k:'Instrument',img:'acid303',l:'A TB-303 solved transistor by transistor, with every Devil Fish mod.'},
+ {n:'Reverbicon 224',m:'firmware',k:'Effect',img:'reverbicon224',l:'The Lexicon 224’s own v4.4 firmware on an emulated 8080.'},
+ {n:'Machinemodule',m:'firmware',k:'Drums',img:'machinemodule',l:'The Machinedrum SPS-1 UW engine. 16 tracks, one instance.'},
+ {n:'TR-MPC',m:'circuit',k:'Drums',img:'8w8',l:'Four circuit-modelled drum machines and a 49-voice kit.'},
+ {n:'Mono-101',m:'circuit',k:'Instrument',img:'mono101',l:'An SH-101 from the schematic, plus a Circuit Bent page.'},
+ {n:'Boris Granular',m:'original',k:'Effect',img:'boris',l:'24 grains over a 10-second buffer, synced to the MPC.'},
+];
+const M={circuit:'Circuit',firmware:'Firmware',port:'Port',original:'Original'};
+const card=(p,i,view,extra='')=>`<a class="card" href="#${view}"><figure><img src="img/${p.img}.webp" alt="${p.n} panel" loading="lazy"></figure><div class="c-body"><div class="c-top"><span class="lab cat">SD88-${String(i+1).padStart(3,'0')}</span>${extra||`<span class="lab cat">${M[p.m]} · ${p.k}</span>`}</div><h4>${p.n}</h4><p>${p.l}</p></div></a>`;
+document.getElementById('cymCards').innerHTML=P.map((p,i)=>card(p,i,'cymatic')).join('');
+document.getElementById('nocCards').innerHTML=P.map((p,i)=>card(p,i,'nocturne')).join('');
+document.getElementById('blmCards').innerHTML=P.map((p,i)=>card(p,i,'bloom',`<span class="chip t-${p.m}">${M[p.m]}</span>`)).join('');
+
+/* ---- CYMATIC: Chladni sand ---- */
+const pc=document.getElementById('plate'),px=pc.getContext('2d');
+const modes=[[2,5],[1,4],[3,7],[2,6],[4,5],[1,6],[3,5]];let mi=0,grains=null;const G=9000;
+function initGrains(){grains=new Float32Array(G*2);for(let i=0;i<G;i++){let x,y;do{x=Math.random()*2-1;y=Math.random()*2-1}while(x*x+y*y>1);grains[i*2]=x;grains[i*2+1]=y}}
+function amp(x,y,n,m){const u=(x+1)/2,v=(y+1)/2;return Math.cos(n*Math.PI*u)*Math.cos(m*Math.PI*v)-Math.cos(m*Math.PI*u)*Math.cos(n*Math.PI*v)}
+function stepSand(){const [n,m]=modes[mi];for(let i=0;i<G;i++){let x=grains[i*2],y=grains[i*2+1];const a=Math.abs(amp(x,y,n,m));const s=.035*a+.0012;
+  x+=(Math.random()-.5)*s;y+=(Math.random()-.5)*s;const r=x*x+y*y;if(r>.985){const k=.985/Math.sqrt(r)*.99;x*=k;y*=k}grains[i*2]=x;grains[i*2+1]=y}}
+function drawSand(){const r=pc.getBoundingClientRect();if(pc.width!==Math.round(r.width*dpr)){pc.width=r.width*dpr;pc.height=r.height*dpr}
+  const w=pc.width,h=pc.height;px.clearRect(0,0,w,h);px.fillStyle='#16161D';const s=Math.max(1,dpr*1.15);
+  for(let i=0;i<G;i++){px.fillRect((grains[i*2]+1)/2*w-s/2,(grains[i*2+1]+1)/2*h-s/2,s,s)}}
+document.getElementById('plateBtn').addEventListener('click',()=>{mi=(mi+1)%modes.length;document.getElementById('mode').textContent=`(${modes[mi][0]}, ${modes[mi][1]})`;
+  for(let i=0;i<G*2;i++)grains[i]+= (Math.random()-.5)*.25;if(reduce){for(let k=0;k<160;k++)stepSand();drawSand()}});
+initGrains();
+
+/* ---- NOCTURNE: drifting topography with marching squares ---- */
+const tc=document.getElementById('topo'),tx=tc.getContext('2d');
+function topoField(cols,rows,t,W,H){const f=new Float32Array((cols+1)*(rows+1));const pk=Math.max(0,Math.sin(t*.12+1.3))**3;
+  const cx=W*.72,cy=H*.48,sp=Math.min(W,H)*.16;
+  for(let j=0;j<=rows;j++)for(let i=0;i<=cols;i++){const x=i/cols*W,y=j/rows*H;const u=x/W,v=y/H;
+    let z=.5*Math.sin(u*5.1+t*.05)*Math.cos(v*4.3-t*.04)+.35*Math.sin(u*9.7-v*6.2+t*.07)+.22*Math.cos(u*15.3+v*11.1-t*.05);
+    for(const [dx,dy] of [[-1,-1],[1,-1],[-1,1],[1,1]]){const d2=((x-cx-dx*sp*.95)**2+(y-cy-dy*sp*.95)**2)/(sp*sp*.42);z+=pk*1.25*Math.exp(-d2)}
+    f[j*(cols+1)+i]=z}return f}
+function drawTopo(t){const r=tc.getBoundingClientRect();if(tc.width!==Math.round(r.width*dpr)){tc.width=r.width*dpr;tc.height=r.height*dpr}
+  const W=tc.width,H=tc.height,cell=Math.max(8,Math.round(14*dpr)),cols=Math.ceil(W/cell),rows=Math.ceil(H/cell);const f=topoField(cols,rows,t,W,H);
+  tx.clearRect(0,0,W,H);tx.lineWidth=dpr*1.1;
+  const levels=[-.9,-.6,-.3,0,.3,.6,.9,1.2,1.5];
+  levels.forEach((L,li)=>{tx.beginPath();const hot=li>=6;tx.strokeStyle=hot?`rgba(242,163,198,${.5+li*.05})`:`rgba(241,232,218,${.13+li*.035})`;
+    for(let j=0;j<rows;j++)for(let i=0;i<cols;i++){const a=f[j*(cols+1)+i],b=f[j*(cols+1)+i+1],c=f[(j+1)*(cols+1)+i+1],d=f[(j+1)*(cols+1)+i];
+      const idx=(a>L?8:0)|(b>L?4:0)|(c>L?2:0)|(d>L?1:0);if(idx===0||idx===15)continue;const x=i*cell,y=j*cell;
+      const T=[x+cell*(L-a)/(b-a),y],R=[x+cell,y+cell*(L-b)/(c-b)],B=[x+cell*(L-d)/(c-d),y+cell],Lf=[x,y+cell*(L-a)/(d-a)];
+      const seg=(p,q)=>{tx.moveTo(p[0],p[1]);tx.lineTo(q[0],q[1])};
+      switch(idx){case 1:case 14:seg(Lf,B);break;case 2:case 13:seg(B,R);break;case 3:case 12:seg(Lf,R);break;case 4:case 11:seg(T,R);break;case 5:seg(Lf,T);seg(B,R);break;case 6:case 9:seg(T,B);break;case 7:case 8:seg(Lf,T);break;case 10:seg(T,R);seg(Lf,B);break}}
+    tx.stroke()});
+  document.getElementById('coords').textContent=`Elev. ${Math.round(2600+Math.sin(t*.12+1.3)*600)} m · ${Math.max(0,Math.sin(t*.12+1.3))>.5?'4 peaks':'drifting'}`;
+}
+
+/* ---- BLOOM: slow light leaks ---- */
+const bc=document.getElementById('bloom'),bx=bc.getContext('2d');
+const blobs=[['#F79A78',.2,.3,.5],['#F26FA8',.75,.25,.6],['#8B5BE0',.6,.85,.7],['#FFD48A',.1,.85,.45],['#E04A86',.45,.55,.4]];
+function drawBloom(t){const r=bc.getBoundingClientRect(),W=Math.round(r.width/4),H=Math.round(r.height/4);if(bc.width!==W){bc.width=W;bc.height=H}
+  bx.fillStyle='#A8457F';bx.fillRect(0,0,W,H);blobs.forEach(([c,x,y,s],i)=>{const cx=(x+.12*Math.sin(t*.00011*(i+2)+i))*W,cy=(y+.1*Math.cos(t*.00009*(i+3)+i*2))*H,R=s*Math.max(W,H);
+    const g=bx.createRadialGradient(cx,cy,0,cx,cy,R);g.addColorStop(0,c);g.addColorStop(1,c+'00');bx.fillStyle=g;bx.fillRect(0,0,W,H)})}
+
+/* ---- loop & router ---- */
+let view='symbols',t0=performance.now();
+function loop(now){const t=(now-t0)/1000;if(!document.hidden){
+  if(view==='cymatic'){if(!reduce){stepSand();stepSand()}drawSand()}
+  if(view==='nocturne')drawTopo(reduce?20:t);
+  if(view==='bloom')drawBloom(reduce?0:now)}requestAnimationFrame(loop)}
+function route(){const h=location.hash.slice(1);view=['symbols','cymatic','nocturne','bloom'].includes(h)?h:'symbols';
+  document.querySelectorAll('[data-view]').forEach(s=>s.hidden=s.dataset.view!==view);
+  document.querySelectorAll('.tabs a[data-tab]').forEach(a=>a.dataset.tab===view?a.setAttribute('aria-current','page'):a.removeAttribute('aria-current'));
+  if(view==='cymatic'&&reduce){for(let k=0;k<200;k++)stepSand()}
+}
+addEventListener('hashchange',()=>{route();scrollTo(0,0)});route();
+for(let k=0;k<60;k++)stepSand();
+requestAnimationFrame(loop);
+})();
+</script>
