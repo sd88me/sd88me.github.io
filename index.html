@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>SD88ME</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Circuit-true instruments for deep states. Free, open-source plugins for Akai MPC OS and Force, rebuilt from schematics and original firmware.">
-<meta property="og:title" content="SD88ME: circuit-true instruments for deep states">
-<meta property="og:description" content="Free, open-source plugins for Akai MPC OS and Force, rebuilt from schematics and original firmware.">
+<meta name="description" content="Audio tools and plugins by SD88ME: accurate, useful instruments and effects for the MPC and your DAW, plus open projects like Open MPC.">
+<meta property="og:title" content="SD88ME · instruments for losing track of time">
+<meta property="og:description" content="Audio tools and plugins for the MPC and your DAW, plus open projects like Open MPC.">
 <meta property="og:image" content="https://sd88me.github.io/brand/og.jpg">
 <meta property="og:url" content="https://sd88me.github.io/">
 <meta name="twitter:card" content="summary_large_image">
@@ -16,7 +16,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Mona+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=Martian+Mono:wdth,wght@87.5,400;87.5,500&display=swap">
 <style>
-/* Layout: Cymatic. Stone paper with grain, ink, one neon orange. Condensed capitals for headlines, a round sand plate that draws the Sand rings mark, sigils on every plugin, hairline-and-rule grid. One committed light look. */
+/* Layout: Cymatic, v9. Stone paper with grain, ink, one neon orange. Condensed capitals for headlines, a round sand plate that draws the Sand rings mark, sigils on every plugin, hairline-and-rule grid. One committed light look. */
 :root{
   --bg:#ECE8E1; --paper:#F5F1EA; --ink:#17140F; --mute:#6A6359; --acc:#FF5A1A; --acc-ink:#E24A0C; --on-acc:#17140F;
   --panel:#1F1712; --panel-ink:#F6EBDD; --line:rgba(23,20,15,.14); --sand-1:#FF7A2A; --sand-2:#FFD08A;
@@ -291,17 +291,69 @@ footer .legal{grid-column:1/-1;border-top:1px solid var(--line);padding-top:1.4r
 .taglines div span:first-child{font:900 1.5rem/1 var(--f-cond);text-transform:uppercase}
 
 @media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+
+/* ---- v9 additions ---- */
+.doors{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border:1.5px solid var(--ink)}
+.doors a{display:grid;gap:.7rem;align-content:start;padding:1.5rem 1.4rem 1.6rem;text-decoration:none;min-height:250px;position:relative}
+.doors a+a{border-left:1px solid var(--line)}
+.doors a:hover{background:var(--paper)}
+.doors h3{font:900 2.4rem/.9 var(--f-cond);text-transform:uppercase;margin:0}
+.doors p{margin:0;color:var(--mute)}
+.doors .go{margin-top:auto;font:600 .9rem var(--f-body)}
+.doors a:hover h3,.doors a:hover .go{color:var(--acc-ink)}
+.doors .n{font:900 1rem/1 var(--f-cond);color:var(--acc-ink)}
+@media(max-width:900px){.doors{grid-template-columns:1fr}.doors a{min-height:0}.doors a+a{border-left:0;border-top:1px solid var(--line)}}
+.subhead{display:flex;justify-content:space-between;align-items:baseline;gap:1rem 2rem;flex-wrap:wrap;margin:2.6rem 0 1.2rem;padding-top:1.2rem;border-top:1px solid var(--line)}
+.subhead:first-of-type{margin-top:0}
+.subhead h3{font:900 1.9rem/1 var(--f-cond);text-transform:uppercase;margin:0}
+.subhead p{margin:0;max-width:56ch;color:var(--mute)}
+.card .credit{font-size:.82rem;color:var(--mute)}
+.card .credit b{color:var(--ink);font-weight:600}
+.sigfig{aspect-ratio:960/471;display:grid;place-items:center;background:var(--panel)}
+.sigfig svg{height:70%;width:auto;color:var(--sand-1)}
+.vst{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:2rem 3rem;align-items:start}
+.vst ul{margin:0;padding:0;list-style:none;border-top:1.5px solid var(--ink)}
+.vst li{padding:.85rem 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:8rem 1fr;gap:1rem}
+.vst li b{font:900 1.2rem/1.1 var(--f-cond);text-transform:uppercase}
+.vst li span{color:var(--mute)}
+@media(max-width:860px){.vst{grid-template-columns:1fr}.vst li{grid-template-columns:1fr;gap:.2rem}}
+.about{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:2rem 4rem;align-items:start}
+.about .big{font:900 clamp(3.4rem,9vw,7.5rem)/.85 var(--f-cond);text-transform:uppercase;margin:0}
+.about .big i{font:400 .62em/1 var(--f-serif);text-transform:none;color:var(--acc-ink);display:block;margin-top:.4rem}
+.about .measure p{margin:0}.about .measure p+p{margin-top:1rem}
+@media(max-width:860px){.about{grid-template-columns:1fr}}
+/* feature pages */
+.f-hero{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(24px,4vw,56px);align-items:center;padding-block:1.6rem 3.2rem;border-bottom:1.5px solid var(--ink)}
+.f-hero h1{font-size:clamp(3rem,7vw,6rem);margin:.7rem 0 1rem}
+.f-hero h1 svg{width:.6em;height:.6em;color:var(--acc-ink);vertical-align:.1em;margin-left:.15em}
+.f-hero .lead{font-size:1.1rem;max-width:38ch;margin:0 0 1.2rem}
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;margin-top:1.4rem}
+.gallery figure{margin:0}
+.gallery img{border:1.5px solid var(--ink)}
+.gallery figcaption{margin-top:.4rem}
+.flist{list-style:none;margin:0;padding:0;border-top:1.5px solid var(--ink)}
+.flist li{display:grid;grid-template-columns:11rem 1fr;gap:1rem;padding:.85rem 0;border-bottom:1px solid var(--line)}
+.flist li b{font:900 1.15rem/1.15 var(--f-cond);text-transform:uppercase}
+.flist li span{color:var(--mute)}
+@media(max-width:640px){.flist li{grid-template-columns:1fr;gap:.2rem}}
+.notes{margin:0;padding-left:1.1rem;color:var(--mute);display:grid;gap:.5rem}
+.notes strong{color:var(--ink)}
+
+.cards.c4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.cards.c4 h3{font-size:1.6rem}
+@media(max-width:1100px){.cards.c4{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:620px){.cards.c4{grid-template-columns:1fr}}
 </style>
 
 <header class="nav gut">
   <div class="inner">
     <a class="lg" href="#top" aria-label="SD88ME home"><img src="brand/logo-nav.svg" alt="SD88ME" width="240" height="60"></a>
     <ul>
-      <li><a href="#catalogue">Catalogue</a></li>
+      <li><a href="#plugins">MPC plugins</a></li>
+      <li><a href="#vst">VST plugins</a></li>
+      <li><a href="#projects">Projects</a></li>
       <li><a href="#editions">Editions</a></li>
-      <li><a href="#name">The name</a></li>
-      <li><a href="#lab">Lab</a></li>
-      <li><a href="#brand" data-route="brand">Brand</a></li>
+      <li><a href="#about">About</a></li>
     </ul>
     <a class="cta" href="https://open-mpc.github.io/install.html" target="_blank" rel="noopener">Install</a>
   </div>
@@ -312,31 +364,42 @@ footer .legal{grid-column:1/-1;border-top:1px solid var(--line);padding-top:1.4r
   <div class="gut"><div class="inner">
     <section class="hero">
       <div>
-        <p class="lab">Plugins for MPC OS · Force · DAW</p>
-        <h1 class="cond">Circuit-true instruments for <span>deep states</span></h1>
-        <p class="lead">Classic machines rebuilt from their schematics and original firmware, then put inside the MPC. Free, open source, and made for long nights.</p>
-        <div class="btns"><a class="btn p" href="#catalogue">Browse the catalogue →</a><a class="btn" href="https://discord.gg/sRRysZSgu3" target="_blank" rel="noopener">Join the Discord</a></div>
-        <div class="stats lab"><span><b id="count">22</b>Plugins</span><span><b>3.0 dB</b>303 vs a real unit</span><span><b>Gen1+2</b>MPC &amp; Force</span></div>
+        <p class="lab">Audio tools and plugins</p>
+        <h1 class="cond">Instruments for <span>losing track of time</span></h1>
+        <p class="lead">Accurate, useful tools for making music, made to get you into a session and keep you there. Plugins for the MPC and your DAW, and the open projects behind them.</p>
+        <div class="btns"><a class="btn p" href="#plugins">See the plugins →</a><a class="btn" href="https://discord.gg/sRRysZSgu3" target="_blank" rel="noopener">Join the Discord</a></div>
+        <div class="stats lab"><span><b id="nAll">24</b>Plugins</span><span><b id="nOrig">7</b>Originals</span><span><b>Free</b>and open source</span></div>
       </div>
       <div class="stage">
-        <button class="plate" id="plate" type="button" aria-label="Sand plate. Tap to scatter the sand into a tone’s pattern."><canvas id="sand"></canvas></button>
-        <div class="cap lab"><span id="capL">Sand settling into the mark</span><span>Tap the plate</span></div>
+        <button class="plate" id="plate" type="button" aria-label="Sand plate. Tap to stir the sand into a tone’s pattern."><canvas id="sand"></canvas></button>
+        <div class="cap lab"><span id="capL">Let it settle</span><span>Tap to stir it up</span></div>
       </div>
     </section>
 
-    <section class="sec" id="catalogue">
-      <div class="sec-h"><h2 class="cond">Catalogue</h2><p>Every plugin is free and open source. Each one says <strong style="color:var(--ink)">how it was made</strong>, because that decides how close it gets to the original.</p></div>
-      <div class="methods">
-        <div><b>Circuit</b><p>Solved stage by stage from the service-notes schematic, with component values fitted to real units.</p></div>
-        <div><b>Firmware</b><p>The machine’s own ROM, running on emulated chips. You supply the ROM from hardware you own.</p></div>
-        <div><b>Port</b><p>A respected open-source engine, rebuilt to run natively on the MPC with its own page.</p></div>
-        <div><b>Original</b><p>My own design, from the DSP up. No ROMs, nothing to supply.</p></div>
+    <section class="sec">
+      <div class="sec-h"><h2 class="cond">What I make</h2><p>Instruments, effects and tools, and the software that gets them onto hardware. Everything released so far is free and the source is public.</p></div>
+      <div class="doors">
+        <a href="#plugins"><h3>MPC plugins</h3><p>Synths, drum machines, effects and MIDI tools that run inside the MPC’s own plugin host, with a proper touchscreen page and Q-Links.</p><span class="go">Browse them →</span></a>
+        <a href="#vst"><h3>VST plugins</h3><p>The same engines for your DAW on macOS, Windows and Linux. The first desktop releases are on the way.</p><span class="go">What’s coming →</span></a>
+        <a href="#projects"><h3>Projects</h3><p>Open MPC, the Plugin Manager, and modules for Ableton Move. Tools that let anyone build and install plugins like these.</p><span class="go">See projects →</span></a>
       </div>
+    </section>
+
+    <section class="sec" id="plugins">
+      <div class="sec-h"><h2 class="cond">MPC plugins</h2><p>Install any of them from the Open MPC Plugin Manager, or copy the folder to a drive on MPC OS 3.10.1 and later.</p></div>
       <div class="filters" id="filters" role="group" aria-label="Filter plugins"></div>
-      <div class="cards" id="cards"></div>
+
+      <div class="subhead"><h3>Originals · modelled</h3><p>New engines I wrote, modelled on hardware I love. Measured against the original, then given a screen that makes sense on an MPC.</p></div>
+      <div class="cards" id="cModelled"></div>
+
+      <div class="subhead"><h3>Originals · other</h3><p>Ideas that never existed as hardware: generators, sequencers, a record digger and a kit builder.</p></div>
+      <div class="cards c4" id="cOther"></div>
+
+      <div class="subhead"><h3>Open-source ports</h3><p>Great open-source instruments and effects, rebuilt to run natively on the MPC with their own page, Q-Links and presets. The sound is their authors’ work, credited on every one.</p></div>
+      <div class="cards" id="cPorts"></div>
       <div class="index">
-        <div class="index-h"><h3 class="cond">The full index</h3><a class="link" href="https://open-mpc.github.io/" target="_blank" rel="noopener">Install from the Open MPC catalog →</a></div>
-        <div class="tbl"><table><thead><tr><th>Plugin</th><th>Cat. no.</th><th>What it is</th><th>Made by</th><th>Source</th></tr></thead><tbody id="index"></tbody></table></div>
+        <div class="index-h"><h3 class="cond">More ports</h3><a class="link" href="https://open-mpc.github.io/" target="_blank" rel="noopener">All of them in the Open MPC catalog →</a></div>
+        <div class="tbl"><table><thead><tr><th>Plugin</th><th>What it is</th><th>Built on</th><th>Source</th></tr></thead><tbody id="index"></tbody></table></div>
       </div>
     </section>
   </div></div>
@@ -344,55 +407,59 @@ footer .legal{grid-column:1/-1;border-top:1px solid var(--line);padding-top:1.4r
   <div class="band" aria-label="Every plugin’s sigil"><div class="band-track" id="band"></div></div>
 
   <div class="gut"><div class="inner">
-    <section class="sec">
-      <div class="sec-h"><h2 class="cond">On the bench</h2><p>One plugin at a time, in depth.</p></div>
-      <div class="bench">
-        <div class="img"><img src="img/reverbicon224.webp" alt="Reverbicon 224 on an MPC Live III: six program keys, decay sliders and a red LED readout" width="960" height="555" loading="lazy"></div>
-        <div class="txt">
-          <p class="lab">SD88-002 · Firmware · Effect</p>
-          <h3 class="cond">Reverbicon 224</h3>
-          <p class="measure">The 224 ran its reverbs as a program on an 8080 and a custom DSP. So does this. Picking a program presses its key, moving a slider moves the pot, and the firmware does the rest, in its own steps, with its own red readout.</p>
-          <dl class="kv"><dt>Firmware</dt><dd>Lexicon 224 v4.4, ROM1–ROM5 (yours)</dd><dt>Programs</dt><dd>6, from Small Hall B to Percussion Plate A</dd><dt>Decay</dt><dd>0.6 to 70 s, split at 100 Hz–10.9 kHz</dd><dt>Runs on</dt><dd>MPC Gen1 and Gen2</dd></dl>
-          <div class="btns"><a class="btn p" href="#reverbicon-224" data-route="reverbicon-224">Open the datasheet →</a></div>
+    <section class="sec" id="vst">
+      <div class="vst">
+        <div>
+          <p class="lab">VST plugins</p>
+          <h2 class="cond" style="font-size:clamp(2.4rem,5.4vw,4.4rem);margin:.6rem 0 1rem">On the desktop next</h2>
+          <p class="measure">The toolchain behind the MPC plugins already builds desktop VST3 versions for testing, wearing the same panels. The first public releases will be the Editions, followed by desktop versions of the originals.</p>
+          <div class="btns" style="margin-top:1.4rem"><a class="btn p" href="#editions">Get notified →</a></div>
         </div>
+        <ul>
+          <li><b>Formats</b><span>VST3, AU and CLAP</span></li>
+          <li><b>Systems</b><span>macOS, Windows and Linux</span></li>
+          <li><b>First up</b><span>Edition 01, then Profit-08, Clementine-XT and Maze</span></li>
+          <li><b>Status</b><span>In testing. No dates until they’re ready.</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="sec" id="projects">
+      <div class="sec-h"><h2 class="cond">Projects</h2><p>The open work around the plugins. Use it to install what’s here, or to build your own.</p></div>
+      <div class="lab-grid" style="grid-template-columns:repeat(3,minmax(0,1fr))">
+        <a href="https://open-mpc.github.io/" target="_blank" rel="noopener"><span class="lab">Platform</span><h3>Open MPC</h3><p>An open toolchain for building, skinning, testing and releasing native MPC plugins, plus the community catalog that lists them with checksums and hardware-test results. I build and maintain a lot of it.</p><span class="go">open-mpc.github.io →</span></a>
+        <a href="https://github.com/open-mpc/plugin-manager" target="_blank" rel="noopener"><span class="lab">Tool</span><h3>Plugin Manager</h3><p>A plugin that runs on the MPC itself. Browse the catalog from your phone or the MPC’s screen, then install, update and remove plugins and add your ROMs, with rollback.</p><span class="go">On GitHub →</span></a>
+        <a href="https://github.com/sd88me/schwung-acid" target="_blank" rel="noopener"><span class="lab">Ableton Move</span><h3>Schwung modules</h3><p>Acid, Maze and Machinemodule for Move’s open Schwung host. Some of these ideas started there before they reached the MPC.</p><span class="go">On GitHub →</span></a>
       </div>
     </section>
   </div></div>
 
   <section class="ed gut" id="editions"><div class="inner">
     <div>
-      <p class="lab">Editions · Edition 01 in the workshop</p>
+      <p class="lab">Editions · the first one is in the workshop</p>
       <h2 class="cond">Free stays free. Editions pay for it.</h2>
-      <p style="margin:1.2rem 0 0;max-width:44ch">An Edition is one instrument I spend months on, for the MPC and for your DAW, with installers, a proper manual and real support. Buying one funds everything else in the catalogue.</p>
-      <form class="signup" id="signup"><label for="email" style="position:absolute;left:-9999px">Email address</label><input id="email" type="email" required placeholder="you@studio.net" autocomplete="email"><button class="btn" type="submit">Get the first transmission</button></form>
+      <p style="margin:1.2rem 0 0;max-width:44ch">An Edition is one instrument I spend months on, for the MPC and for your DAW, with installers, a proper manual and real support. Buying one keeps everything else here free.</p>
+      <form class="signup" id="signup"><label for="email" style="position:absolute;left:-9999px">Email address</label><input id="email" type="email" required placeholder="you@studio.net" autocomplete="email"><button class="btn" type="submit">Tell me when it’s out</button></form>
       <p class="formnote" id="formnote">One email per release. Nothing else.</p>
     </div>
     <dl>
-      <div><dt>Formats</dt><dd>MPC OS and Force, plus VST3, AU and CLAP for macOS, Windows and Linux.</dd></div>
-      <div><dt>Licence</dt><dd>Yours on three machines. No iLok, no online check on the MPC.</dd></div>
+      <div><dt>Formats</dt><dd>MPC OS, plus VST3, AU and CLAP for macOS, Windows and Linux.</dd></div>
+      <div><dt>Licence</dt><dd>Yours on three machines. No iLok, and no online check on the MPC.</dd></div>
       <div><dt>Updates</dt><dd>Free for the life of the major version.</dd></div>
-      <div><dt>In the box</dt><dd>Factory banks, a manual you can read in one sitting, and the circuit notes behind it.</dd></div>
-      <div><dt>Price</dt><dd>Set per Edition. Owners of an earlier Edition get a loyalty discount.</dd></div>
+      <div><dt>In the box</dt><dd>Factory sounds, a manual you can read in one sitting, and notes on how it was built.</dd></div>
+      <div><dt>Price</dt><dd>Set per Edition. If you own an earlier one, you get a discount.</dd></div>
     </dl>
   </div></section>
 
   <div class="gut"><div class="inner">
-    <section class="sec" id="name">
-      <div class="sec-h"><h2 class="cond">Three readings</h2><p>It started as a username and became a maker’s mark. Say it however you like. Each reading is true.</p></div>
-      <div class="read">
-        <div><span class="lab">The signature</span><b>S·D·88·ME</b><p>Initials, a birth year, and me. The name on every plugin folder, from the first one: <span class="mono">sd88me - VST - …</span></p></div>
-        <div><span class="lab">The state</span><i>sedate me</i><p>The hour where the room stops thinking. Long blends, slow filter sweeps, a reverb tail you could live in. What these instruments are for.</p></div>
-        <div><span class="lab">The signal</span><b>8 + 8</b><p>Two tones an octave apart draw an 8 on a scope. Stack two rings and you get one too. Two eights: one for the circuit, one for whatever it opens up.</p></div>
-      </div>
-    </section>
-
-    <section class="sec" id="lab">
-      <div class="sec-h"><h2 class="cond">Lab</h2><p>Tools, platforms and experiments. The launch pad for whatever comes next.</p></div>
-      <div class="lab-grid">
-        <a href="https://open-mpc.github.io/" target="_blank" rel="noopener"><span class="lab">Platform</span><h3>Open MPC</h3><p>The open toolchain, catalog and Plugin Manager that put these plugins on an MPC. Community-run, and I build a lot of it.</p><span class="go">open-mpc.github.io →</span></a>
-        <a href="https://github.com/sd88me/schwung-acid" target="_blank" rel="noopener"><span class="lab">Ableton Move</span><h3>Schwung modules</h3><p>Acid, Maze and Machinemodule for Move’s open Schwung host. Generative sequencers and a whole drum engine.</p><span class="go">On GitHub →</span></a>
-        <a href="https://github.com/sd88me/force-shadow" target="_blank" rel="noopener"><span class="lab">Force · MockbaMod</span><h3>Force Shadow</h3><p>Gives background audio engines a real touchscreen surface, then hands the screen straight back to MPC.</p><span class="go">On GitHub →</span></a>
-        <a href="#editions"><span class="lab">Next</span><h3>Desktop builds</h3><p>The same engines as VST3 in your DAW, wearing their MPC panels. Arriving with the Editions.</p><span class="go">Follow along →</span></a>
+    <section class="sec" id="about">
+      <div class="about">
+        <p class="big">SD88ME<i>say it quickly</i></p>
+        <div class="measure">
+          <p>It started as a username: my initials, the year I was born, and “me”. It stuck, and now it’s the name on every plugin folder.</p>
+          <p>Say it fast and it sounds like <strong>sedate me</strong>. That turned out to be a fair description of the aim. I want these tools to be accurate and dependable enough that you stop thinking about them, and calm enough that you stay a while. Long sessions, slow changes, the part of the night when the room goes quiet.</p>
+          <p>The 88 is there too. Two tones an octave apart draw an 8 on an oscilloscope, and two rings of sand stacked make one. That’s the logo.</p>
+        </div>
       </div>
     </section>
 
@@ -400,203 +467,137 @@ footer .legal{grid-column:1/-1;border-top:1px solid var(--line);padding-top:1.4r
       <div class="support">
         <div>
           <p class="lab">Tip jar</p>
-          <h2 class="cond" style="font-size:clamp(2.4rem,5vw,4rem);margin:.6rem 0 0">If it made your track better</h2>
-          <p class="measure" style="margin-top:1rem">This takes hours in the studio, and those hours come out of my wife’s time. Tips are never required and never unlock anything.</p>
+          <h2 class="cond" style="font-size:clamp(2.4rem,5vw,4rem);margin:.6rem 0 0">If it helped your track</h2>
+          <p class="measure" style="margin-top:1rem">These take a lot of hours, and those hours come out of my wife’s time. Tips are never required and never unlock anything.</p>
           <dl class="tips">
-            <div><dt>A coffee</dt><dd>For the 2 a.m. debugging sessions.</dd></div>
-            <div><dt>A beer</dt><dd>For when it finally compiles and the sound comes out right.</dd></div>
-            <div><dt>Flowers</dt><dd>For my wife, who hears “just five more minutes” a lot. Honestly, these are the priority.</dd></div>
+            <div><dt>A coffee</dt><dd>For the 2 a.m. debugging.</dd></div>
+            <div><dt>A beer</dt><dd>For when it finally compiles and sounds right.</dd></div>
+            <div><dt>Flowers</dt><dd>For my wife, who hears “five more minutes” a lot. These matter most.</dd></div>
           </dl>
-          <a class="btn p" href="https://ko-fi.com/sd88me" target="_blank" rel="noopener">Open the tip jar on Ko-fi →</a>
+          <a class="btn p" href="https://ko-fi.com/sd88me" target="_blank" rel="noopener">Ko-fi →</a>
         </div>
         <aside class="community">
           <p class="lab">Community</p>
           <h3 class="cond">Open MPC on Discord</h3>
-          <p class="measure">Support, release announcements, plugin requests and MPC hacking. Bug reports reach me fastest here.</p>
-          <div class="btns"><a class="btn p" href="https://discord.gg/sRRysZSgu3" target="_blank" rel="noopener">Join the server →</a><a class="btn" href="https://github.com/sd88me" target="_blank" rel="noopener">GitHub →</a></div>
+          <p class="measure">Help, release news, plugin requests and MPC hacking. Bug reports reach me fastest there.</p>
+          <div class="btns"><a class="btn p" href="https://discord.gg/sRRysZSgu3" target="_blank" rel="noopener">Join →</a><a class="btn" href="https://github.com/sd88me" target="_blank" rel="noopener">GitHub →</a></div>
         </aside>
       </div>
     </section>
   </div></div>
 </main>
 
-<!-- ================= PRODUCT: REVERBICON 224 ================= -->
-<main data-view="reverbicon-224" hidden>
-  <div class="gut"><div class="inner">
-    <nav class="crumbs lab" aria-label="Breadcrumb"><a href="#catalogue">Catalogue</a><span>/</span><span>Effects</span><span>/</span><span style="color:var(--ink)">Reverbicon 224</span></nav>
-    <section class="p-hero">
-      <div>
-        <p class="lab">SD88-002 · Sigil 5:4, the major third</p>
-        <h1 class="cond">Reverbicon 224</h1>
-        <p class="lead">The Lexicon 224, running its own firmware inside your MPC.</p>
-        <div class="chips"><span class="chip a">Firmware</span><span class="chip">Effect</span><span class="chip">Gen1 + Gen2</span><span class="chip">Free · open source</span></div>
-        <div class="btns"><a class="btn p" href="https://open-mpc.github.io/install.html" target="_blank" rel="noopener">Install with Plugin Manager →</a><a class="btn" href="https://github.com/sd88me/mpc-vst-reverbicon224/releases" target="_blank" rel="noopener">Download a release</a></div>
-      </div>
-      <div>
-        <div class="device"><img src="img/reverbicon224.webp" alt="Reverbicon 224 page on an MPC Live III" width="960" height="555"></div>
-        <p class="device-cap lab">On an MPC Live III. The readout shows what the firmware stores: <span class="led">2.6 SEC</span> <span class="led">8.80 KHZ</span> <span class="led">024 MS</span></p>
-      </div>
-    </section>
-    <section class="p-sec">
-      <div><p class="lab">How it works</p><h2 class="cond">A machine inside the machine</h2></div>
-      <div class="measure">
-        <p>Most reverb plugins imitate the 224’s sound. This one rebuilds the computer that made it. The <strong>8080 control CPU</strong> runs the original v4.4 ROMs and reads a front panel. The <strong>DSP</strong> it programs runs row by row, with the original arithmetic, delay memory and timing. Then the <strong>12-bit gain-ranging converters</strong> and the input and output filters shape what you hear.</p>
-        <p>The plugin works the front panel for you. Change program and the reverb mutes for about 50 ms while the firmware loads it into the DSP, as it did on the hardware.</p>
-        <div class="chain" role="img" aria-label="Signal chain: the MPC page presses keys and moves pots on the emulated front panel; the 8080 runs the v4.4 ROM and programs the DSP; audio passes through the input converter, the DSP with delay memory, and the output converter and filters.">
-          <svg viewBox="0 0 830 210">
-            <defs><marker id="ah" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path class="ah" d="M0,0L8,4L0,8z"/></marker></defs>
-            <rect class="box" x="16" y="20" width="176" height="58"/><text class="t" x="30" y="45">MPC page</text><text x="30" y="65">Q-Links · sliders</text>
-            <rect class="box" x="240" y="20" width="176" height="58"/><text class="t" x="254" y="45">Front panel</text><text x="254" y="65">keys · pots · LED</text>
-            <rect class="box hot" x="464" y="20" width="176" height="58"/><text class="t" x="478" y="45">8080 CPU</text><text x="478" y="65" style="fill:#17140F">v4.4 ROM1–ROM5</text>
-            <path class="w" d="M192,49H238" marker-end="url(#ah)"/><path class="w" d="M416,49H462" marker-end="url(#ah)"/>
-            <path class="w" d="M552,78V120" marker-end="url(#ah)"/><text x="562" y="103">programs</text>
-            <rect class="box" x="16" y="122" width="176" height="58"/><text class="t" x="30" y="147">Audio in</text><text x="30" y="167">12-bit gain-ranging</text>
-            <rect class="box hot" x="464" y="122" width="176" height="58"/><text class="t" x="478" y="147">DSP</text><text x="478" y="167" style="fill:#17140F">rows · delay memory</text>
-            <rect class="box" x="664" y="122" width="150" height="58"/><text class="t" x="678" y="147">Audio out</text><text x="678" y="167">4 outs · filters</text>
-            <path class="sig" d="M192,151H462" marker-end="url(#ah)"/><path class="sig" d="M640,151H662" marker-end="url(#ah)"/><text x="300" y="143">signal</text>
-          </svg>
-        </div>
-      </div>
-    </section>
-    <section class="p-sec">
-      <div><p class="lab">Controls</p><h2 class="cond">The front panel</h2></div>
-      <div class="tbl" style="border-top:1.5px solid var(--ink)"><table class="specs"><tbody>
-        <tr><td>Program 1–6</td><td>Small Hall B, Vocal Plate, Large Hall B, Acoustic Chamber, Percussion Plate A, Small Hall A</td></tr>
-        <tr><td>Bass · Mid</td><td>Reverb time below and above the crossover, 0.6 to 70 seconds</td></tr>
-        <tr><td>Crossover</td><td>100 Hz to 10.9 kHz</td></tr>
-        <tr><td>Treble decay</td><td>High-frequency rolloff, 100 Hz to 10.9 kHz</td></tr>
-        <tr><td>Pre-delay</td><td>The loaded program’s full range: halls 24–152 ms, plates 0–107 ms, chamber 25–255 ms</td></tr>
-        <tr><td>Depth · Diffusion</td><td>00–71 · 01–63 (the 224’s SHIFT page)</td></tr>
-        <tr><td>Mode Enh · Decay Opt</td><td>The 224’s PROG 7 and 8</td></tr>
-        <tr><td>Outputs</td><td>Any two of the four outputs, A–D, on left and right</td></tr>
-        <tr><td>Dirt</td><td>My addition: converter hiss, gain-range mismatch and a soft input limit. Off at 0.</td></tr>
-        <tr><td>Presets</td><td>16 in MPC’s PRESET menu. The Q-Links follow the sliders.</td></tr>
-      </tbody></table></div>
-    </section>
-    <section class="p-sec">
-      <div><p class="lab">Install</p><h2 class="cond">Three steps</h2></div>
-      <ol class="steps">
-        <li><div><strong>Get the plugin.</strong> On MPC OS 3.10.1 or later, copy the SDK-format folder into <span class="mono">VST2 Plugins</span> on any drive. On older systems, install it from the OpenMPC Plugin Manager.</div></li>
-        <li><div><strong>Add your ROMs.</strong> Put the five v4.4 EPROM images from a 224 you own in <span class="mono">Content/ROMs/</span>. File names don’t matter; each chip is recognised by its checksum. No ROMs are included, ever.</div></li>
-        <li><div><strong>Load it on a track.</strong> The firmware boots in under a second on a Live III. Until then, audio passes through untouched.</div></li>
-      </ol>
-    </section>
-    <section class="p-sec">
-      <div><p class="lab">Credits</p><h2 class="cond">Notes</h2></div>
-      <p class="measure">Reverbicon 224 is an independent project, not affiliated with or endorsed by Lexicon or Harman. “224” names the instrument it emulates. Source code is on <a class="link" href="https://github.com/sd88me/mpc-vst-reverbicon224" target="_blank" rel="noopener">GitHub</a>.</p>
-    </section>
-    <nav class="pn" aria-label="More plugins"><a href="#catalogue"><span class="lab">← Back to</span><b>Catalogue</b></a><a href="https://github.com/sd88me/mpc-vst-acid303" target="_blank" rel="noopener"><span class="lab">Next on the bench →</span><b>Acid-303</b></a></nav>
-  </div></div>
-</main>
+<!-- ================= FEATURE PAGE (filled by script) ================= -->
+<main data-view="plugin" hidden><div class="gut"><div class="inner" id="pageRoot"></div></div></main>
 
 <!-- ================= BRAND BOOK ================= -->
 <main data-view="brand" hidden>
   <div class="gut"><div class="inner">
     <header class="bb-hero">
-      <p class="lab">Brand book · v1.0</p>
+      <p class="lab">Brand book · v1.1</p>
       <h1 class="cond">Sound made <span style="color:var(--acc-ink)">visible</span></h1>
-      <p class="measure" style="font-size:1.08rem">How SD88ME looks, sounds and names things. Exact engineering meets the deep, hypnotic end of techno and psy culture: schematics on one side, long nights on the other.</p>
+      <p class="measure" style="font-size:1.08rem">How SD88ME looks, sounds and names things. Accurate, useful tools, presented calmly, with room for a little mystery.</p>
     </header>
     <div class="bb">
-      <aside class="toc" aria-label="Sections"><button data-jump="bb-logo">Logo</button><button data-jump="bb-mark">The mark</button><button data-jump="bb-name">The name</button><button data-jump="bb-color">Colour</button><button data-jump="bb-type">Type</button><button data-jump="bb-motif">Motifs</button><button data-jump="bb-voice">Voice</button><button data-jump="bb-copy">Copy deck</button><button data-jump="bb-naming">Naming plugins</button></aside>
+      <aside class="toc" aria-label="Sections"><button data-jump="bb-pos">Positioning</button><button data-jump="bb-logo">Logo</button><button data-jump="bb-mark">The mark</button><button data-jump="bb-color">Colour</button><button data-jump="bb-type">Type</button><button data-jump="bb-motif">Motifs</button><button data-jump="bb-voice">Voice</button><button data-jump="bb-copy">Copy deck</button><button data-jump="bb-naming">Naming</button></aside>
       <div>
+        <section class="bb-sec" id="bb-pos">
+          <h2 class="cond">Positioning</h2>
+          <p class="measure">SD88ME makes <strong>audio tools and plugins</strong>: accurate, dependable and useful, designed to help people get into a creative flow and stay there. In order of prominence: the MPC plugins, desktop VST plugins, and open projects such as Open MPC.</p>
+          <div class="tiles c3">
+            <div class="pane"><b>Originals</b><p>Engines written from scratch. Split into <strong>modelled</strong> (based on classic hardware) and <strong>other</strong> (new ideas).</p></div>
+            <div class="pane"><b>Open-source ports</b><p>Other people’s open engines, brought to the MPC. Always credit the author first.</p></div>
+            <div class="pane"><b>Editions</b><p>Paid, cross-platform instruments that fund the free work.</p></div>
+          </div>
+          <p class="measure">The name carries a quiet second meaning: say it fast and it’s <em>sedate me</em>. Let that show in tone (calm, unhurried, a sense of settling in) rather than spelling it out.</p>
+        </section>
         <section class="bb-sec" id="bb-logo">
           <h2 class="cond">Logo</h2>
-          <p class="measure">SD88ME in Big Shoulders Display 900, with the <strong>88 drawn as four sand rings</strong>. Two rings stacked make an 8, so the square of four is the 88. Each ring has a dense, rough core with grains thrown off it, the way sand settles on a vibrating plate. The core keeps it readable small; the spray shows it is sand when large.</p>
+          <p class="measure">SD88ME in Big Shoulders Display 900, with the 88 drawn as four rings of sand. Two stacked rings make an 8, so the square of four is the 88. Each ring has a dense core with grains sprayed outward. The core keeps it readable when small and the spray shows it’s sand when large.</p>
           <div class="tiles c2">
             <div class="tile" style="min-height:220px"><img src="brand/logo.svg" alt="SD88ME logo" style="height:110px;width:auto"><span class="lab">Primary · ink on stone</span></div>
             <div class="tile dk" style="min-height:220px"><img src="brand/logo-cream.svg" alt="SD88ME logo on dark" style="height:110px;width:auto"><span class="lab">Reversed · on warm black</span></div>
-            <div class="tile"><img src="brand/logo-orange.svg" alt="SD88ME logo with orange rings" style="height:80px;width:auto"><span class="lab">Accent · rings in neon orange</span></div>
-            <div class="tile"><div style="display:flex;gap:1.4rem;align-items:center"><img src="brand/logo-nav.svg" alt="" style="height:30px;width:auto"><img src="brand/logo-nav.svg" alt="" style="height:20px;width:auto"></div><span class="lab">Small · the light file for menus and footers</span></div>
+            <div class="tile"><img src="brand/logo-orange.svg" alt="SD88ME logo with orange rings" style="height:80px;width:auto"><span class="lab">Accent · rings in orange</span></div>
+            <div class="tile"><div style="display:flex;gap:1.4rem;align-items:center"><img src="brand/logo-nav.svg" alt="" style="height:30px;width:auto"><img src="brand/logo-nav.svg" alt="" style="height:20px;width:auto"></div><span class="lab">Small · light file for menus and footers</span></div>
           </div>
           <div class="tiles c3">
-            <div class="pane"><b>Clear space</b><p>Leave the height of one ring empty on every side. Minimum size: 90 px wide on screen, 22 mm in print.</p></div>
-            <div class="pane"><b>Capitals, always</b><p>In running text write <strong>SD88ME</strong>. The handle and plugin folders stay lowercase: <span class="mono">sd88me - VST - Name</span>.</p></div>
-            <div class="pane"><b>Don’t</b><p>Don’t replace the rings with a typed 88, outline the letters, add shadows, or colour the letters orange. Only the rings take the accent.</p></div>
+            <div class="pane"><b>Clear space</b><p>One ring’s height on every side. At least 90 px wide on screen, 22 mm in print.</p></div>
+            <div class="pane"><b>Capitals</b><p>Write SD88ME in running text. The handle and plugin folders stay lowercase: <span class="mono">sd88me - VST - Name</span>.</p></div>
+            <div class="pane"><b>Don’t</b><p>Don’t type the 88 instead of the rings, outline the letters, add shadows, or colour the letters. Only the rings take the accent.</p></div>
           </div>
         </section>
         <section class="bb-sec" id="bb-mark">
           <h2 class="cond">The mark</h2>
-          <p class="measure">The four rings on their own. Drawn at four sizes: dense sand when large, then bolder and simpler as it shrinks, down to solid rings at favicon size. Always use the smallest file that fits.</p>
+          <p class="measure">The four rings on their own, drawn at four sizes. Dense sand when large, then bolder and simpler as it shrinks. Use the smallest file that fits.</p>
           <div class="tiles c4">
-            <div class="tile"><img src="brand/mark-large.svg" alt="Mark, large" width="130"><span class="lab">Large · hero, print</span></div>
-            <div class="tile"><img src="brand/mark-medium.svg" alt="Mark, medium" width="80"><span class="lab">Medium · 48–120 px</span></div>
-            <div class="tile"><img src="brand/mark-small.svg" alt="Mark, small" width="40"><span class="lab">Small · 24–48 px</span></div>
-            <div class="tile"><img src="brand/mark-favicon.svg" alt="Mark, favicon" width="18"><span class="lab">Favicon · 16 px</span></div>
-            <div class="tile"><img src="brand/favicon.svg" alt="Favicon tile" width="64"><span class="lab">Favicon tile</span></div>
+            <div class="tile"><img src="brand/mark-large.svg" alt="Mark, large" width="130"><span class="lab">Large</span></div>
+            <div class="tile"><img src="brand/mark-medium.svg" alt="Mark, medium" width="80"><span class="lab">48–120 px</span></div>
+            <div class="tile"><img src="brand/mark-small.svg" alt="Mark, small" width="40"><span class="lab">24–48 px</span></div>
+            <div class="tile"><img src="brand/mark-favicon.svg" alt="Mark, favicon" width="18"><span class="lab">16 px</span></div>
+            <div class="tile"><img src="brand/favicon.svg" alt="Favicon tile" width="64"><span class="lab">Favicon</span></div>
             <div class="tile"><img src="brand/app-icon.svg" alt="App icon" width="72"><span class="lab">App icon</span></div>
-            <div class="tile or"><img src="brand/stamp.svg" alt="Stamp" style="height:120px;width:auto"><span class="lab" style="color:var(--on-acc)">Stamp · avatars, vinyl</span></div>
-            <div class="tile dk"><img src="brand/seal.svg" alt="Seal" style="height:120px;width:auto"><span class="lab">Seal · stickers, installers</span></div>
+            <div class="tile or"><img src="brand/stamp.svg" alt="Stamp" style="height:120px;width:auto"><span class="lab" style="color:var(--on-acc)">Stamp</span></div>
+            <div class="tile dk"><img src="brand/seal.svg" alt="Seal" style="height:120px;width:auto"><span class="lab">Seal</span></div>
           </div>
-        </section>
-        <section class="bb-sec" id="bb-name">
-          <h2 class="cond">The name</h2>
-          <div class="verdict"><span class="lab">Decision</span><p>Keep <strong>SD88ME</strong> as the brand, the handle and the manufacturer string. Don’t rename. It is already on every plugin folder, the Open MPC catalog, Discord and GitHub, and searching for it only finds you.</p></div>
-          <div class="tiles c3">
-            <div class="pane"><b>S·D·88·ME</b><p>The signature: initials, a birth year, and me.</p></div>
-            <div class="pane"><b class="serif" style="font:400 1.5rem/1 var(--f-serif);color:var(--acc-ink);text-transform:none">sedate me</b><p>The state: the hour where the room stops thinking.</p></div>
-            <div class="pane"><b>8 + 8</b><p>The signal: an octave on a scope draws an 8; two stacked rings make one.</p></div>
-          </div>
-          <p class="measure"><strong>Domain:</strong> <span class="mono">sd88.me</span> is a domain hack of the handle. Register it if it’s free, then point it at this site. A paid line, if needed, is <strong>SD88ME Editions</strong>, never a new name.</p>
         </section>
         <section class="bb-sec" id="bb-color">
           <h2 class="cond">Colour</h2>
-          <p class="measure">Stone paper with grain, warm ink, and one neon orange. The orange is for the rings, the sand, buttons on hover, and one highlighted phrase per view. Never for body text on stone: use the deeper orange for text.</p>
+          <p class="measure">Stone paper with grain, warm ink and one orange. Orange is for the rings, the sand, hover states and one highlighted phrase per view. Use the deeper orange for text.</p>
           <div class="swatches" id="swatches"></div>
         </section>
         <section class="bb-sec" id="bb-type">
           <h2 class="cond">Type</h2>
           <div class="typespec">
-            <div><p class="lab meta"><b>Big Shoulders Display</b>900 · headlines, names, the logo</p><p class="cond" style="font-size:2.6rem;margin:0">Circuit-true instruments</p></div>
-            <div><p class="lab meta"><b>Mona Sans</b>400–700 · body, buttons</p><p style="margin:0">The voice is the TB-303 machine from Lemus, solved as a circuit from Roland’s service-notes schematic.</p></div>
-            <div><p class="lab meta"><b>Martian Mono</b>labels, specs, catalogue numbers</p><p class="lab" style="margin:0;font-size:.8rem;color:var(--ink)">SD88-002 · 0.6–70 SEC · GEN1 + GEN2</p></div>
-            <div><p class="lab meta"><b>Instrument Serif Italic</b>one phrase per view</p><p class="serif" style="font-size:2.4rem;margin:0;color:var(--acc-ink)">sedate me</p></div>
+            <div><p class="lab meta"><b>Big Shoulders Display</b>900 · headlines, names, the logo</p><p class="cond" style="font-size:2.6rem;margin:0">Instruments for losing track of time</p></div>
+            <div><p class="lab meta"><b>Mona Sans</b>body and buttons</p><p style="margin:0">Two oscillators per voice with hard sync, a resonant lowpass, three envelopes and four LFOs.</p></div>
+            <div><p class="lab meta"><b>Martian Mono</b>labels and specs</p><p class="lab" style="margin:0;font-size:.8rem;color:var(--ink)">MPC OS 3.10.1 · VST2 · 40 KHZ</p></div>
+            <div><p class="lab meta"><b>Instrument Serif Italic</b>one phrase per view, at most</p><p class="serif" style="font-size:2.4rem;margin:0;color:var(--acc-ink)">say it quickly</p></div>
           </div>
         </section>
         <section class="bb-sec" id="bb-motif">
           <h2 class="cond">Motifs</h2>
           <div class="tiles c2">
-            <div class="pane"><b>Sand plate</b><p>Grains on a vibrating plate settle into the mark; tap it and they scatter into a tone’s pattern. The hero of the site. Sound made visible.</p></div>
-            <div class="pane"><b>Sigils</b><p>Every plugin has a Lissajous sigil: the figure two tones in a chosen ratio draw. On cards, the datasheet, the panel corner, and the ring around the plate.</p></div>
-            <div class="pane"><b>Rules and grain</b><p>1.5 px ink rules divide the page like a datasheet. Fine paper grain over everything, never strong enough to notice first.</p></div>
-            <div class="pane"><b>Catalogue numbers</b><p>Plugins are numbered like records: SD88-001, SD88-002. They give the catalogue a label’s sense of order.</p></div>
+            <div class="pane"><b>Sand plate</b><p>Grains settle into the four rings. Tap to stir them into a tone’s pattern, then watch them settle back.</p></div>
+            <div class="pane"><b>Sigils</b><p>Each plugin has a Lissajous figure: the shape two tones in a set ratio draw on a scope. Used on cards, pages and the ring around the plate.</p></div>
+            <div class="pane"><b>Rules and grain</b><p>1.5 px ink rules divide the page. Fine paper grain sits over everything.</p></div>
+            <div class="pane"><b>Settling</b><p>Motion is slow and comes to rest. Nothing bounces, flashes or loops fast.</p></div>
           </div>
         </section>
         <section class="bb-sec" id="bb-voice">
           <h2 class="cond">Voice</h2>
           <div class="tiles c3">
-            <div class="pane"><b>Exact</b><p>Real numbers and real units. “3.0 dB from 400 notes”, never “incredibly authentic”.</p></div>
-            <div class="pane"><b>Warm</b><p>First person and human. The 2 a.m. sessions, the wife, the flowers.</p></div>
-            <div class="pane"><b>Lightly mystical</b><p>One evocative line per page, earned by the facts around it. Never two.</p></div>
+            <div class="pane"><b>Plain</b><p>Say what it does, in the words a musician would use. Short sentences.</p></div>
+            <div class="pane"><b>Specific</b><p>Real numbers and real names: “ten voices at 40 kHz”, “reads your .syx banks”.</p></div>
+            <div class="pane"><b>Calm</b><p>No hype, no exclamation marks. A little warmth and humour is fine.</p></div>
           </div>
           <div class="tbl" style="border-top:1.5px solid var(--ink)"><table style="min-width:520px"><thead><tr><th>Write</th><th>Not</th></tr></thead><tbody>
-            <tr><td style="color:var(--ink)">It runs the 224’s own firmware.</td><td>Legendary reverb, faithfully recreated!</td></tr>
+            <tr><td style="color:var(--ink)">It loads the Microwave’s own sound banks.</td><td>Legendary wavetable magic, reimagined!</td></tr>
             <tr><td style="color:var(--ink)">You supply the ROM from hardware you own.</td><td>ROM not included (legal reasons).</td></tr>
-            <tr><td style="color:var(--ink)">Made for long nights.</td><td>Unleash your sonic journey into the cosmos.</td></tr>
-            <tr><td style="color:var(--ink)">The voice comes from Lemus. Thank you.</td><td>Based on open-source code.</td></tr>
+            <tr><td style="color:var(--ink)">Made to get you into a session and keep you there.</td><td>Unlock your creative potential.</td></tr>
+            <tr><td style="color:var(--ink)">The engine is Joe Landers’ reflecticon-224. Thank you.</td><td>Based on open-source code.</td></tr>
           </tbody></table></div>
         </section>
         <section class="bb-sec" id="bb-copy">
           <h2 class="cond">Copy deck</h2>
           <div class="taglines">
-            <div><span>Circuit-true instruments for deep states.</span><span class="lab">Primary · site hero</span></div>
-            <div><span>Sound made visible.</span><span class="lab">Brand line · about, merch</span></div>
-            <div><span>Two eights. One for the circuit, one for the cosmos.</span><span class="lab">Story · about</span></div>
-            <div><span>Made for long nights.</span><span class="lab">Sign-off · footers, emails</span></div>
+            <div><span>Instruments for losing track of time.</span><span class="lab">Primary</span></div>
+            <div><span>Accurate, useful tools for long sessions.</span><span class="lab">Descriptive</span></div>
+            <div><span>Sound made visible.</span><span class="lab">Brand line</span></div>
+            <div><span>Take your time.</span><span class="lab">Sign-off</span></div>
           </div>
           <div class="tiles c2" style="background:transparent;border:0;gap:1rem">
-            <div class="copyblock"><span class="lab">Short bio</span><p>SD88ME builds circuit-true instruments for the Akai MPC: classic machines rebuilt from schematics and firmware, free and open source.</p><button type="button" data-copy>Copy</button></div>
-            <div class="copyblock"><span class="lab">Social bio · 160 chars</span><p>Circuit-true instruments for deep states. MPC / Force plugins from schematics &amp; firmware. Open MPC. Free + open source.</p><button type="button" data-copy>Copy</button></div>
+            <div class="copyblock"><span class="lab">Short bio</span><p>SD88ME makes audio tools and plugins: instruments and effects for the MPC and the desktop, plus open projects like Open MPC.</p><button type="button" data-copy>Copy</button></div>
+            <div class="copyblock"><span class="lab">Social bio</span><p>Audio tools and plugins for the MPC and your DAW. Originals and open-source ports. Open MPC.</p><button type="button" data-copy>Copy</button></div>
           </div>
-          <div class="copyblock"><span class="lab">Long bio · about page, press</span><p>SD88ME is a one-person instrument workshop. It began as a username (initials, a birth year, and “me”) and became the name behind more than 20 plugins for Akai’s MPC and Force: a transistor-level TB-303, a Lexicon 224 running its own firmware, a whole Machinedrum in one plugin, and original tools like Crate Digger and Boris Granular. The work sits where exact engineering meets the deep end of techno and psy culture. Everything on the MPC is free and open source, built on and around the Open MPC toolchain, and credited to the people whose work it stands on.</p><button type="button" data-copy>Copy</button></div>
+          <div class="copyblock"><span class="lab">Longer bio</span><p>SD88ME is a one-person workshop making audio tools and plugins. Most of the work so far runs inside Akai’s MPC: original instruments like Profit-08 and Clementine-XT, generative tools like Acid and Maze, and ports of the best open-source engines with a proper MPC screen. Behind them is Open MPC, an open toolchain and catalog for building and installing MPC plugins. Desktop versions are next. The name started as a username, and if you say it quickly it sounds like “sedate me”, which is roughly the idea.</p><button type="button" data-copy>Copy</button></div>
         </section>
         <section class="bb-sec" id="bb-naming" style="border-bottom:0">
-          <h2 class="cond">Naming plugins</h2>
-          <p class="measure">You already have a naming voice: <strong>8W8, 6W6, CW-78, Reverbicon, Osirus, Welle, Profit-8</strong>. Keep it. It stays clear of trademarks and rewards people who know the gear.</p>
+          <h2 class="cond">Naming</h2>
+          <p class="measure">The existing names already have a voice: <strong>Profit-08, Clementine-XT, Reverbicon, 8W8, Welle</strong>. Keep it.</p>
           <div class="tiles c3">
-            <div class="pane"><b>Emulations</b><p>Wink at the model: swap letters for symbols (8W8), translate it (Welle) or blend words (Reverbicon). Never use the maker’s name.</p></div>
-            <div class="pane"><b>Originals</b><p>A person’s name or a place: Boris, Clementine, Maze. Short, warm, easy to say on a stream.</p></div>
-            <div class="pane"><b>Catalogue</b><p>Every release gets the next number: SD88-023, SD88-024. Folder string stays <span class="mono">sd88me - VST - Name</span>.</p></div>
+            <div class="pane"><b>Modelled originals</b><p>A pun or nod to the model, never the maker’s name: Profit-08, Clementine-XT.</p></div>
+            <div class="pane"><b>Other originals</b><p>Short, plain or warm: Acid, Maze, Lucky Dip, Crate Digger.</p></div>
+            <div class="pane"><b>Ports</b><p>Keep the upstream name where there is one (Osirus, Welle, Monomodule) so people can find the source.</p></div>
           </div>
         </section>
       </div>
@@ -606,13 +607,13 @@ footer .legal{grid-column:1/-1;border-top:1px solid var(--line);padding-top:1.4r
 
 <footer class="gut">
   <div class="inner">
-    <div><a href="#top" aria-label="SD88ME home"><img src="brand/logo-nav.svg" alt="SD88ME" style="height:36px;width:auto"></a><p class="say">Made for long nights.</p></div>
-    <div><h4>Plugins</h4><ul><li><a href="#catalogue">Catalogue</a></li><li><a href="#editions">Editions</a></li><li><a href="https://open-mpc.github.io/" target="_blank" rel="noopener">Open MPC catalog</a></li></ul></div>
-    <div><h4>Elsewhere</h4><ul><li><a href="https://github.com/sd88me" target="_blank" rel="noopener">GitHub</a></li><li><a href="https://discord.gg/sRRysZSgu3" target="_blank" rel="noopener">Discord</a></li><li><a href="https://ko-fi.com/sd88me" target="_blank" rel="noopener">Ko-fi</a></li></ul></div>
-    <div><h4>About</h4><ul><li><a href="#name">The name</a></li><li><a href="#brand" data-route="brand">Brand book</a></li><li><a href="#lab">Lab</a></li></ul></div>
+    <div><a href="#top" aria-label="SD88ME home"><img src="brand/logo-nav.svg" alt="SD88ME" style="height:36px;width:auto"></a><p class="say">Take your time.</p></div>
+    <div><h4>Plugins</h4><ul><li><a href="#plugins">MPC plugins</a></li><li><a href="#vst">VST plugins</a></li><li><a href="#editions">Editions</a></li></ul></div>
+    <div><h4>Projects</h4><ul><li><a href="https://open-mpc.github.io/" target="_blank" rel="noopener">Open MPC</a></li><li><a href="https://github.com/sd88me" target="_blank" rel="noopener">GitHub</a></li><li><a href="https://discord.gg/sRRysZSgu3" target="_blank" rel="noopener">Discord</a></li></ul></div>
+    <div><h4>About</h4><ul><li><a href="#about">The name</a></li><li><a href="#brand" data-route="brand">Brand book</a></li><li><a href="https://ko-fi.com/sd88me" target="_blank" rel="noopener">Ko-fi</a></li></ul></div>
     <div class="legal">
-      <p style="margin:0">Built on the work of others, with thanks: Lemus, gearmulator (dsp56300), Dexed, Airwindows (Chris Johnson), Vital (Matt Tytel), mo0kid, shnolk, the MockbaMod community and everyone in Open MPC.</p>
-      <p style="margin:0">Roland, Lexicon, Elektron, Access, Waldorf, Korg, Sequential and Akai are trademarks of their owners. Their names appear only to describe what a plugin emulates. No ROMs or firmware are distributed. © 2026 SD88ME.</p>
+      <p style="margin:0">The ports are built on other people’s work, with thanks: Lemus, athousanddetails, gearmulator (The Usual Suspects), Joe Landers, nukeykt, mo0kid, shnolk, Tuth, Alessandro Gaiba, filliformes, Amit Talwar, Dexed, Airwindows (Chris Johnson), Vital (Matt Tytel), and everyone in Open MPC.</p>
+      <p style="margin:0">Roland, Lexicon, Elektron, Access, Waldorf, Korg, Sequential, Moog and Akai are trademarks of their owners. Their names appear only to say what a plugin is modelled on. No ROMs or firmware are distributed. © 2026 SD88ME.</p>
     </div>
   </div>
 </footer>
@@ -620,56 +621,160 @@ footer .legal{grid-column:1/-1;border-top:1px solid var(--line);padding-top:1.4r
 <script>
 (()=>{
 const TAU=Math.PI*2,reduce=matchMedia('(prefers-reduced-motion: reduce)').matches,dpr=Math.min(devicePixelRatio||1,2);
-const liss=(a,b,n=200)=>{let d='';for(let i=0;i<=n;i++){const t=TAU*i/n;d+=(i?'L':'M')+(20+16*Math.sin(a*t+(a===b?Math.PI/4:Math.PI/(2*b+1)))).toFixed(2)+','+(20-16*Math.sin(b*t)).toFixed(2)}return d+'Z'};
-const sig=r=>`<svg viewBox="0 0 40 40" aria-hidden="true"><path d="${liss(r[0],r[1])}" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>`;
+const liss=(a,b,n=220)=>{let d='';for(let i=0;i<=n;i++){const t=TAU*i/n;d+=(i?'L':'M')+(20+16*Math.sin(a*t+(a===b?Math.PI/4:Math.PI/(2*b+1)))).toFixed(2)+','+(20-16*Math.sin(b*t)).toFixed(2)}return d+'Z'};
+const sig=(r,w=1.7)=>`<svg viewBox="0 0 40 40" aria-hidden="true"><path d="${liss(r[0],r[1])}" fill="none" stroke="currentColor" stroke-width="${w}" stroke-linejoin="round"/></svg>`;
+const GH=r=>'https://github.com/sd88me/'+r;
 
-/* ---- catalogue data (from each repo's README) ---- */
-const M={circuit:'Circuit',firmware:'Firmware',port:'Port',original:'Original'};
-const FEATURED=[
- {n:'Acid-303',k:'instrument',m:'circuit',r:[3,1],img:'acid303',l:'A TB-303 solved transistor by transistor from the service notes, with every Devil Fish mod switchable.',repo:'mpc-vst-acid303'},
- {n:'Reverbicon 224',k:'effect',m:'firmware',r:[5,4],img:'reverbicon224',l:'The Lexicon 224’s own v4.4 firmware on an emulated 8080, with its red LED readout.',route:'reverbicon-224'},
- {n:'Machinemodule',k:'drums',m:'firmware',r:[4,3],img:'machinemodule',l:'The Machinedrum SPS-1 UW engine. All 16 tracks play from one plugin instance.',repo:'mpc-vst-machinedrum'},
- {n:'TR-MPC',k:'drums',m:'circuit',r:[5,3],img:'8w8',l:'Four circuit-modelled drum machines (8W8, 6W6, CW-78, 9W9) and a 16-slot kit of all 49 voices.',repo:'mpc-vst-TR-MPC'},
- {n:'Mono-101',k:'instrument',m:'circuit',r:[5,2],img:'mono101',l:'An SH-101 solved from the schematic, with a Circuit Bent page and the original 40 sounds.',repo:'mpc-vst-mono101'},
- {n:'Monomodule',k:'instrument',m:'firmware',r:[7,4],img:'monomodule',l:'The Monomachine’s synth engine, chip-accurate: 15 synth machines, plus 7 effect machines as an FX.',repo:'mpc-vst-monomodule'},
- {n:'Mini-JV',k:'instrument',m:'firmware',r:[6,5],img:'jv880',l:'The JV-880 ROM engine with its own reverb and chorus, behind a backlit rack-style screen.',repo:'mpc-vst-jv880'},
- {n:'Boris Granular',k:'effect',m:'original',r:[7,3],img:'boris',l:'Up to 24 grains over a 10-second buffer, tempo-synced to the MPC, with freeze and 22 presets.',repo:'mpc-vst-boris'},
- {n:'Crate Digger',k:'tool',m:'original',r:[9,8],img:'cratedigger',l:'Digs Discogs by genre, decade and country, then streams the record into an MPC track to sample.',repo:'mpc-vst-cratedigger'},
+/* ---------------- plugins (from each repo's README) ---------------- */
+const ORIGINALS=[
+ {slug:'profit-08',n:'Profit-08',grp:'modelled',k:'instrument',r:[8,7],img:'profit8',repo:'mpc-vst-profit8',
+  l:'An eight-voice, two-layer analog-style synth that plays the way a Prophet ’08 does, and loads its SysEx banks.'},
+ {slug:'clementine-xt',n:'Clementine-XT',grp:'modelled',k:'instrument',r:[9,4],repo:'mpc-vst-clementineXT',
+  l:'A wavetable synth modelled on the Waldorf Microwave II and XT. Ten voices at the original 40 kHz rate.'},
+ {slug:'maze',n:'Maze Voice',grp:'modelled',k:'instrument',r:[6,1],repo:'mpc-vst-maze',
+  l:'A mono voice modelled on the Moog Labyrinth’s signal path: thru-zero FM, a wavefolder and an LP to BP filter.'},
+ {slug:'acid',n:'Acid',grp:'other',k:'sequencer',r:[3,2],img:'acid',repo:'mpc-vst-acid',
+  l:'Two generative 303-style bass lines that you blend between, played as MIDI into any synth track.'},
+ {slug:'maze',n:'Maze Sequencer',grp:'other',k:'sequencer',r:[2,1],repo:'mpc-vst-maze',
+  l:'Two random 8-step lines snapped to a scale. You steer it with Corrupt and CV Range instead of writing notes.'},
+ {slug:'lucky-dip',n:'Lucky Dip',grp:'other',k:'tool',r:[5,3],img:'luckydip',repo:'mpc-vst-luckydip',
+  l:'Pulls sixteen sounds from your sample library onto the pads. Lock what you like, reroll the rest, export a kit.'},
+ {slug:'crate-digger',n:'Crate Digger',grp:'other',k:'tool',r:[9,8],img:'cratedigger',repo:'mpc-vst-cratedigger',
+  l:'Finds random records on Discogs by genre, decade and country, and streams them into a track to sample.'},
 ];
-const INDEX=[
- {n:'Osirus',k:'instrument',m:'firmware',r:[7,5],l:'Access Virus A, B and C firmware on gearmulator’s DSP56300 emulation (Gen2)',repo:'mpc-vst-osirus'},
- {n:'Welle',k:'instrument',m:'firmware',r:[8,5],l:'Waldorf Wave: OS 1.700 on emulated 68000s, on mo0kid’s model of the voice circuits',repo:'mpc-vst-welle'},
- {n:'JE-8086',k:'instrument',m:'firmware',r:[8,3],l:'JP-8000 firmware on gearmulator’s chip emulation',repo:'mpc-vst-je8086'},
- {n:'MS2KR',k:'instrument',m:'firmware',r:[5,1],l:'MS2000R analog-modelling synth, running its own firmware',repo:'mpc-vst-ms2kr'},
- {n:'Vavra',k:'instrument',m:'firmware',r:[9,7],l:'Waldorf microQ emulation for Gen2',repo:'mpc-vst-vavra'},
- {n:'ClementineXT',k:'instrument',m:'original',r:[9,4],l:'Wavetable synth modelled on the Microwave II/XT; loads original .syx banks',repo:'mpc-vst-clementineXT'},
- {n:'Profit-8',k:'instrument',m:'original',r:[8,7],l:'Eight voices, two layers, played the way a Prophet ’08 plays',repo:'mpc-vst-profit8'},
- {n:'DX7',k:'instrument',m:'port',r:[7,2],l:'Dexed, the open DX7 engine, as a native plugin',repo:'mpc-vst-dx7'},
- {n:'Airwindows',k:'effect',m:'port',r:[1,1],l:'Chris Johnson’s Airwindows effects as Collections',repo:'mpc-vst-airwindows'},
- {n:'OTT',k:'effect',m:'port',r:[3,2],l:'Vital’s OTT multiband compressor as an insert',repo:'mpc-vst-OTT'},
- {n:'Euclid',k:'sequencer',m:'original',r:[8,1],l:'Eight-lane Euclidean MIDI sequencer',repo:'mpc-vst-euclid'},
- {n:'Acid',k:'sequencer',m:'original',r:[3,1],l:'Generative 303-style bassline sequencer',repo:'mpc-vst-acid'},
- {n:'Maze',k:'sequencer',m:'original',r:[6,1],l:'Two generative 8-step sequencers quantised to a scale',repo:'mpc-vst-maze'},
+const PORTS=[
+ {n:'Reverbicon 224',k:'effect',r:[5,4],img:'reverbicon224',repo:'mpc-vst-reverbicon224',route:'reverbicon-224',by:'Joe Landers’ reflecticon-224',
+  l:'The Lexicon 224’s own v4.4 firmware on an emulated 8080 and the DSP it programs.'},
+ {n:'Acid-303',k:'instrument',r:[3,1],img:'acid303',repo:'mpc-vst-acid303',by:'Lemus, with Robin Whittle’s Devil Fish mods',
+  l:'A TB-303 voice solved as a circuit from the service notes, with every Devil Fish mod switchable.'},
+ {n:'Mono-101',k:'instrument',r:[5,2],img:'mono101',repo:'mpc-vst-mono101',by:'Lemus',
+  l:'The SH-101 synth board as a circuit model, plus a Circuit Bent page of new circuits I added.'},
+ {n:'TR-MPC',k:'drums',r:[7,6],img:'8w8',repo:'mpc-vst-TR-MPC',by:'athousanddetails’ Schwung modules',
+  l:'606, 808, CR-78 and 909 kits (6W6, 8W8, CW-78, 9W9) and a 16-slot kit that mixes all 49 voices.'},
+ {n:'Machinemodule',k:'drums',r:[4,3],img:'machinemodule',repo:'mpc-vst-machinedrum',by:'the approach of shnolk’s Monomodule',
+  l:'The Machinedrum’s own DSP in an emulator. All 16 tracks play from one plugin.'},
+ {n:'Monomodule',k:'instrument',r:[7,4],img:'monomodule',repo:'mpc-vst-monomodule',by:'shnolk’s Monomodule',
+  l:'A chip-accurate Monomachine synth engine: 15 synth machines, and 7 effect machines as an FX.'},
+ {n:'Osirus',k:'instrument',r:[7,5],img:'osirus',repo:'mpc-vst-osirus',by:'gearmulator',
+  l:'Access Virus A, B and C firmware on a DSP56300 emulator. MPC Live III and other 64-bit MPCs.'},
+ {n:'Mini-JV',k:'instrument',r:[6,5],img:'jv880',repo:'mpc-vst-jv880',by:'nukeykt’s emulation core',
+  l:'The Roland JV-880 with its own reverb and chorus, behind a backlit rack-style screen.'},
+ {n:'Boris Granular',k:'effect',r:[7,3],img:'boris',repo:'mpc-vst-boris',by:'Alessandro Gaiba’s Boris Granular Station, via filliformes’ boris-move',
+  l:'Up to 24 grains over a 10-second buffer, synced to the MPC’s tempo, with freeze.'},
 ];
-const ALL=[...FEATURED,...INDEX];ALL.forEach((p,i)=>p.cat='SD88-'+String(i+1).padStart(3,'0'));
-document.getElementById('count').textContent=ALL.length;
-document.getElementById('cards').innerHTML=FEATURED.map(p=>{const href=p.route?'#'+p.route:'https://github.com/sd88me/'+p.repo;const ext=p.route?`data-route="${p.route}"`:'target="_blank" rel="noopener"';
-  return `<a class="card" href="${href}" ${ext} data-kind="${p.k}"><figure><img src="img/${p.img}.webp" alt="${p.n} on an MPC touchscreen" width="960" height="471" loading="lazy"></figure><div class="cb"><div class="ct lab"><span>${p.cat}</span><span>${M[p.m]} · ${p.k}</span></div><h3>${p.n}${sig(p.r)}</h3><p>${p.l}</p><span class="go">${p.route?'Datasheet →':'Free · source on GitHub →'}</span></div></a>`}).join('');
-document.getElementById('index').innerHTML=INDEX.map(p=>`<tr data-kind="${p.k}"><td class="nm">${sig(p.r)}${p.n}</td><td><span class="cat">${p.cat}</span></td><td>${p.l}</td><td>${M[p.m]}</td><td><a href="https://github.com/sd88me/${p.repo}" target="_blank" rel="noopener">GitHub →</a></td></tr>`).join('');
+const MOREPORTS=[
+ {n:'Welle',k:'instrument',r:[8,5],repo:'mpc-vst-welle',by:'mo0kid’s Wave Emulation',l:'Waldorf Wave, running its own OS on emulated 68000s'},
+ {n:'JE-8086',k:'instrument',r:[8,3],repo:'mpc-vst-je8086',by:'gearmulator',l:'Roland JP-8000 firmware on emulated chips'},
+ {n:'Vavra',k:'instrument',r:[9,7],repo:'mpc-vst-vavra',by:'gearmulator',l:'Waldorf microQ emulation'},
+ {n:'MS2KR',k:'instrument',r:[5,1],repo:'mpc-vst-ms2kr',by:'Tuth’s ms2000r-emu',l:'Korg MS2000R firmware on a DSP56300 emulator'},
+ {n:'DX7',k:'instrument',r:[7,2],repo:'mpc-vst-dx7',by:'Dexed',l:'Six-operator FM, loads DX7 cartridges'},
+ {n:'Euclid',k:'sequencer',r:[8,1],repo:'mpc-vst-euclid',by:'Amit Talwar’s EUCLIDIER-CONSOLE',l:'Eight-lane Euclidean MIDI sequencer'},
+ {n:'Airwindows',k:'effect',r:[1,1],repo:'mpc-vst-airwindows',by:'Chris Johnson’s Airwindows',l:'Airwindows effects as Collections'},
+ {n:'OTT',k:'effect',r:[4,1],repo:'mpc-vst-OTT',by:'Vital (Matt Tytel)',l:'The OTT multiband compressor as an insert'},
+];
+const KIND={instrument:'Instrument',drums:'Drums',effect:'Effect',sequencer:'MIDI sequencer',tool:'Tool'};
+const ALL=[...ORIGINALS,...PORTS,...MOREPORTS];
+document.getElementById('nAll').textContent=ALL.length;
+document.getElementById('nOrig').textContent=ORIGINALS.length;
+
+const fig=p=>p.img?`<figure><img src="img/${p.img}.webp" alt="${p.n} on an MPC screen" width="960" height="471" loading="lazy"></figure>`:`<figure class="sigfig">${sig(p.r,1.4)}</figure>`;
+const card=(p,isPort)=>{const href=p.slug?'#'+p.slug:(p.route?'#'+p.route:GH(p.repo));const ext=(p.slug||p.route)?'':'target="_blank" rel="noopener"';
+  return `<a class="card" href="${href}" ${ext} data-kind="${p.k}">${fig(p)}<div class="cb"><div class="ct lab"><span>${KIND[p.k]}</span><span>${isPort?'Port':'Original'}</span></div><h3>${p.n}${sig(p.r)}</h3><p>${p.l}</p>${isPort?`<p class="credit">Built on <b>${p.by}</b></p>`:''}<span class="go">${(p.slug||p.route)?'Read more →':'Source on GitHub →'}</span></div></a>`};
+document.getElementById('cModelled').innerHTML=ORIGINALS.filter(p=>p.grp==='modelled').map(p=>card(p)).join('');
+document.getElementById('cOther').innerHTML=ORIGINALS.filter(p=>p.grp==='other').map(p=>card(p)).join('');
+document.getElementById('cPorts').innerHTML=PORTS.map(p=>card(p,true)).join('');
+document.getElementById('index').innerHTML=MOREPORTS.map(p=>`<tr data-kind="${p.k}"><td class="nm">${sig(p.r)}${p.n}</td><td>${p.l}</td><td>${p.by}</td><td><a href="${GH(p.repo)}" target="_blank" rel="noopener">GitHub →</a></td></tr>`).join('');
 const band=ALL.map(p=>`<div class="band-item">${sig(p.r)}<span>${p.n}</span></div>`).join('');document.getElementById('band').innerHTML=band+band;
 const KINDS=[['all','All'],['instrument','Instruments'],['drums','Drums'],['effect','Effects'],['sequencer','Sequencers'],['tool','Tools']];
 const fb=document.getElementById('filters');
 fb.innerHTML=KINDS.map(([k,l])=>`<button type="button" data-k="${k}" aria-pressed="${k==='all'}">${l}<span class="n">${k==='all'?ALL.length:ALL.filter(p=>p.k===k).length}</span></button>`).join('');
-fb.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;const k=b.dataset.k;fb.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b));document.querySelectorAll('[data-kind]').forEach(el=>el.hidden=!(k==='all'||el.dataset.kind===k))});
+fb.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;const k=b.dataset.k;fb.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b));
+  document.querySelectorAll('#plugins [data-kind]').forEach(el=>el.hidden=!(k==='all'||el.dataset.kind===k));
+  document.querySelectorAll('#plugins .subhead').forEach(h=>{const grid=h.nextElementSibling;const any=[...grid.children].some(c=>!c.hidden);h.hidden=!any;grid.hidden=!any})});
 
-/* ---- brand book swatches & copy ---- */
-document.getElementById('swatches').innerHTML=[['Stone','#ECE8E1','Page'],['Paper','#F5F1EA','Raised surfaces'],['Ink','#17140F','Text, rules'],['Neon orange','#FF5A1A','Rings, sand, accents'],['Deep orange','#E24A0C','Accent text on stone'],['Warm black','#1F1712','Sand plate, panels'],['Sand glow','#FFD08A','Highlight grains']].map(([n,h,u])=>`<div class="sw"><i style="background:${h}"></i><div><b>${n}</b><span>${h}</span><span>${u}</span></div></div>`).join('');
+/* ---------------- feature pages ---------------- */
+const P={};
+P['profit-08']={n:'Profit-08',r:[8,7],tag:'Original · modelled',kind:'Instrument',plat:'MPC Live III and first-generation MPCs',repo:'mpc-vst-profit8',
+ lead:'Eight voices, two layers, and the sound of a Prophet ’08, inside your MPC.',
+ imgs:[['profit8','The Program page'],['profit8-seq','The sequencer']],
+ what:['Profit-08 is a new engine written to behave like the Prophet ’08. Each voice has two analog-style oscillators with hard sync, a resonant lowpass that switches between 2 and 4 poles, three envelopes and four LFOs. Layers A and B can be stacked or split across the keyboard.',
+       'A program is stored as the instrument’s own 384 bytes, so program and bank SysEx dumps load as they are. That includes the factory banks Sequential publishes. Drop the .syx files in the plugin’s folder and they appear as banks.'],
+ feats:[['Voices','Eight, in two layers, stacked or split'],['Oscillators','Two per voice, with hard sync'],['Filter','2 or 4-pole resonant lowpass'],['Modulation','Three envelopes, four LFOs, four mod slots and controller routes'],['Sequencer','4 × 16 gated step sequencer, plus an arpeggiator'],['Screen','Six tabs: Program, Banks, Osc/Filter, Amp/LFO, Mods, Seq. Q-Links follow the tab'],['Sounds','Load any Prophet ’08 .syx dump. Save favourites with names, or hit Random']],
+ notes:['No factory programs are included. Download Sequential’s free factory banks and put them in <span class="mono">Preset_Banks</span>.','Quality defaults to High 2× on 64-bit MPCs and Eco 1× on older ones.','Your favourites live in the plugin folder, so back that up before updating MPC OS.'],
+ credit:'An independent project, not affiliated with Sequential or Dave Smith Instruments. The name is a pun on the instrument it’s modelled on. GPL-3.0.'};
+P['clementine-xt']={n:'Clementine-XT',r:[9,4],tag:'Original · modelled',kind:'Instrument',plat:'First-generation (32-bit) MPCs',repo:'mpc-vst-clementineXT',
+ lead:'A wavetable synth that plays the way the Waldorf Microwave II and XT did.',
+ what:['Clementine-XT is a new engine in portable C, built around the Microwave XT’s own data model and tuned against the real firmware’s output. A sound is the XT’s 256-byte parameter block, so every parameter has the original’s range, meaning and MIDI controller number, and .syx sounds and banks load as they are.',
+       'It runs ten voices at the original’s 40 kHz internal rate, with the stepped 8-bit character of the old wavetables. Add your own Microwave II ROM and it reads the 506 original waves and the 256 factory sounds. Without one, it plays twelve built-in sounds on an original set of tables.'],
+ feats:[['Oscillators','Two wavetable oscillators with FM, sync and ring modulation'],['Filters','Thirteen types, from 24 dB lowpass to sin(x), waveshaper and S&H'],['Modulation','A 16-slot matrix, four modifiers, wave envelopes with loops, two LFOs'],['Play knobs','Each sound picks four parameters for the four performance knobs, as on the original'],['Arpeggiator','Follows the MPC’s tempo'],['Screen','Ten tabs, from Global and Sounds to the full mod matrix']],
+ notes:['Optional but recommended: your own Microwave II ROM. It isn’t included, and the project won’t help you find one.','The sound you’re playing saves with the MPC project.','Runs on first-generation MPCs only for now.'],
+ credit:'An independent project, not affiliated with Waldorf. The XT is a nod to the Microwave XT, and also reads as “extended”. GPL-3.0.'};
+P['maze']={n:'Maze',r:[6,1],tag:'Original · modelled and other',kind:'Instrument and MIDI sequencer',plat:'First-generation MPCs',repo:'mpc-vst-maze',
+ lead:'Two plugins inspired by the Moog Labyrinth: a strange, bright voice, and a sequencer that writes for it.',
+ what:['<strong>Maze Voice</strong> follows the Labyrinth’s signal path. A sine oscillator is FM’d by a triangle at thru-zero for those bell and clang tones. A wavefolder can sit before the filter, after it, or alongside it. The filter is a zero-delay-feedback state variable that sweeps from lowpass to bandpass, with saturation in the resonance so the peak blooms. Two tempo-synced LFOs and a page randomiser keep it moving.',
+       '<strong>Maze Sequencer</strong> makes no sound. It plays two 8-step lines of MIDI. Each step has a gate and a hidden random pitch, spread around the root by CV Range and snapped to your scale. Corrupt gives every step a chance to change as it plays, so the line drifts slowly instead of looping. Point it at Maze Voice, or at anything else.'],
+ feats:[['Voice','Thru-zero FM pair, ring mod, noise, wavefolder with three routings'],['Filter','LP to BP morphing SVF with driven resonance and its own drive stage'],['Movement','Two synced LFOs to nine destinations, plus a per-page randomiser'],['Sequencer','Two 8-step lines, gates, Corrupt, CV Range, scale, key and note rate'],['Clock','Follows the MPC transport. No external clock needed']],
+ notes:['The two plugins are released separately and work on their own or together.','Maze Sequencer plays through its own MIDI port. Set the target track’s MIDI input to it.'],
+ credit:'An independent project, not affiliated with Moog. The Schwung version for Ableton Move came first. GPL-3.0.'};
+P['acid']={n:'Acid',r:[3,2],tag:'Original · other',kind:'MIDI sequencer',plat:'MPC OS',repo:'mpc-vst-acid',
+ lead:'Two generative bass lines, a crossfader between them, and enough control to keep it yours.',
+ imgs:[['acid','Sequence A'],['acid-mod','The two LFOs']],
+ what:['Acid writes 303-style bass lines and plays them as MIDI into a synth track. It makes no sound itself. Press Generate for a new line, then sweep density, accent, slide and octave range and the pattern reshapes live from the same seed. Turn a knob back and you get the same line back.',
+       'There are two independent lines, A and B, of 2 to 32 steps. Blend sweeps from one to the other in several modes, decided step by step. Mutate nudges about a quarter of the steps so the line evolves without losing its shape, and any step you edit by hand is locked.'],
+ feats:[['Lines','Two sequencers, 2–32 steps, forward, reverse or pendulum'],['Shape','Density, accent, slide, octaves, gate and offset'],['Generators','The classic TB-3PO model, blended with a second, less repetitive generator'],['Editing','A 16-step edit page per line with note, accent, slide and lock per step'],['Movement','Two LFOs with two slots each, free or synced to the song'],['Global','Scale, root, swing, jitter and reset, shared by both lines']],
+ notes:['Acid plays through a MIDI port called Acid. Set your synth track’s input to it.','It follows the MPC transport, so starting mid-song or looping keeps it on the grid.'],
+ credit:'The first generator is a port of the TB-3PO model via schwung-tb3po and Phazerville. The second is inspired by the Sting Max for Live device. GPL-3.0.'};
+P['lucky-dip']={n:'Lucky Dip',r:[5,3],tag:'Original · other',kind:'Tool',plat:'MPC Live III and first-generation MPCs',repo:'mpc-vst-luckydip',
+ lead:'Your sample library is bigger than you remember. This reaches in and pulls out a kit.',
+ imgs:[['luckydip','The pads'],['luckydip-settings','Settings']],
+ what:['Lucky Dip scans your sample folders and sorts every sample into one of 23 categories from the folder and file names, with no tagging by hand. Then it fills sixteen pads at random, laid out like a drum kit: a kick on pad 1, a snare on pad 2, hats on pad 5, and the last few pads drawing from everything else.',
+       'Play it straight away. Lock the pads you like and dip again for the rest. Mark favourites so they come up more often, and rejects so they never do. When the kit feels right, export it as a normal MPC drum program. It’s a good way to find the pack you downloaded and never opened.'],
+ feats:[['Library','Finds samples on the internal drive, SD cards and USB sticks'],['Categories','23, from kick and snare to stab, chord, glitch and vox'],['Steering','Lock, reroll, favourites, rejects, and per-pad category choices'],['Levels','Loudness matched so one sample doesn’t swamp the rest'],['Export','A standard MPC drum program (.xpm)']],
+ notes:['WAV and AIFF one-shots. Long files are cut to 15 seconds on the pad.','Needs MPC OS 3.x.'],
+ credit:'The kit-building engine started in my schwung-kit-builder module for Ableton Move. GPL-3.0.'};
+P['crate-digger']={n:'Crate Digger',r:[9,8],tag:'Original · other',kind:'Tool',plat:'MPC OS',repo:'mpc-vst-cratedigger',
+ lead:'Pick a genre, a decade and a country, and see what turns up.',
+ imgs:[['cratedigger','The sampler look'],['cratedigger-deck','The deck look']],
+ what:['Crate Digger finds random releases on Discogs that match your filters and streams a playable version into an MPC track, so you can audition and resample them without leaving the machine. It can also search YouTube for text you type, or pull random uploads from channels and playlists you list.',
+       'It has two looks. One is a vintage sampler with a green LCD, big knobs and a level meter. The other is a deck: a turntable whose label shows what’s playing, with a tonearm you can drag to move through the track.'],
+ feats:[['Filters','Genre, style, decade, region and country'],['Sources','Discogs, YouTube search, or your own channels and playlists'],['Results','Up to 16 per search. Tap a row to play it'],['Resampling','A Sync key holds playback until you press Play on the MPC'],['Saved','Filters, source, lengths and gain come back with the project']],
+ notes:['Needs an internet connection on the MPC.','Some results can’t play (private, removed or region-blocked). The status line says why.'],
+ credit:'The streaming core is by Charles Vestal (MIT). GPL-3.0.'};
+P['reverbicon-224']={n:'Reverbicon 224',r:[5,4],tag:'Open-source port',kind:'Effect',plat:'MPC Live III and first-generation MPCs',repo:'mpc-vst-reverbicon224',
+ lead:'The Lexicon 224 running its own firmware, inside your MPC.',
+ imgs:[['reverbicon224','On an MPC Live III']],
+ what:['Most reverb plugins imitate the 224’s sound. This one rebuilds the machine that made it. The 8080 control computer runs the original v4.4 ROMs and reads a front panel. The DSP it programs runs row by row, with its own arithmetic, delay memory and timing. Then the 12-bit gain-ranging converters and analog filters shape what you hear.',
+       'The plugin works the front panel for you. Picking a program presses its key and moving a slider moves the pot. Change program and the reverb mutes for about 50 ms while the firmware loads it, as on the hardware. The red readout shows what the firmware stores: <span class="led">2.6 SEC</span> <span class="led">8.80 KHZ</span>.'],
+ extra:`<div class="chain" role="img" aria-label="Signal chain: the MPC page works the emulated front panel; the 8080 runs the v4.4 ROM and programs the DSP; audio passes through the input converter, the DSP and the output converter."><svg viewBox="0 0 830 210"><defs><marker id="ah" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path class="ah" d="M0,0L8,4L0,8z"/></marker></defs><rect class="box" x="16" y="20" width="176" height="58"/><text class="t" x="30" y="45">MPC page</text><text x="30" y="65">Q-Links · sliders</text><rect class="box" x="240" y="20" width="176" height="58"/><text class="t" x="254" y="45">Front panel</text><text x="254" y="65">keys · pots · LED</text><rect class="box hot" x="464" y="20" width="176" height="58"/><text class="t" x="478" y="45">8080 CPU</text><text x="478" y="65" style="fill:#17140F">v4.4 ROM1–ROM5</text><path class="w" d="M192,49H238" marker-end="url(#ah)"/><path class="w" d="M416,49H462" marker-end="url(#ah)"/><path class="w" d="M552,78V120" marker-end="url(#ah)"/><text x="562" y="103">programs</text><rect class="box" x="16" y="122" width="176" height="58"/><text class="t" x="30" y="147">Audio in</text><text x="30" y="167">12-bit gain-ranging</text><rect class="box hot" x="464" y="122" width="176" height="58"/><text class="t" x="478" y="147">DSP</text><text x="478" y="167" style="fill:#17140F">rows · delay memory</text><rect class="box" x="664" y="122" width="150" height="58"/><text class="t" x="678" y="147">Audio out</text><text x="678" y="167">4 outs · filters</text><path class="sig" d="M192,151H462" marker-end="url(#ah)"/><path class="sig" d="M640,151H662" marker-end="url(#ah)"/><text x="300" y="143">signal</text></svg></div>`,
+ feats:[['Programs','Small Hall B, Vocal Plate, Large Hall B, Acoustic Chamber, Percussion Plate A, Small Hall A'],['Decay','Bass and Mid, 0.6 to 70 seconds, split at 100 Hz to 10.9 kHz'],['Shape','Treble decay, depth, pre-delay, diffusion, Mode Enhancement and Decay Optimization'],['Outputs','Any two of the four outputs, A to D'],['Dirt','My addition: converter hiss, gain-range mismatch and a soft input limit. Off at 0'],['Presets','Sixteen in the MPC’s preset menu. The Q-Links follow the sliders']],
+ notes:['You supply the five v4.4 ROM images from a 224 you own. They go in <span class="mono">Content/ROMs/</span> and are recognised by checksum.','The firmware boots in under a second on a Live III. Until then, audio passes through.'],
+ credit:'Built on <a class="link" href="https://github.com/joelanders/reflecticon-224" target="_blank" rel="noopener">reflecticon-224</a> by Joe Landers, the reference it’s built and tested against, including the front-panel recipe and analog filter data. Not affiliated with Lexicon or Harman. AGPL-3.0.'};
+
+const ORDER=['profit-08','clementine-xt','maze','acid','lucky-dip','crate-digger','reverbicon-224'];
+function renderPage(slug){const p=P[slug];const i=ORDER.indexOf(slug);const next=P[ORDER[(i+1)%ORDER.length]];const nextSlug=ORDER[(i+1)%ORDER.length];
+  const hero=p.imgs?`<div class="device"><img src="img/${p.imgs[0][0]}.webp" alt="${p.n}: ${p.imgs[0][1]}" width="960" height="471"></div><p class="device-cap lab">${p.imgs[0][1]}</p>`:`<div class="device sigfig" style="border-radius:0">${sig(p.r,1.2)}</div><p class="device-cap lab">Sigil ${p.r.join(':')} · screenshots coming</p>`;
+  const gal=p.imgs&&p.imgs.length>1?`<div class="gallery">${p.imgs.slice(1).map(([f,c])=>`<figure><img src="img/${f}.webp" alt="${p.n}: ${c}" width="960" height="471" loading="lazy"><figcaption class="lab">${c}</figcaption></figure>`).join('')}</div>`:'';
+  document.getElementById('pageRoot').innerHTML=`
+  <nav class="crumbs lab" aria-label="Breadcrumb"><a href="#plugins">MPC plugins</a><span>/</span><span>${p.tag}</span><span>/</span><span style="color:var(--ink)">${p.n}</span></nav>
+  <section class="f-hero"><div><p class="lab">${p.kind} · ${p.tag}</p><h1 class="cond">${p.n}${sig(p.r,2)}</h1><p class="lead">${p.lead}</p>
+    <div class="chips"><span class="chip a">${p.tag.split(' · ')[0]}</span><span class="chip">${p.plat}</span><span class="chip">Free · open source</span></div>
+    <div class="btns"><a class="btn p" href="https://open-mpc.github.io/install.html" target="_blank" rel="noopener">Install →</a><a class="btn" href="${GH(p.repo)}" target="_blank" rel="noopener">Source and releases</a></div></div>
+    <div>${hero}</div></section>
+  <section class="p-sec"><div><p class="lab">What it is</p><h2 class="cond">${p.n}</h2></div><div class="measure">${p.what.map(x=>`<p>${x}</p>`).join('')}${p.extra||''}${gal}</div></section>
+  <section class="p-sec"><div><p class="lab">On board</p><h2 class="cond">What you get</h2></div><ul class="flist">${p.feats.map(([a,b])=>`<li><b>${a}</b><span>${b}</span></li>`).join('')}</ul></section>
+  <section class="p-sec"><div><p class="lab">Good to know</p><h2 class="cond">Before you install</h2></div><ul class="notes">${p.notes.map(x=>`<li>${x}</li>`).join('')}</ul></section>
+  <section class="p-sec"><div><p class="lab">Credits</p><h2 class="cond">Notes</h2></div><p class="measure">${p.credit}</p></section>
+  <nav class="pn" aria-label="More plugins"><a href="#plugins"><span class="lab">← Back to</span><b>All plugins</b></a><a href="#${nextSlug}"><span class="lab">Next →</span><b>${next.n}</b></a></nav>`;
+  document.title=p.n+' · SD88ME';}
+
+/* ---------------- brand book bits ---------------- */
+document.getElementById('swatches').innerHTML=[['Stone','#ECE8E1','Page'],['Paper','#F5F1EA','Raised surfaces'],['Ink','#17140F','Text, rules'],['Orange','#FF5A1A','Rings, sand, accents'],['Deep orange','#E24A0C','Accent text'],['Warm black','#1F1712','Sand plate, panels'],['Sand glow','#FFD08A','Highlight grains']].map(([n,h,u])=>`<div class="sw"><i style="background:${h}"></i><div><b>${n}</b><span>${h}</span><span>${u}</span></div></div>`).join('');
 document.addEventListener('click',e=>{const b=e.target.closest('[data-copy]');if(!b)return;const p=b.parentElement.querySelector('p');const done=()=>{b.textContent='Copied';setTimeout(()=>b.textContent='Copy',1600)};
   const sel=()=>{const r=document.createRange();r.selectNodeContents(p);const s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent='Selected'};
   try{navigator.clipboard.writeText(p.textContent).then(done,sel)}catch(_){sel()}});
-document.getElementById('signup').addEventListener('submit',e=>{e.preventDefault();document.getElementById('formnote').textContent='Sign-ups open with the first Edition. Connect this form to a mailing service to collect them.'});
+document.getElementById('signup').addEventListener('submit',e=>{e.preventDefault();document.getElementById('formnote').textContent='Sign-ups open with the first Edition. This form isn’t connected yet.'});
 
-/* ---- sand plate: grains settle into the four rings; tap for a tone ---- */
+/* ---------------- sand plate ---------------- */
 const cv=document.getElementById('sand'),cx=cv.getContext('2d'),G=9000,gr=new Float32Array(G*2);
 for(let i=0;i<G*2;i++)gr[i]=Math.random()*1.9-.95;
 const RC=[[-.36,-.36],[.36,-.36],[-.36,.36],[.36,.36]];
@@ -680,7 +785,7 @@ const scatter=a=>{for(let i=0;i<G*2;i++)gr[i]+=(Math.random()-.5)*a};
 function step(){for(let i=0;i<G;i++){let x=gr[i*2],y=gr[i*2+1];const s=gain*field(x,y)+.0011;x+=(Math.random()-.5)*s;y+=(Math.random()-.5)*s;const r=x*x+y*y;if(r>.93){const q=Math.sqrt(.93/r);x*=q;y*=q}gr[i*2]=x;gr[i*2+1]=y}}
 const MODES=[[2,5],[1,4],[3,7],[2,6]];let mi=0;
 document.getElementById('plate').addEventListener('click',()=>{const [n,m]=MODES[mi++%MODES.length];field=(x,y)=>chl(x,y,n,m);gain=.035;scatter(.3);capL.innerHTML=`A tone · mode <b>(${n}, ${m})</b>`;clearTimeout(timer);
-  timer=setTimeout(()=>{field=ringsF;gain=.16;scatter(.25);capL.textContent='Sand settling into the mark'},5000);if(reduce){for(let k=0;k<220;k++)step();draw(0)}});
+  timer=setTimeout(()=>{field=ringsF;gain=.16;scatter(.25);capL.textContent='Let it settle'},5000);if(reduce){for(let k=0;k<220;k++)step();draw(0)}});
 const RING=ALL.slice(0,16).map(p=>p.r);
 function draw(t){const r=cv.getBoundingClientRect();if(!r.width)return;if(cv.width!==Math.round(r.width*dpr)){cv.width=r.width*dpr;cv.height=r.height*dpr}
   const w=cv.width,h=cv.height,S=w*.8,ox=(w-S)/2,oy=(h-S)/2,p=Math.max(1,dpr*1.2);cx.clearRect(0,0,w,h);
@@ -692,11 +797,10 @@ for(let k=0;k<300;k++)step();
 let vis=true;new IntersectionObserver(es=>es.forEach(e=>vis=e.isIntersecting)).observe(cv);
 (function loop(t){if(vis&&!document.hidden&&!document.querySelector('[data-view="home"]').hidden){if(!reduce){for(let k=0;k<4;k++)step()}draw(reduce?0:t)}requestAnimationFrame(loop)})(0);
 
-/* ---- router: home, #reverbicon-224, #brand ---- */
-const VIEWS=['reverbicon-224','brand'];
-function route(){const h=location.hash.slice(1);const v=VIEWS.includes(h)?h:'home';
+/* ---------------- router ---------------- */
+function route(){const h=location.hash.slice(1);let v='home';
+  if(P[h]){v='plugin';renderPage(h)}else if(h==='brand')v='brand';else document.title='SD88ME';
   document.querySelectorAll('[data-view]').forEach(m=>m.hidden=m.dataset.view!==v);
-  document.querySelectorAll('.nav ul a[data-route]').forEach(a=>a.dataset.route===v?a.setAttribute('aria-current','page'):a.removeAttribute('aria-current'));
   if(v!=='home')scrollTo(0,0);else if(h){const el=document.getElementById(h);if(el)requestAnimationFrame(()=>el.scrollIntoView())}}
 addEventListener('hashchange',route);route();
 document.querySelectorAll('[data-jump]').forEach(b=>b.addEventListener('click',()=>document.getElementById(b.dataset.jump).scrollIntoView({behavior:reduce?'auto':'smooth'})));

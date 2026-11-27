@@ -1,6 +1,15 @@
 # SD88ME brand notes
 
-**Line:** Circuit-true instruments for deep states. **Brand line:** Sound made visible.
+**Positioning:** audio tools and plugins first: accurate, dependable, useful tools that help people get into a creative flow and stay there. Then, in order: MPC plugins, VST plugins, and open projects such as Open MPC.
+
+**Primary line:** Instruments for losing track of time. **Descriptive:** Accurate, useful tools for long sessions. **Brand line:** Sound made visible. **Sign-off:** Take your time.
+
+**The name:** say SD88ME fast and it sounds like "sedate me". Let that show in tone (calm, unhurried, settling in), not by spelling it out.
+
+## Plugin categories
+- **Originals · modelled:** new engines modelled on classic hardware (Profit-08, Clementine-XT, Maze Voice).
+- **Originals · other:** new ideas (Acid, Maze Sequencer, Lucky Dip, Crate Digger).
+- **Open-source ports:** other people's open engines brought to the MPC, always credited to their authors (Reverbicon 224, Acid-303, Mono-101, TR-MPC, Machinemodule, Monomodule, Osirus, Mini-JV, Boris Granular, Welle, JE-8086, Vavra, MS2KR, DX7, Euclid, Airwindows, OTT).
 
 ## Logo
 - SD88ME in **Big Shoulders Display 900**, with the **88 drawn as four sand rings** (two stacked rings make an 8; the square of four is the 88).
@@ -30,11 +39,11 @@ Big Shoulders Display 900 (headlines, names, logo) · Mona Sans (body) · Martia
 ## Motifs
 - **Sand plate:** grains settle into the four rings; tap to scatter them into a tone's Chladni pattern.
 - **Sigils:** each plugin's Lissajous figure, on cards, in the drifting band and in the ring around the plate.
-- **Catalogue numbers:** SD88-001, SD88-002 … like records.
+- **Settling:** motion is slow and comes to rest; nothing bounces or flashes.
 - **Rules and grain:** 1.5 px ink rules, fine paper grain.
 
 ## Voice
-Exact, warm, lightly mystical. Real numbers in real units, first person, one evocative line per page. Credit upstream work by name.
+Plain, specific, calm. Say what it does in the words a musician would use, with real numbers and names. Short sentences, no hype, no exclamation marks. Avoid stock phrasing (unlock, elevate, seamless, crafted) and "not X but Y" constructions. Credit upstream work by name.
 
 ## The name
-Keep SD88ME as brand, handle and manufacturer string. Three readings: S·D·88·ME (initials, birth year, me), *sedate me* (the state), 8 + 8 (the signal). Domain idea: `sd88.me`. A paid line, if needed, is "SD88ME Editions".
+Keep SD88ME as brand, handle and manufacturer string. It started as initials, a birth year and "me"; said quickly it's "sedate me"; the 88 is the four sand rings. Domain idea: `sd88.me`. A paid line, if needed, is "SD88ME Editions".
