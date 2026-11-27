@@ -17,3 +17,6 @@ Work in progress for review. Folders starting with `_` are not published by GitH
 ## Round 4
 - `round4/index.html`: the logo system (Peaks at four optical sizes, SD88ME capitals in four typefaces with weight-matched marks, icons, favicons, Stamp), Specimen with a live palette switcher (Buddha-poster colours, brighter), and Orbit with a live typeface switcher.
 - `gen_round4.py`: rebuilds the round 4 logo files. Line weights in the lockups are measured from each typeface's letter stems.
+
+## Round 5
+- `round5/index.html`: Specimen with a palette switcher and a graphics-panel switcher (graphite, midnight blue, warm black, paper, full colour), and Orbit in Instrument Sans with four colour schemes (Ember, Ultramarine, Dune, Graphite & lime). Uses the logo files in `../round4/sym/`: copy that folder next to it as `sym/`, plus `img/`.
