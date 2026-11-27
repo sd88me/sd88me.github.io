@@ -34,11 +34,11 @@ svg=lambda body,vb='0 0 200 200':f'<svg xmlns="http://www.w3.org/2000/svg" viewB
 for k,f in LAD.items():
     for cn,c in [('ink','#16161D'),('cream','#F2EEE6')]:
         open(f'{OUT}rings-{k}-{cn}.svg','w').write(svg(f(c)))
-# lockups (Mona Sans Wide 650, stem-matched band width)
-fn,ax,trk='MonaSans[wdth,wght].ttf',{'wght':650,'wdth':125},50
+# lockups (Big Shoulders Display 900, as in the round-2 Cymatic logo; stem-matched band width)
+fn,ax,trk='BigShouldersDisplay[wght].ttf',{'wght':900},0
 st,cap=r4.stem(fn,ax,100)
-for variant,mh in [('',1.34),('-big',1.5)]:
-    mark_h=cap*mh; scale=mark_h/200; band=st/scale*.92; gap=cap*.42
+for variant,mh in [('',1.22),('-big',1.3)]:
+    mark_h=cap*mh; scale=mark_h/200; band=st/scale*.86; gap=cap*.3
     for cn,ink in [('ink','#16161D'),('cream','#F2EEE6')]:
         d,w=g.text(fn,'SD88ME',100,ax,track=trk,x=mark_h+gap,y=(mark_h+cap)/2)
         W=mark_h+gap+w
