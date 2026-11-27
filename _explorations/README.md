@@ -27,3 +27,4 @@ Work in progress for review. Folders starting with `_` are not published by GitH
 ## Round 7 (current direction)
 - `round7/index.html`: Cymatic with the Sand rings logo. The mark is drawn at four sizes: loose sand (large), dense sand (medium), and bold, slightly uneven rings with grainy edges (small and favicon), with the ring width matched to the SD88ME letters in Big Shoulders Display 900 (the round 2 Cymatic logo face). The hero sand forms the rings. Includes app icons, favicons, Stamp and Seal. Needs `img/` next to it.
 - `gen_round7.py`: rebuilds the Sand rings logo files.
+- Rings as the 88: `round7/sym/w88-*.svg` set SD88ME with rings in place of the 88. `stacked` (each 8 is a small ring on a bigger one), `overlap` (the four-ring mark in the name) and `dust-*` (dense-core sand: a solid rough core with grains scattering outward). The page's Logo switch tries each in the menu bar. Rebuild with `gen_round7_88.py`.
